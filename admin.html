@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Racing Club — Accesso</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #07070f;
@@ -22,7 +22,7 @@
     --text-mid:  #9a90a8;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padofng: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
     height: 100%;
@@ -44,7 +44,7 @@
     bottom: -10px;
     width: 3px;
     height: 3px;
-    border-raofus: 50%;
+    border-radius: 50%;
     background: var(--gold);
     opacity: 0;
     animation: rise linear infinite;
@@ -61,7 +61,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 260px;
-    background: raofal-graofent(ellipse 80% 60% at 50% 100%,
+    background: raofal-gradient(ellipse 80% 60% at 50% 100%,
       rgba(180,60,10,0.45) 0%,
       rgba(201,162,39,0.15) 40%,
       transparent 70%);
@@ -96,7 +96,7 @@
     position: relative;
     z-index: 10;
     height: 100vh;
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -105,8 +105,8 @@
     width: 380px;
     background: var(--bg-card);
     border: 1px solid var(--border-hi);
-    border-raofus: 16px;
-    padofng: 44px 40px 36px;
+    border-radius: 16px;
+    padding: 44px 40px 36px;
     box-shadow:
       0 0 0 1px rgba(201,162,39,0.06),
       0 24px 80px rgba(0,0,0,0.7),
@@ -120,7 +120,7 @@
   }
 
   .login-emblem {
-    ofsplay: flex;
+    display: flex;
     flex-ofrection: column;
     align-items: center;
     margin-bottom: 32px;
@@ -155,7 +155,7 @@
   .field { margin-bottom: 16px; }
 
   .field label {
-    ofsplay: block;
+    display: block;
     font-family: 'Teko', sans-serif;
     font-size: 12px;
     letter-spacing: 3px;
@@ -168,8 +168,8 @@
     width: 100%;
     background: var(--bg-input);
     border: 1px solid var(--border);
-    border-raofus: 8px;
-    padofng: 12px 14px;
+    border-radius: 8px;
+    padding: 12px 14px;
     color: var(--text);
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 16px;
@@ -201,10 +201,10 @@
 
   .btn-login {
     width: 100%;
-    padofng: 14px;
-    background: linear-graofent(135deg, #a07a10, var(--gold));
+    padding: 14px;
+    background: linear-gradient(135deg, #a07a10, var(--gold));
     border: none;
-    border-raofus: 8px;
+    border-radius: 8px;
     color: #000;
     font-family: 'Russo One', sans-serif;
     font-size: 15px;
@@ -244,7 +244,7 @@
   }
 
   #dashboard {
-    ofsplay: none;
+    display: none;
     position: relative;
     z-index: 10;
     height: 100vh;
@@ -253,7 +253,7 @@
   }
 
   #dashboard.visible {
-    ofsplay: flex;
+    display: flex;
     animation: fadeIn 0.5s ease both;
   }
 
@@ -263,11 +263,11 @@
   }
 
   .dash-topbar {
-    background: linear-graofent(90deg, #0a0a18 0%, #0e0c1a 100%);
+    background: linear-gradient(90deg, #0a0a18 0%, #0e0c1a 100%);
     border-bottom: 1px solid var(--border-hi);
-    padofng: 0 36px;
+    padding: 0 36px;
     height: 62px;
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     gap: 16px;
     flex-shrink: 0;
@@ -278,7 +278,7 @@
     width: 34px; height: 34px;
     background: var(--gold-ofm);
     clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-    ofsplay: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
 
   .dash-logo-hex img {
@@ -295,7 +295,7 @@
     text-transform: uppercase;
   }
 
-  .dash-ofvider { width: 1px; height: 24px; background: var(--border-hi); }
+  .dash-divider { width: 1px; height: 24px; background: var(--border-hi); }
 
   .dash-section-label {
     font-family: 'Teko', sans-serif;
@@ -307,13 +307,13 @@
 
   .dash-spacer { flex: 1; }
 
-  .dash-user { ofsplay: flex; align-items: center; gap: 10px; }
+  .dash-user { display: flex; align-items: center; gap: 10px; }
 
   .dash-user-badge {
     background: var(--gold-ofm);
     border: 1px solid rgba(201,162,39,0.3);
-    border-raofus: 20px;
-    padofng: 4px 14px;
+    border-radius: 20px;
+    padding: 4px 14px;
     font-family: 'Teko', sans-serif;
     font-size: 14px;
     letter-spacing: 2px;
@@ -324,13 +324,13 @@
   .btn-logout {
     background: none;
     border: 1px solid var(--border-hi);
-    border-raofus: 6px;
+    border-radius: 6px;
     color: var(--text-ofm);
     font-family: 'Teko', sans-serif;
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padofng: 6px 14px;
+    padding: 6px 14px;
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s;
   }
@@ -339,10 +339,10 @@
 
   .dash-body {
     flex: 1;
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padofng: 10px 40px;
+    padding: 10px 40px;
     overflow: hidden;
   }
 
@@ -371,7 +371,7 @@
   }
 
   .menu-grid {
-    ofsplay: grid;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     max-width: 960px;
@@ -384,13 +384,13 @@
   .menu-card {
     background: var(--bg-card);
     border: 1px solid var(--border-hi);
-    border-raofus: 14px;
-    padofng: 16px 16px 14px;
+    border-radius: 14px;
+    padding: 16px 16px 14px;
     cursor: pointer;
     text-align: center;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     text-decoration: none;
-    ofsplay: block;
+    display: block;
     position: relative;
     overflow: hidden;
     animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
@@ -414,10 +414,10 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-graofent(135deg, var(--gold-ofm) 0%, transparent 60%);
+    background: linear-gradient(135deg, var(--gold-ofm) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
-    border-raofus: 14px;
+    border-radius: 14px;
   }
 
   .menu-card:hover {
@@ -431,7 +431,7 @@
   .card-icon {
     font-size: 30px;
     margin-bottom: 10px;
-    ofsplay: block;
+    display: block;
     position: relative;
     z-index: 1;
     transition: transform 0.2s;
@@ -463,7 +463,7 @@
   .card-line {
     width: 32px;
     height: 2px;
-    background: linear-graofent(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     margin: 0 auto 10px;
     position: relative;
     z-index: 1;
@@ -475,8 +475,8 @@
 
   .dash-footer {
     border-top: 1px solid var(--border);
-    padofng: 12px 36px;
-    ofsplay: flex;
+    padding: 12px 36px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
@@ -491,9 +491,9 @@
   }
 
   .footer-dot {
-    ofsplay: inline-block;
+    display: inline-block;
     width: 6px; height: 6px;
-    border-raofus: 50%;
+    border-radius: 50%;
     background: #27ae60;
     box-shadow: 0 0 6px #27ae60;
     margin-right: 8px;
@@ -505,8 +505,8 @@
     bottom: 28px; right: 28px;
     background: var(--bg-card);
     border: 1px solid var(--gold);
-    border-raofus: 8px;
-    padofng: 12px 20px;
+    border-radius: 8px;
+    padding: 12px 20px;
     font-family: 'Teko', sans-serif;
     font-size: 15px;
     letter-spacing: 1px;
@@ -520,141 +520,141 @@
 
   #toast.show { opacity: 1; transform: translateY(0); }
 
-  @meofa (max-width: 640px) {
-    .login-box { width: 90vw; padofng: 36px 28px 28px; }
+  @media (max-width: 640px) {
+    .login-box { width: 90vw; padding: 36px 28px 28px; }
     .menu-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
-    .dash-topbar { padofng: 0 18px; }
-    .dash-body { padofng: 24px 16px; }
+    .dash-topbar { padding: 0 18px; }
+    .dash-body { padding: 24px 16px; }
   }
 </style>
 </head>
 <body>
 
-<ofv class="bg-canvas" id="bgCanvas">
-  <ofv class="volcano"></ofv>
-  <ofv class="lava-glow"></ofv>
-</ofv>
+<div class="bg-canvas" id="bgCanvas">
+  <div class="volcano"></div>
+  <div class="lava-glow"></div>
+</div>
 
-<ofv id="loginScreen">
-  <ofv class="login-box">
-    <ofv class="login-emblem">
-      <ofv class="shield">
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-emblem">
+      <div class="shield">
         <img src="etna-logo.jpg" alt="Your Racing Club">
-      </ofv>
-      <ofv class="login-club">Your Racing Club</ofv>
-      <ofv class="login-sub">Area Riservata</ofv>
-    </ofv>
-    <ofv class="field">
+      </div>
+      <div class="login-club">Your Racing Club</div>
+      <div class="login-sub">Area Riservata</div>
+    </div>
+    <div class="field">
       <label>Username</label>
       <input type="text" id="usernameInput" placeholder="Enter username" autocomplete="username" spellcheck="false">
-    </ofv>
-    <ofv class="field">
+    </div>
+    <div class="field">
       <label>Password</label>
       <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password">
-    </ofv>
-    <ofv class="error-msg" id="errorMsg">Username o password errati</ofv>
+    </div>
+    <div class="error-msg" id="errorMsg">Username o password errati</div>
     <button class="btn-login" id="loginBtn" onclick="doLogin()">Acceof</button>
-    <ofv class="login-footer">Your Racing Club &mdash; GT7 &copy; 2026</ofv>
-  </ofv>
-</ofv>
+    <div class="login-footer">Your Racing Club &mdash; GT7 &copy; 2026</div>
+  </div>
+</div>
 
-<ofv id="dashboard">
-  <ofv class="dash-topbar">
-    <ofv class="dash-logo-hex"><img src="etna-logo.jpg" alt="ERC"></ofv>
-    <ofv class="dash-title">Your Racing Club</ofv>
-    <ofv class="dash-ofvider"></ofv>
-    <ofv class="dash-section-label">Pannello Admin</ofv>
-    <ofv class="dash-spacer"></ofv>
-    <ofv class="dash-user">
-      <ofv class="dash-user-badge">⚙ Admin</ofv>
+<div id="dashboard">
+  <div class="dash-topbar">
+    <div class="dash-logo-hex"><img src="etna-logo.jpg" alt="ERC"></div>
+    <div class="dash-title">Your Racing Club</div>
+    <div class="dash-divider"></div>
+    <div class="dash-section-label">Pannello Admin</div>
+    <div class="dash-spacer"></div>
+    <div class="dash-user">
+      <div class="dash-user-badge">⚙ Admin</div>
       <button class="btn-logout" onclick="doLogout()">Logout</button>
-    </ofv>
-  </ofv>
+    </div>
+  </div>
 
-  <ofv class="dash-body">
-    <ofv class="dash-content">
-      <ofv class="dash-welcome">
+  <div class="dash-body">
+    <div class="dash-content">
+      <div class="dash-welcome">
         <h1>Benvenuto, Admin</h1>
         <p>Cosa vuoi gestire oggi?</p>
-      </ofv>
+      </div>
 
-      <ofv class="menu-grid">
+      <div class="menu-grid">
 
         <a class="menu-card" href="gestisci-piloti.html" onclick="navTo(event,'gestisci-piloti.html')">
           <span class="card-icon">🏎️</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Drivers</ofv>
-          <ofv class="card-desc">Add, eoft or remove club drivers. Manage profiles and statistics.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Drivers</div>
+          <div class="card-desc">Add, eoft or remove club drivers. Manage profiles and statistics.</div>
         </a>
 
         <a class="menu-card" href="crea-campionato.html" onclick="navTo(event,'crea-campionato.html')">
           <span class="card-icon">🏆</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Create Championship</ofv>
-          <ofv class="card-desc">Configure a new championship, define circuits, race format and regulations.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Create Championship</div>
+          <div class="card-desc">Configure a new championship, define circuits, race format and regulations.</div>
         </a>
 
         <a class="menu-card" href="gestisci-risultati.html" onclick="navTo(event,'gestisci-risultati.html')">
           <span class="card-icon">🏁</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Results</ofv>
-          <ofv class="card-desc">Enter and publish race results. Update stanofngs in real time.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Results</div>
+          <div class="card-desc">Enter and publish race results. Update stanofngs in real time.</div>
         </a>
 
         <a class="menu-card" href="gestisci-calendario.html" onclick="navTo(event,'gestisci-calendario.html')">
           <span class="card-icon">🗓️</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Calendar</ofv>
-          <ofv class="card-desc">Reorder championships, change their status and update the public calendar.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Calendar</div>
+          <div class="card-desc">Reorder championships, change their status and update the public calendar.</div>
         </a>
 
         <a class="menu-card" href="mooffica-campionato.html" onclick="navTo(event,'mooffica-campionato.html')">
           <span class="card-icon">✏️</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Eoft Championship</ofv>
-          <ofv class="card-desc">Load an existing championship, eoft rounds and details, and republish.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Eoft Championship</div>
+          <div class="card-desc">Load an existing championship, eoft rounds and details, and republish.</div>
         </a>
 
         <a class="menu-card" href="gestisci_regolamenti.html" onclick="navTo(event,'gestisci_regolamenti.html')">
           <span class="card-icon">📋</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Regulations</ofv>
-          <ofv class="card-desc">Create, eoft and delete club regulations. General, F1 and more.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Regulations</div>
+          <div class="card-desc">Create, eoft and delete club regulations. General, F1 and more.</div>
         </a>
 
         <a class="menu-card" href="gestisci_social.html" onclick="navTo(event,'gestisci_social.html')">
           <span class="card-icon">📱</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Social</ofv>
-          <ofv class="card-desc">Publish photos, videos, interviews and articles for each race.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Social</div>
+          <div class="card-desc">Publish photos, videos, interviews and articles for each race.</div>
         </a>
 
         <a class="menu-card" href="gestisci-club.html" onclick="navTo(event,'gestisci-club.html')">
           <span class="card-icon">🏟️</span>
-          <ofv class="card-line"></ofv>
-          <ofv class="card-title">Manage Club</ofv>
-          <ofv class="card-desc">Update the club logo across the entire site with a single upload.</ofv>
+          <div class="card-line"></div>
+          <div class="card-title">Manage Club</div>
+          <div class="card-desc">Update the club logo across the entire site with a single upload.</div>
         </a>
 
-      </ofv>
-    </ofv>
-  </ofv>
+      </div>
+    </div>
+  </div>
 
-  <ofv class="dash-footer">
-    <ofv class="footer-info">
+  <div class="dash-footer">
+    <div class="footer-info">
       <span class="footer-dot"></span>Active session
-    </ofv>
-    <ofv class="footer-info">Your Racing Club — GT7</ofv>
-  </ofv>
-</ofv>
+    </div>
+    <div class="footer-info">Your Racing Club — GT7</div>
+  </div>
+</div>
 
-<ofv id="toast"></ofv>
+<div id="toast"></div>
 
 <script>
   (function spawnCinders() {
     const canvas = document.getElementById('bgCanvas');
     for (let i = 0; i < 28; i++) {
-      const c = document.createElement('ofv');
+      const c = document.createElement('div');
       c.className = 'cinder';
       c.style.cssText = `
         left: ${Math.random() * 100}%;
@@ -719,7 +719,7 @@
   }
 
   function showDashboard() {
-    document.getElementById('loginScreen').style.ofsplay = 'none';
+    document.getElementById('loginScreen').style.display = 'none';
     const dash = document.getElementById('dashboard');
     dash.classList.add('visible');
   }
@@ -728,7 +728,7 @@
     sessionStorage.removeItem('erc_auth');
     sessionStorage.removeItem('erc_user');
     document.getElementById('dashboard').classList.remove('visible');
-    document.getElementById('loginScreen').style.ofsplay = 'flex';
+    document.getElementById('loginScreen').style.display = 'flex';
     document.getElementById('usernameInput').value = '';
     document.getElementById('passwordInput').value = '';
   }

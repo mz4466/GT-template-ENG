@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manage Social — ERC Admin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#07070f;--card:#0e0e1c;--input:#13131f;
@@ -13,151 +13,151 @@
       --red:#ff5014;--orange:#ff8c42;--cream:#fff5e6;--muted:#c9b8a3;
       --green:#27ae60;--del:#c0392b;--text:#fff5e6;--ofm:#5a5470;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Barlow Condensed',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
     /* TOPBAR */
-    .topbar{background:#050510;border-bottom:1px solid var(--border);padofng:12px 20px;ofsplay:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:100}
-    .topbar-brand{ofsplay:flex;align-items:center;gap:10px;font-family:'Teko',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold-hi)}
+    .topbar{background:#050510;border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:100}
+    .topbar-brand{display:flex;align-items:center;gap:10px;font-family:'Teko',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold-hi)}
     .topbar-brand img{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 0 6px rgba(201,162,39,0.4))}
-    .topbar-right{ofsplay:flex;align-items:center;gap:10px}
+    .topbar-right{display:flex;align-items:center;gap:10px}
     /* LAYOUT */
-    .layout{ofsplay:grid;grid-template-columns:260px 1fr;height:calc(100vh - 53px)}
-    .sidebar{background:#0a0a16;border-right:1px solid var(--border);padofng:16px;ofsplay:flex;flex-ofrection:column;gap:12px;overflow-y:auto}
+    .layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 53px)}
+    .sidebar{background:#0a0a16;border-right:1px solid var(--border);padding:16px;display:flex;flex-ofrection:column;gap:12px;overflow-y:auto}
     .sidebar-title{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
     /* AUTH */
-    .auth-section{background:var(--card);border:1px solid var(--border-hi);border-raofus:10px;padofng:12px}
-    .auth-section label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;ofsplay:block;margin-bottom:5px}
-    .auth-section input{width:100%;background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none}
+    .auth-section{background:var(--card);border:1px solid var(--border-hi);border-radius:10px;padding:12px}
+    .auth-section label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:5px}
+    .auth-section input{width:100%;background:var(--input);border:1px solid var(--border-hi);border-radius:7px;padding:8px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none}
     .auth-section input:focus{border-color:var(--gold)}
     /* BUTTONS */
-    .btn{ofsplay:inline-flex;align-items:center;gap:6px;padofng:8px 14px;border-raofus:8px;border:none;cursor:pointer;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:all .15s}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:all .15s}
     .btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold-hi)}
     .btn-outline{background:transparent;border:1px solid var(--border-hi);color:var(--muted)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
     .btn-red{background:var(--del);color:#fff}.btn-red:hover{background:#e74c3c}
     .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#2ecc71}
-    .btn-sm{padofng:5px 10px;font-size:11px}
+    .btn-sm{padding:5px 10px;font-size:11px}
     /* SIDEBAR NAV ITEMS */
-    .nav-item{background:var(--card);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 12px;cursor:pointer;transition:border-color .15s;margin-bottom:4px}
+    .nav-item{background:var(--card);border:1px solid var(--border-hi);border-radius:7px;padding:8px 12px;cursor:pointer;transition:border-color .15s;margin-bottom:4px}
     .nav-item:hover{border-color:var(--gold)}
     .nav-item.active{border-color:var(--gold);background:var(--gold-ofm)}
     .nav-item-label{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--cream)}
     .nav-item-sub{font-size:11px;color:var(--ofm);margin-top:1px}
-    .nav-item-del{background:none;border:none;color:rgba(192,57,43,.5);cursor:pointer;font-size:14px;float:right;line-height:1;padofng:0}
+    .nav-item-del{background:none;border:none;color:rgba(192,57,43,.5);cursor:pointer;font-size:14px;float:right;line-height:1;padding:0}
     .nav-item-del:hover{color:var(--del)}
     /* MAIN */
-    .main{padofng:24px 28px;overflow-y:auto;ofsplay:flex;flex-ofrection:column;gap:18px}
-    .panel{background:var(--card);border:1px solid var(--border-hi);border-raofus:12px;padofng:20px}
-    .panel-title{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padofng-bottom:10px;border-bottom:1px solid var(--border)}
+    .main{padding:24px 28px;overflow-y:auto;display:flex;flex-ofrection:column;gap:18px}
+    .panel{background:var(--card);border:1px solid var(--border-hi);border-radius:12px;padding:20px}
+    .panel-title{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
     /* FORM */
-    .field{ofsplay:flex;flex-ofrection:column;gap:5px;margin-bottom:12px}
+    .field{display:flex;flex-ofrection:column;gap:5px;margin-bottom:12px}
     .field label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
-    .field input,.field select,.field textarea{background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%}
+    .field input,.field select,.field textarea{background:var(--input);border:1px solid var(--border-hi);border-radius:7px;padding:8px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%}
     .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
     .field textarea{resize:vertical;min-height:80px}
-    .field-row{ofsplay:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     /* TYPE PILLS */
-    .type-pills{ofsplay:flex;gap:6px;flex-wrap:wrap}
-    .tpill{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;padofng:5px 14px;border-raofus:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s}
+    .type-pills{display:flex;gap:6px;flex-wrap:wrap}
+    .tpill{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;padding:5px 14px;border-radius:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s}
     .tpill:hover{border-color:var(--gold);color:var(--muted)}
     .tpill.active{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold)}
     /* UPLOAD ZONE */
-    .upload-zone{border:2px dashed rgba(201,162,39,0.2);border-raofus:8px;padofng:24px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-zone{border:2px dashed rgba(201,162,39,0.2);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:border-color .2s}
     .upload-zone:hover{border-color:var(--gold)}
-    .upload-zone input{ofsplay:none}
+    .upload-zone input{display:none}
     .upload-icon{font-size:28px;margin-bottom:8px}
     .upload-text{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase}
     .upload-sub{font-size:11px;color:#3a3450;margin-top:3px}
-    .upload-preview{ofsplay:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-top:10px}
-    .upload-thumb{position:relative;border-raofus:5px;overflow:hidden;border:1px solid var(--border-hi)}
-    .upload-thumb img{width:100%;aspect-ratio:1;object-fit:cover;ofsplay:block}
-    .upload-thumb-del{position:absolute;top:2px;right:2px;background:rgba(192,57,43,0.8);border:none;color:#fff;font-size:12px;border-raofus:3px;cursor:pointer;padofng:1px 4px;line-height:1}
+    .upload-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-top:10px}
+    .upload-thumb{position:relative;border-radius:5px;overflow:hidden;border:1px solid var(--border-hi)}
+    .upload-thumb img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+    .upload-thumb-del{position:absolute;top:2px;right:2px;background:rgba(192,57,43,0.8);border:none;color:#fff;font-size:12px;border-radius:3px;cursor:pointer;padding:1px 4px;line-height:1}
     /* RICH TEXT TOOLBAR */
-    .rtoolbar{ofsplay:flex;gap:4px;padofng:6px 8px;background:var(--input);border:1px solid var(--border-hi);border-raofus:7px 7px 0 0;border-bottom:none}
-    .rtbtn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padofng:3px 7px;border-raofus:4px;font-family:serif}
+    .rtoolbar{display:flex;gap:4px;padding:6px 8px;background:var(--input);border:1px solid var(--border-hi);border-radius:7px 7px 0 0;border-bottom:none}
+    .rtbtn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:3px 7px;border-radius:4px;font-family:serif}
     .rtbtn:hover{background:var(--card);color:var(--text)}
-    .rich-eoftor{background:var(--input);border:1px solid var(--border-hi);border-raofus:0 0 7px 7px;padofng:10px;color:var(--text);min-height:120px;outline:none;font-size:14px;line-height:1.7}
+    .rich-eoftor{background:var(--input);border:1px solid var(--border-hi);border-radius:0 0 7px 7px;padding:10px;color:var(--text);min-height:120px;outline:none;font-size:14px;line-height:1.7}
     .rich-eoftor:focus{border-color:var(--gold)}
     /* ITEMS LIST */
-    .item-list{ofsplay:flex;flex-ofrection:column;gap:6px}
-    .item-row{background:var(--input);border:1px solid var(--border);border-raofus:7px;padofng:9px 12px;ofsplay:flex;align-items:center;gap:10px}
-    .item-badge{font-family:'Teko',sans-serif;font-size:10px;letter-spacing:2px;padofng:2px 8px;border-raofus:12px;text-transform:uppercase;flex-shrink:0}
+    .item-list{display:flex;flex-ofrection:column;gap:6px}
+    .item-row{background:var(--input);border:1px solid var(--border);border-radius:7px;padding:9px 12px;display:flex;align-items:center;gap:10px}
+    .item-badge{font-family:'Teko',sans-serif;font-size:10px;letter-spacing:2px;padding:2px 8px;border-radius:12px;text-transform:uppercase;flex-shrink:0}
     .badge-photo{background:rgba(52,152,219,0.15);color:#3498db}
     .badge-video{background:rgba(231,76,60,0.15);color:#e74c3c}
     .badge-interview{background:rgba(155,89,182,0.15);color:#9b59b6}
     .badge-article{background:rgba(39,174,96,0.15);color:#27ae60}
     .item-name{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     /* STATUS DOT */
-    .status-dot{width:7px;height:7px;border-raofus:50%;background:var(--ofm);flex-shrink:0}
+    .status-dot{width:7px;height:7px;border-radius:50%;background:var(--ofm);flex-shrink:0}
     .status-dot.ok{background:var(--green);box-shadow:0 0 5px var(--green)}
     .status-dot.err{background:var(--del)}
     /* CONN STATUS */
     #connStatus{font-size:12px;margin-top:7px;color:var(--ofm)}
     /* EMPTY/HINT */
-    .hint{text-align:center;padofng:50px 20px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase}
-    .hint-icon{font-size:36px;margin-bottom:10px;ofsplay:block}
+    .hint{text-align:center;padding:50px 20px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase}
+    .hint-icon{font-size:36px;margin-bottom:10px;display:block}
     /* TOAST */
-    #toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--gold);border-raofus:8px;padofng:10px 18px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none}
+    #toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--gold);border-radius:8px;padding:10px 18px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none}
     #toast.show{opacity:1;transform:translateY(0)}
     #toast.ok{border-color:var(--green);color:#2ecc71}
     #toast.err{border-color:var(--del);color:#e74c3c}
-    @meofa(max-width:768px){.layout{grid-template-columns:1fr;height:auto}.sidebar{height:auto}.field-row{grid-template-columns:1fr}}
+    @media(max-width:768px){.layout{grid-template-columns:1fr;height:auto}.sidebar{height:auto}.field-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-<ofv class="topbar">
-  <ofv class="topbar-brand">
-    <img src="etna-logo.jpg" alt="ERC" onerror="this.style.ofsplay='none'">
+<div class="topbar">
+  <div class="topbar-brand">
+    <img src="etna-logo.jpg" alt="ERC" onerror="this.style.display='none'">
     <span>Manage Social</span>
-  </ofv>
-  <ofv class="topbar-right">
+  </div>
+  <div class="topbar-right">
     <a href="social.html" class="btn btn-outline btn-sm" target="_blank">👁 Visualizza</a>
     <a href="index.html" class="btn btn-outline btn-sm">← Home</a>
-  </ofv>
-</ofv>
+  </div>
+</div>
 
-<ofv class="layout">
+<div class="layout">
   <!-- SIDEBAR -->
-  <ofv class="sidebar">
-    <ofv>
-      <ofv class="sidebar-title">GitHub</ofv>
-      <ofv class="auth-section">
+  <div class="sidebar">
+    <div>
+      <div class="sidebar-title">GitHub</div>
+      <div class="auth-section">
         <label>PAT Token</label>
         <input type="password" id="patInput" placeholder="ghp_xxxx" autocomplete="off">
-        <ofv style="margin-top:8px;ofsplay:flex;gap:6px">
+        <div style="margin-top:8px;display:flex;gap:6px">
           <button class="btn btn-gold" style="flex:1" onclick="connect()">Connect</button>
           <button class="btn btn-outline" onclick="reload()">↺</button>
-        </ofv>
-        <ofv id="connStatus">Not connected</ofv>
-      </ofv>
-    </ofv>
+        </div>
+        <div id="connStatus">Not connected</div>
+      </div>
+    </div>
 
-    <ofv>
-      <ofv class="sidebar-title">Anno</ofv>
-      <ofv id="yearList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
-      <button class="btn btn-outline" id="addYearBtn" style="width:100%;justify-content:center;ofsplay:none;margin-top:4px" onclick="showAddYear()">＋ Anno</button>
-    </ofv>
+    <div>
+      <div class="sidebar-title">Anno</div>
+      <div id="yearList"><div class="hint" style="padding:10px 0;font-size:11px">—</div></div>
+      <button class="btn btn-outline" id="addYearBtn" style="width:100%;justify-content:center;display:none;margin-top:4px" onclick="showAddYear()">＋ Anno</button>
+    </div>
 
-    <ofv>
-      <ofv class="sidebar-title">Campionato</ofv>
-      <ofv id="champList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
-    </ofv>
+    <div>
+      <div class="sidebar-title">Campionato</div>
+      <div id="champList"><div class="hint" style="padding:10px 0;font-size:11px">—</div></div>
+    </div>
 
-    <ofv>
-      <ofv class="sidebar-title">Race</ofv>
-      <ofv id="raceList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
-    </ofv>
-  </ofv>
+    <div>
+      <div class="sidebar-title">Race</div>
+      <div id="raceList"><div class="hint" style="padding:10px 0;font-size:11px">—</div></div>
+    </div>
+  </div>
 
   <!-- MAIN -->
-  <ofv class="main" id="mainArea">
-    <ofv class="hint">
+  <div class="main" id="mainArea">
+    <div class="hint">
       <span class="hint-icon">📡</span>Connect GitHub per iniziare
-    </ofv>
-  </ofv>
-</ofv>
+    </div>
+  </div>
+</div>
 
-<ofv id="toast"></ofv>
+<div id="toast"></div>
 
 <script>
 const OWNER = 'mz4466', REPO = 'gt-template-eng', BRANCH = 'main';
@@ -213,7 +213,7 @@ async function connect(){
     var el = document.getElementById('connStatus');
     el.textContent = '✓ Connected';
     el.style.color = 'var(--green)';
-    document.getElementById('addYearBtn').style.ofsplay = '';
+    document.getElementById('addYearBtn').style.display = '';
     await loadIndex();
   } catch(e){
     var el = document.getElementById('connStatus');
@@ -239,13 +239,13 @@ async function saveIndex(){
 function renderYears(){
   var years = [...new Set(socialIndex.map(function(c){ return c.year; }))].sort(function(a,b){ return b-a; });
   var list = document.getElementById('yearList');
-  list.innerHTML = years.length ? '' : '<ofv class="hint" style="padofng:6px 0;font-size:11px">Nessun anno</ofv>';
+  list.innerHTML = years.length ? '' : '<div class="hint" style="padding:6px 0;font-size:11px">Nessun anno</div>';
   years.forEach(function(y){
-    var ofv = document.createElement('ofv');
-    ofv.className = 'nav-item' + (sel.year===y?' active':'');
-    ofv.innerHTML = '<span class="nav-item-label">'+y+'</span>';
-    ofv.onclick = function(){ selectYear(y); };
-    list.appendChild(ofv);
+    var div = document.createElement('div');
+    div.className = 'nav-item' + (sel.year===y?' active':'');
+    div.innerHTML = '<span class="nav-item-label">'+y+'</span>';
+    div.onclick = function(){ selectYear(y); };
+    list.appendChild(div);
   });
   if(!sel.year && years.length) selectYear(years[0]);
   else if(sel.year) renderChamps();
@@ -268,13 +268,13 @@ function renderChamps(){
   addBtn.onclick = showAddChamp;
   list.appendChild(addBtn);
   yearChamps.forEach(function(c){
-    var ofv = document.createElement('ofv');
-    ofv.className = 'nav-item' + (sel.champ&&sel.champ.id===c.id?' active':'');
-    ofv.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteChamp(\''+c.id+'\')">✕</button>'
-      + '<ofv class="nav-item-label">'+esc(c.name)+'</ofv>'
-      + '<ofv class="nav-item-sub">'+esc(c.year)+'</ofv>';
-    ofv.onclick = function(){ selectChamp(c); };
-    list.appendChild(ofv);
+    var div = document.createElement('div');
+    div.className = 'nav-item' + (sel.champ&&sel.champ.id===c.id?' active':'');
+    div.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteChamp(\''+c.id+'\')">✕</button>'
+      + '<div class="nav-item-label">'+esc(c.name)+'</div>'
+      + '<div class="nav-item-sub">'+esc(c.year)+'</div>';
+    div.onclick = function(){ selectChamp(c); };
+    list.appendChild(div);
   });
   if(!sel.champ && yearChamps.length) selectChamp(yearChamps[0]);
   else renderRaces();
@@ -297,12 +297,12 @@ function renderRaces(){
   addBtn.onclick = showAddRace;
   list.appendChild(addBtn);
   races.forEach(function(race){
-    var ofv = document.createElement('ofv');
-    ofv.className = 'nav-item' + (sel.race&&sel.race.slug===race.slug?' active':'');
-    ofv.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteRace(\''+race.slug+'\')">✕</button>'
-      + '<ofv class="nav-item-label">'+esc(race.label)+'</ofv>';
-    ofv.onclick = function(){ selectRace(race); };
-    list.appendChild(ofv);
+    var div = document.createElement('div');
+    div.className = 'nav-item' + (sel.race&&sel.race.slug===race.slug?' active':'');
+    div.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteRace(\''+race.slug+'\')">✕</button>'
+      + '<div class="nav-item-label">'+esc(race.label)+'</div>';
+    div.onclick = function(){ selectRace(race); };
+    list.appendChild(div);
   });
   if(!sel.race && races.length) selectRace(races[0]);
   else renderMain();
@@ -317,11 +317,11 @@ function selectRace(race){
 // ── MAIN PANEL ──
 async function renderMain(){
   if(!sel.race){
-    document.getElementById('mainArea').innerHTML = '<ofv class="hint"><span class="hint-icon">🏁</span>Seleziona una gara</ofv>';
+    document.getElementById('mainArea').innerHTML = '<div class="hint"><span class="hint-icon">🏁</span>Seleziona una gara</div>';
     return;
   }
   var main = document.getElementById('mainArea');
-  main.innerHTML = '<ofv class="hint"><span class="hint-icon">⏳</span>Caricamento...</ofv>';
+  main.innerHTML = '<div class="hint"><span class="hint-icon">⏳</span>Caricamento...</div>';
 
   var path = SOCIAL_FOLDER + '/' + sel.champ.year + '/' + sel.champ.slug + '/' + sel.race.slug + '/index.json';
   var items = [];
@@ -330,20 +330,20 @@ async function renderMain(){
   main.innerHTML = '';
 
   // ── ADD CONTENT PANEL ──
-  var addPanel = document.createElement('ofv');
+  var addPanel = document.createElement('div');
   addPanel.className = 'panel';
-  addPanel.innerHTML = '<ofv class="panel-title">'+esc(sel.race.label)+' — Aggiungi Contenuto</ofv>'
-    + '<ofv class="field"><label>Tipo</label><ofv class="type-pills" id="typePills">'
-    + '<ofv class="tpill active" data-t="photo">📷 Foto</ofv>'
-    + '<ofv class="tpill" data-t="video">🎥 Video</ofv>'
-    + '<ofv class="tpill" data-t="interview">🎤 Intervista</ofv>'
-    + '<ofv class="tpill" data-t="article">📝 Articolo</ofv>'
-    + '</ofv></ofv>'
-    + '<ofv id="typeFields"></ofv>'
-    + '<ofv style="ofsplay:flex;gap:8px;justify-content:flex-end;margin-top:10px">'
+  addPanel.innerHTML = '<div class="panel-title">'+esc(sel.race.label)+' — Aggiungi Contenuto</div>'
+    + '<div class="field"><label>Tipo</label><div class="type-pills" id="typePills">'
+    + '<div class="tpill active" data-t="photo">📷 Foto</div>'
+    + '<div class="tpill" data-t="video">🎥 Video</div>'
+    + '<div class="tpill" data-t="interview">🎤 Intervista</div>'
+    + '<div class="tpill" data-t="article">📝 Articolo</div>'
+    + '</div></div>'
+    + '<div id="typeFields"></div>'
+    + '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">'
     + '<button class="btn btn-outline" onclick="renderMain()">Cancel</button>'
     + '<button class="btn btn-green" onclick="publishItem()">↑ Publish su GitHub</button>'
-    + '</ofv>';
+    + '</div>';
   main.appendChild(addPanel);
 
   // Wire type pills
@@ -357,23 +357,23 @@ async function renderMain(){
   renderTypeFields('photo');
 
   // ── EXISTING ITEMS PANEL ──
-  var itemPanel = document.createElement('ofv');
+  var itemPanel = document.createElement('div');
   itemPanel.className = 'panel';
-  var itemsHtml = '<ofv class="panel-title">Contenuti Publishti ('+items.length+')</ofv>';
+  var itemsHtml = '<div class="panel-title">Contenuti Publishti ('+items.length+')</div>';
   if(!items.length){
-    itemsHtml += '<ofv class="hint" style="padofng:20px 0;font-size:12px">Nessun contenuto</ofv>';
+    itemsHtml += '<div class="hint" style="padding:20px 0;font-size:12px">Nessun contenuto</div>';
   } else {
-    itemsHtml += '<ofv class="item-list">';
+    itemsHtml += '<div class="item-list">';
     items.forEach(function(item, i){
       var badge = 'badge-'+item.type;
       var label = {photo:'foto',video:'video',interview:'intervista',article:'articolo'}[item.type]||item.type;
-      itemsHtml += '<ofv class="item-row">'
+      itemsHtml += '<div class="item-row">'
         + '<span class="item-badge '+badge+'">'+label+'</span>'
         + '<span class="item-name">'+esc(item.title||item.file||'—')+'</span>'
         + '<button class="btn btn-red btn-sm" onclick="deleteItem('+i+')">✕</button>'
-        + '</ofv>';
+        + '</div>';
     });
-    itemsHtml += '</ofv>';
+    itemsHtml += '</div>';
   }
   itemPanel.innerHTML = itemsHtml;
   main.appendChild(itemPanel);
@@ -388,40 +388,40 @@ function renderTypeFields(type){
   if(!c) return;
 
   if(type === 'photo'){
-    c.innerHTML = '<ofv class="field"><label>Carica Immagini o URL</label>'
-      + '<ofv class="upload-zone" id="uploadZone" onclick="document.getElementById(\'fileInput\').click()">'
+    c.innerHTML = '<div class="field"><label>Carica Immagini o URL</label>'
+      + '<div class="upload-zone" id="uploadZone" onclick="document.getElementById(\'fileInput\').click()">'
       + '<input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)">'
-      + '<ofv class="upload-icon">📁</ofv>'
-      + '<ofv class="upload-text">Clicca o trascina immagini</ofv>'
-      + '<ofv class="upload-sub">JPG · PNG · WebP · max 5MB</ofv>'
-      + '</ofv>'
-      + '<ofv class="upload-preview" id="uploadPreview"></ofv>'
-      + '</ofv>'
-      + '<ofv class="field"><label>— oppure — URL Esterno</label><input type="text" id="photoUrl" placeholder="https://..."></ofv>'
-      + '<ofv class="field"><label>Didascalia (opzionale)</label><input type="text" id="itemTitle" placeholder="es. Partenza Race 1"></ofv>';
+      + '<div class="upload-icon">📁</div>'
+      + '<div class="upload-text">Clicca o trascina immagini</div>'
+      + '<div class="upload-sub">JPG · PNG · WebP · max 5MB</div>'
+      + '</div>'
+      + '<div class="upload-preview" id="uploadPreview"></div>'
+      + '</div>'
+      + '<div class="field"><label>— oppure — URL Esterno</label><input type="text" id="photoUrl" placeholder="https://..."></div>'
+      + '<div class="field"><label>Didascalia (opzionale)</label><input type="text" id="itemTitle" placeholder="es. Partenza Race 1"></div>';
   } else if(type === 'video' || type === 'interview'){
-    c.innerHTML = '<ofv class="field"><label>URL YouTube</label><input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..."></ofv>'
-      + '<ofv class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="es. Highlights Race 1"></ofv>'
-      + '<ofv class="field"><label>Descrizione (opzionale)</label><input type="text" id="itemDesc" placeholder=""></ofv>'
-      + '<ofv style="margin:6px 0 2px;font-family:\'Teko\',sans-serif;font-size:11px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase">— oppure — Upload Diretto</ofv>'
-      + '<ofv class="upload-zone" onclick="document.getElementById(\'vidFileInput\').click()">'
-      + '<input type="file" id="vidFileInput" accept="video/*" style="ofsplay:none" onchange="handleVideoFile(this.files[0])">'
-      + '<ofv class="upload-icon">🎬</ofv>'
-      + '<ofv class="upload-text">Carica video file</ofv>'
-      + '<ofv class="upload-sub">MP4 · max 50MB</ofv>'
-      + '</ofv>'
-      + '<ofv id="vidFileName" style="font-size:12px;color:var(--gold);margin-top:6px"></ofv>';
+    c.innerHTML = '<div class="field"><label>URL YouTube</label><input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..."></div>'
+      + '<div class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="es. Highlights Race 1"></div>'
+      + '<div class="field"><label>Descrizione (opzionale)</label><input type="text" id="itemDesc" placeholder=""></div>'
+      + '<div style="margin:6px 0 2px;font-family:\'Teko\',sans-serif;font-size:11px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase">— oppure — Upload Diretto</div>'
+      + '<div class="upload-zone" onclick="document.getElementById(\'vidFileInput\').click()">'
+      + '<input type="file" id="vidFileInput" accept="video/*" style="display:none" onchange="handleVideoFile(this.files[0])">'
+      + '<div class="upload-icon">🎬</div>'
+      + '<div class="upload-text">Carica video file</div>'
+      + '<div class="upload-sub">MP4 · max 50MB</div>'
+      + '</div>'
+      + '<div id="vidFileName" style="font-size:12px;color:var(--gold);margin-top:6px"></div>';
   } else if(type === 'article'){
-    c.innerHTML = '<ofv class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="Titolo articolo"></ofv>'
-      + '<ofv class="field"><label>Testo</label>'
-      + '<ofv class="rtoolbar">'
+    c.innerHTML = '<div class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="Titolo articolo"></div>'
+      + '<div class="field"><label>Testo</label>'
+      + '<div class="rtoolbar">'
       + '<button class="rtbtn" onclick="fmt(\'bold\')" title="Grassetto"><b>B</b></button>'
       + '<button class="rtbtn" onclick="fmt(\'italic\')" title="Corsivo"><i>I</i></button>'
       + '<button class="rtbtn" onclick="fmtLink()" title="Link">🔗</button>'
-      + '</ofv>'
-      + '<ofv class="rich-eoftor" id="richEoftor" contenteoftable="true" spellcheck="false"></ofv>'
-      + '</ofv>'
-      + '<ofv class="field"><label>Date (opzionale)</label><input type="text" id="itemDate" placeholder="es. 20 giugno 2026"></ofv>';
+      + '</div>'
+      + '<div class="rich-eoftor" id="richEoftor" contenteoftable="true" spellcheck="false"></div>'
+      + '</div>'
+      + '<div class="field"><label>Date (opzionale)</label><input type="text" id="itemDate" placeholder="es. 20 giugno 2026"></div>';
   }
 }
 
@@ -440,7 +440,7 @@ function handleFiles(files){
       penofngUploads.push({ name: file.name, b64: b64, mimeType: file.type });
       var prev = document.getElementById('uploadPreview');
       if(prev){
-        var thumb = document.createElement('ofv');
+        var thumb = document.createElement('div');
         thumb.className = 'upload-thumb';
         thumb.innerHTML = '<img src="'+e.target.result+'" alt=""><button class="upload-thumb-del" onclick="removeUpload('+( penofngUploads.length-1)+',this)">✕</button>';
         prev.appendChild(thumb);
@@ -531,7 +531,7 @@ async function deleteItem(idx){
   try {
     // If it's a file stored in repo, delete the file too
     if(item.file){
-      try { await ghDelete(basePath+'/'+item.file, 'Delete meofa: '+item.file); } catch(e){}
+      try { await ghDelete(basePath+'/'+item.file, 'Delete media: '+item.file); } catch(e){}
     }
     items.splice(idx,1);
     await ghPut(basePath+'/index.json', JSON.stringify(items,null,2), 'Remove item from '+sel.race.slug);

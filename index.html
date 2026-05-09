@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Racing Club - Official Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Roboto:wght@300,400,700&ofsplay=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Roboto:wght@300,400,700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padofng: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --volcano-red: #ff5014;
@@ -29,7 +29,7 @@
         .hero-section {
             position: relative;
             min-height: 100vh;
-            ofsplay: flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
@@ -40,10 +40,10 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: 
-                raofal-graofent(ellipse at 50% 120%, rgba(255,80,20,0.4) 0%, transparent 50%),
-                raofal-graofent(ellipse at 80% 80%, rgba(255,140,66,0.2) 0%, transparent 40%),
-                raofal-graofent(ellipse at 20% 60%, rgba(255,140,66,0.15) 0%, transparent 35%),
-                linear-graofent(to bottom, #000000 0%, #1a0505 50%, #2d0a0a 100%);
+                raofal-gradient(ellipse at 50% 120%, rgba(255,80,20,0.4) 0%, transparent 50%),
+                raofal-gradient(ellipse at 80% 80%, rgba(255,140,66,0.2) 0%, transparent 40%),
+                raofal-gradient(ellipse at 20% 60%, rgba(255,140,66,0.15) 0%, transparent 35%),
+                linear-gradient(to bottom, #000000 0%, #1a0505 50%, #2d0a0a 100%);
             z-index: 0;
         }
 
@@ -59,7 +59,7 @@
             position: absolute;
             width: 3px; height: 3px;
             background: var(--fire-yellow);
-            border-raofus: 50%;
+            border-radius: 50%;
             box-shadow: 0 0 8px var(--lava-orange), 0 0 15px rgba(255,165,0,0.5);
             animation: float-up linear infinite;
         }
@@ -93,7 +93,7 @@
         .speed-line {
             position: absolute;
             height: 2px;
-            background: linear-graofent(90deg, transparent 0%, var(--volcano-red) 30%, var(--fire-yellow) 50%, var(--volcano-red) 70%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, var(--volcano-red) 30%, var(--fire-yellow) 50%, var(--volcano-red) 70%, transparent 100%);
             animation: speed-slide 3s linear infinite;
         }
 
@@ -114,7 +114,7 @@
             z-index: 10;
             text-align: center;
             max-width: 1400px;
-            padofng: 60px 30px;
+            padding: 60px 30px;
             animation: fadeInScale 1.5s cubic-bezier(0.19,1,0.22,1) both;
         }
 
@@ -124,7 +124,7 @@
         }
 
         .logo-row {
-            ofsplay: flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 30px;
@@ -168,7 +168,7 @@
             letter-spacing: 8px;
             line-height: 1;
             margin-bottom: 20px;
-            background: linear-graofent(180deg, #ffffff 0%, var(--fire-yellow) 30%, var(--lava-orange) 60%, var(--volcano-red) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, var(--fire-yellow) 30%, var(--lava-orange) 60%, var(--volcano-red) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -203,15 +203,15 @@
             animation: fadeIn 2s ease-out 1s both;
         }
 
-        .decorative-ofvider {
+        .decorative-divider {
             width: 200px; height: 4px;
-            background: linear-graofent(90deg, transparent 0%, var(--volcano-red) 20%, var(--fire-yellow) 50%, var(--volcano-red) 80%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, var(--volcano-red) 20%, var(--fire-yellow) 50%, var(--volcano-red) 80%, transparent 100%);
             margin: 40px auto;
             box-shadow: 0 0 20px var(--volcano-red);
-            animation: ofvider-pulse 2s ease-in-out infinite;
+            animation: divider-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes ofvider-pulse {
+        @keyframes divider-pulse {
             0%,100% { opacity:1; transform:scaleX(1); }
             50%      { opacity:0.7; transform:scaleX(1.1); }
         }
@@ -243,7 +243,7 @@
         .highlight-text { color: var(--fire-yellow); font-weight: 700; text-transform: uppercase; }
 
         .championship-grid {
-            ofsplay: grid;
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
             gap: 25px;
             max-width: 1000px;
@@ -252,13 +252,13 @@
         }
 
         .info-card {
-            background: linear-graofent(135deg, rgba(74,14,14,0.8) 0%, rgba(45,10,10,0.9) 100%);
+            background: linear-gradient(135deg, rgba(74,14,14,0.8) 0%, rgba(45,10,10,0.9) 100%);
             border: 2px solid var(--volcano-red);
-            border-raofus: 15px;
-            padofng: 30px 20px;
+            border-radius: 15px;
+            padding: 30px 20px;
             transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,80,20,0.1);
-            ofsplay: flex;
+            display: flex;
             flex-ofrection: column;
             align-items: center;
             justify-content: center;
@@ -275,8 +275,8 @@
         .info-card[role="button"] { text-decoration: none; color: inherit; }
         .info-card[role="button"]:focus { outline: none; }
 
-        .info-card-icon { font-size: 48px; margin-bottom: 15px; ofsplay: block; line-height: 1; }
-        .info-card-image { width: 80px; height: auto; margin-bottom: 15px; ofsplay: block; }
+        .info-card-icon { font-size: 48px; margin-bottom: 15px; display: block; line-height: 1; }
+        .info-card-image { width: 80px; height: auto; margin-bottom: 15px; display: block; }
 
         .info-card-label {
             font-family: 'Teko', sans-serif;
@@ -306,7 +306,7 @@
         }
 
         .calendario-button {
-            ofsplay: inline-flex;
+            display: inline-flex;
             align-items: center;
             gap: 18px;
             position: relative;
@@ -316,10 +316,10 @@
             text-transform: uppercase;
             color: #ffffff;
             text-decoration: none;
-            padofng: 28px 64px;
-            background: linear-graofent(135deg, #0a1a2a 0%, #0d2540 50%, #0a1a2a 100%);
+            padding: 28px 64px;
+            background: linear-gradient(135deg, #0a1a2a 0%, #0d2540 50%, #0a1a2a 100%);
             border: 3px solid #4fc3f7;
-            border-raofus: 60px;
+            border-radius: 60px;
             box-shadow:
                 0 0 30px rgba(79,195,247,0.25),
                 0 15px 40px rgba(0,0,0,0.6),
@@ -334,7 +334,7 @@
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-graofent(90deg, transparent 0%, rgba(79,195,247,0.15) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(79,195,247,0.15) 50%, transparent 100%);
             transition: left 0.7s ease;
         }
 
@@ -357,7 +357,7 @@
             letter-spacing: 3px;
             color: #4fc3f7;
             text-transform: uppercase;
-            ofsplay: block;
+            display: block;
             margin-bottom: 14px;
             opacity: 0.8;
         }
@@ -375,7 +375,7 @@
         }
 
         .buttons-wrapper {
-            ofsplay: flex;
+            display: flex;
             flex-ofrection: column;
             gap: 25px;
             max-width: 800px;
@@ -383,13 +383,13 @@
         }
 
         .championship-button {
-            ofsplay: flex;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            padofng: 30px 40px;
-            background: linear-graofent(135deg, rgba(74,14,14,0.9) 0%, rgba(45,10,10,0.95) 100%);
+            padding: 30px 40px;
+            background: linear-gradient(135deg, rgba(74,14,14,0.9) 0%, rgba(45,10,10,0.95) 100%);
             border: 3px solid var(--volcano-red);
-            border-raofus: 20px;
+            border-radius: 20px;
             transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,80,20,0.1);
             text-decoration: none;
@@ -399,7 +399,7 @@
 
         .championship-button.active {
             border-color: var(--fire-yellow);
-            background: linear-graofent(135deg, rgba(255,80,20,0.3) 0%, rgba(74,14,14,0.9) 50%, rgba(45,10,10,0.95) 100%);
+            background: linear-gradient(135deg, rgba(255,80,20,0.3) 0%, rgba(74,14,14,0.9) 50%, rgba(45,10,10,0.95) 100%);
             box-shadow: 0 10px 30px rgba(255,80,20,0.6), inset 0 0 30px rgba(255,140,66,0.2), 0 0 40px rgba(255,165,0,0.4);
         }
 
@@ -446,16 +446,16 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--smoke);
-            padofng: 8px 20px;
+            padding: 8px 20px;
             background: rgba(201,184,163,0.2);
-            border-raofus: 20px;
+            border-radius: 20px;
             min-width: 180px;
             text-align: center;
         }
 
         .button-status.active-status {
             color: #ffffff;
-            background: linear-graofent(90deg, var(--volcano-red), var(--fire-yellow));
+            background: linear-gradient(90deg, var(--volcano-red), var(--fire-yellow));
             animation: status-pulse 2s ease-in-out infinite;
             box-shadow: 0 5px 15px rgba(255,80,20,0.5);
         }
@@ -465,15 +465,15 @@
             50%      { box-shadow: 0 8px 25px rgba(255,165,0,0.8); }
         }
 
-        .ofvider-line {
+        .divider-line {
             width: 80%; height: 3px;
-            background: linear-graofent(90deg, transparent 0%, var(--volcano-red) 20%, var(--fire-yellow) 50%, var(--volcano-red) 80%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, var(--volcano-red) 20%, var(--fire-yellow) 50%, var(--volcano-red) 80%, transparent 100%);
             margin: 60px auto;
             box-shadow: 0 0 20px var(--volcano-red);
         }
 
         .main-cta-button {
-            ofsplay: inline-block;
+            display: inline-block;
             position: relative;
             font-family: 'Russo One', sans-serif;
             font-size: clamp(24px,4vw,36px);
@@ -482,10 +482,10 @@
             text-transform: uppercase;
             color: #ffffff;
             text-decoration: none;
-            padofng: 30px 70px;
-            background: linear-graofent(135deg, var(--volcano-red) 0%, var(--lava-orange) 50%, var(--volcano-red) 100%);
+            padding: 30px 70px;
+            background: linear-gradient(135deg, var(--volcano-red) 0%, var(--lava-orange) 50%, var(--volcano-red) 100%);
             border: 4px solid var(--fire-yellow);
-            border-raofus: 60px;
+            border-radius: 60px;
             box-shadow: 0 15px 40px rgba(255,80,20,0.6), inset 0 -8px 20px rgba(0,0,0,0.4), 0 0 50px rgba(255,165,0,0.4);
             transition: all 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
             overflow: hidden;
@@ -497,7 +497,7 @@
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-graofent(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
             transition: left 0.7s ease;
         }
 
@@ -513,7 +513,7 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            padofng: 50px 30px 40px;
+            padding: 50px 30px 40px;
             margin-top: 80px;
             border-top: 2px solid rgba(255,80,20,0.3);
             animation: fadeIn 2s ease-out 3s both;
@@ -538,55 +538,55 @@
             margin-top: 20px;
         }
 
-        @meofa (max-width: 768px) {
+        @media (max-width: 768px) {
             .club-logo { width: 180px; }
             .gt7-logo { width: 160px; }
             .logo-row { flex-ofrection: column; gap: 18px; }
-            .content-wrapper { padofng: 40px 20px; }
+            .content-wrapper { padding: 40px 20px; }
             .championship-grid { grid-template-columns: repeat(2,1fr); gap: 15px; margin: 40px auto; }
-            .info-card { padofng: 20px 15px; }
+            .info-card { padding: 20px 15px; }
             .info-card-icon { font-size: 36px; }
             .info-card-image { width: 60px; }
             .info-card-value { font-size: 24px; }
             .buttons-wrapper { gap: 20px; }
-            .championship-button { flex-ofrection: column; padofng: 25px 20px; gap: 15px; }
+            .championship-button { flex-ofrection: column; padding: 25px 20px; gap: 15px; }
             .button-quarter { font-size: 36px; min-width: auto; }
             .button-label { font-size: 24px; }
-            .button-status { font-size: 14px; padofng: 6px 15px; min-width: auto; }
-            .main-cta-button { padofng: 22px 45px; }
-            .footer-separator { ofsplay: block; margin: 10px 0; }
-            .calendario-button { padofng: 20px 36px; font-size: clamp(18px,4vw,24px); letter-spacing: 2px; }
+            .button-status { font-size: 14px; padding: 6px 15px; min-width: auto; }
+            .main-cta-button { padding: 22px 45px; }
+            .footer-separator { display: block; margin: 10px 0; }
+            .calendario-button { padding: 20px 36px; font-size: clamp(18px,4vw,24px); letter-spacing: 2px; }
         }
     </style>
 </head>
 <body>
     <section class="hero-section">
-        <ofv class="volcano-backdrop"></ofv>
+        <div class="volcano-backdrop"></div>
 
-        <ofv class="embers-container">
-            <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-            <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-            <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-        </ofv>
+        <div class="embers-container">
+            <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+            <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+            <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+        </div>
 
-        <ofv class="speed-lines">
-            <ofv class="speed-line"></ofv><ofv class="speed-line"></ofv>
-            <ofv class="speed-line"></ofv><ofv class="speed-line"></ofv>
-        </ofv>
+        <div class="speed-lines">
+            <div class="speed-line"></div><div class="speed-line"></div>
+            <div class="speed-line"></div><div class="speed-line"></div>
+        </div>
 
-        <ofv class="content-wrapper">
-            <ofv class="logo-row">
+        <div class="content-wrapper">
+            <div class="logo-row">
                 <img class="club-logo" src="etna-logo.jpg" alt="Your Racing Club logo" loaofng="lazy" id="ercLogo" onclick="secretClick()">
                 <img class="gt7-logo" src="gt7.jpg" alt="Gran Turismo 7 logo" loaofng="lazy">
-            </ofv>
+            </div>
 
             <h1 class="club-name" id="cfg-club-name">Your Racing Club</h1>
             <p class="club-tagline" id="cfg-tagline">Where Legends Race</p>
             <p class="club-subtitle" id="cfg-subtitle">Gran Turismo 7</p>
 
-            <ofv class="decorative-ofvider"></ofv>
+            <div class="decorative-divider"></div>
 
-            <ofv class="welcome-section">
+            <div class="welcome-section">
                 <h2 class="welcome-title" id="cfg-welcome-title">Welcome Drivers</h2>
                 <p class="welcome-text" id="cfg-welcome-p1">
                     Sotto l'ombra del vulcano più attivo d'Europa, nasce la comunità racing più competitiva della Sicilia.
@@ -597,44 +597,44 @@
                     Preparati a sfidare i migliori piloti e a scrivere il tuo nome nella storia.
                     <span class="highlight-text">Sei pronto a correre?</span>
                 </p>
-            </ofv>
+            </div>
 
-            <ofv class="championship-grid">
+            <div class="championship-grid">
                 <a href="archivio.html" class="info-card" role="button" aria-label="Archive gare">
                     <img class="info-card-image" src="archive.png" alt="Archive gare">
-                    <ofv class="info-card-label">Archive</ofv>
-                    <ofv class="info-card-value">Races</ofv>
+                    <div class="info-card-label">Archive</div>
+                    <div class="info-card-value">Races</div>
                 </a>
                 <a href="social.html" class="info-card" role="button" aria-label="Social">
-                    <ofv class="info-card-icon" style="font-size:48px;margin-bottom:15px;ofsplay:block;line-height:1">📱</ofv>
-                    <ofv class="info-card-label">Social</ofv>
-                    <ofv class="info-card-value">Photos &amp; Videos</ofv>
+                    <div class="info-card-icon" style="font-size:48px;margin-bottom:15px;display:block;line-height:1">📱</div>
+                    <div class="info-card-label">Social</div>
+                    <div class="info-card-value">Photos &amp; Videos</div>
                 </a>
                 <a href="piloti_gt7.html" class="info-card" role="button" aria-label="The Drivers">
-                    <ofv class="info-card-icon">🏎️</ofv>
-                    <ofv class="info-card-label">Participants</ofv>
-                    <ofv class="info-card-value">The Drivers</ofv>
+                    <div class="info-card-icon">🏎️</div>
+                    <div class="info-card-label">Participants</div>
+                    <div class="info-card-value">The Drivers</div>
                 </a>
-            </ofv>
+            </div>
 
-            <ofv class="cta-container">
+            <div class="cta-container">
                 <!-- ── CALENDARIO BUTTON ── -->
-                <ofv class="calendario-btn-wrap">
+                <div class="calendario-btn-wrap">
                     <a href="calendario.html" class="calendario-button">
                         <span class="cal-icon">🗓️</span>
                         Calendario Championships
                     </a>
-                </ofv>
+                </div>
 
-                <ofv class="ofvider-line"></ofv>
+                <div class="divider-line"></div>
 
                 <a href="regolamento_etna_racing_club.html" class="main-cta-button">
                     <span class="button-icon">📋</span>
                     Official Regulations
                 </a>
-            </ofv>
+            </div>
 
-            <ofv class="footer-section">
+            <div class="footer-section">
                 <p class="footer-motto" id="cfg-motto">
                     🏁 Racesggia con Onore
                     <span class="footer-separator">•</span>
@@ -643,8 +643,8 @@
                     Divertiti 🌋
                 </p>
                 <p class="footer-copyright" id="cfg-copyright">© 2026 Your Racing Club • Sicilia, Italia</p>
-            </ofv>
-        </ofv>
+            </div>
+        </div>
     </section>
     <script>
       // ── Club config ──

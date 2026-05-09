@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERC Admin — Manage Drivers</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:#07070f; --bg-card:#0e0e1c; --bg-input:#13131f;
@@ -13,66 +13,66 @@
     --red:#c0392b; --green:#27ae60; --blue:#4fc3f7; --orange:#ff5014;
     --text:#e8e0d0; --text-ofm:#e8e0d0; --text-mid:#8a8098;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh;ofsplay:flex;flex-ofrection:column;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-ofrection:column;}
 
   /* TOPBAR */
-  .topbar{background:linear-graofent(90deg,#0a0a18,#0e0c1a);border-bottom:1px solid var(--border-hi);padofng:0 32px;height:62px;ofsplay:flex;align-items:center;gap:14px;flex-shrink:0;box-shadow:0 2px 20px rgba(0,0,0,.5);position:sticky;top:0;z-index:100;}
+  .topbar{background:linear-gradient(90deg,#0a0a18,#0e0c1a);border-bottom:1px solid var(--border-hi);padding:0 32px;height:62px;display:flex;align-items:center;gap:14px;flex-shrink:0;box-shadow:0 2px 20px rgba(0,0,0,.5);position:sticky;top:0;z-index:100;}
   .topbar-logo img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 0 6px var(--gold-glow));}
   .topbar-title{font-family:'Russo One',sans-serif;font-size:15px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;}
-  .topbar-ofvider{width:1px;height:24px;background:var(--border-hi);}
+  .topbar-divider{width:1px;height:24px;background:var(--border-hi);}
   .topbar-section{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:4px;color:var(--text-ofm);text-transform:uppercase;}
   .topbar-spacer{flex:1;}
-  .github-status{ofsplay:flex;align-items:center;gap:8px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-ofm);}
-  .status-dot{width:7px;height:7px;border-raofus:50%;background:var(--text-ofm);transition:background .3s;}
+  .github-status{display:flex;align-items:center;gap:8px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-ofm);}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-ofm);transition:background .3s;}
   .status-dot.ok{background:var(--green);box-shadow:0 0 6px var(--green);}
   .status-dot.err{background:var(--red);}
-  .btn-back{background:none;border:1px solid var(--border-hi);border-raofus:6px;color:var(--text-mid);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padofng:6px 14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s;}
+  .btn-back{background:none;border:1px solid var(--border-hi);border-radius:6px;color:var(--text-mid);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s;}
   .btn-back:hover{border-color:var(--gold);color:var(--gold);}
 
   /* LAYOUT */
-  .page-body{ofsplay:grid;grid-template-columns:260px 1fr;flex:1;min-height:0;}
+  .page-body{display:grid;grid-template-columns:260px 1fr;flex:1;min-height:0;}
 
   /* SIDEBAR */
-  .sidebar{background:#0a0a16;border-right:1px solid var(--border);padofng:24px 18px;ofsplay:flex;flex-ofrection:column;gap:20px;overflow-y:auto;}
-  .sidebar-block{ofsplay:flex;flex-ofrection:column;gap:8px;}
-  .sidebar-label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padofng-bottom:6px;border-bottom:1px solid var(--border);}
+  .sidebar{background:#0a0a16;border-right:1px solid var(--border);padding:24px 18px;display:flex;flex-ofrection:column;gap:20px;overflow-y:auto;}
+  .sidebar-block{display:flex;flex-ofrection:column;gap:8px;}
+  .sidebar-label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
   .pat-wrap{position:relative;}
-  .pat-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-raofus:7px;padofng:9px 34px 9px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
+  .pat-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:7px;padding:9px 34px 9px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
   .pat-wrap input:focus{border-color:var(--gold);}
   .pat-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-ofm);cursor:pointer;font-size:13px;}
   .repo-note{font-size:11px;color:var(--text-ofm);line-height:1.6;}
   .repo-note span{color:var(--blue);}
-  .btn-verify{width:100%;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padofng:8px;border-raofus:7px;cursor:pointer;transition:background .2s;}
+  .btn-verify{width:100%;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:8px;border-radius:7px;cursor:pointer;transition:background .2s;}
   .btn-verify:hover{background:var(--gold);color:#000;}
-  .btn{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;padofng:9px 18px;border-raofus:7px;cursor:pointer;border:1px solid;transition:all .2s;ofsplay:inline-flex;align-items:center;gap:6px;}
+  .btn{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:7px;cursor:pointer;border:1px solid;transition:all .2s;display:inline-flex;align-items:center;gap:6px;}
   .btn-add{background:var(--gold);border-color:var(--gold-hi);color:#000;font-weight:700;width:100%;justify-content:center;}
   .btn-add:hover{background:var(--gold-hi);}
   .btn-outline{background:transparent;border-color:var(--border-hi);color:var(--text-mid);}
   .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-  .sidebar-stat{ofsplay:flex;justify-content:space-between;align-items:center;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-mid);}
+  .sidebar-stat{display:flex;justify-content:space-between;align-items:center;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-mid);}
   .sidebar-stat span{color:var(--gold);font-size:20px;font-weight:600;}
 
   /* MAIN */
-  .main{padofng:32px 36px;overflow-y:auto;ofsplay:flex;flex-ofrection:column;gap:24px;}
+  .main{padding:32px 36px;overflow-y:auto;display:flex;flex-ofrection:column;gap:24px;}
   .page-title{font-family:'Russo One',sans-serif;font-size:22px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;}
   .page-sub{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;margin-top:3px;}
 
   /* SEARCH BAR */
-  .search-bar{ofsplay:flex;gap:10px;align-items:center;}
-  .search-bar input{flex:1;background:var(--bg-card);border:1px solid var(--border-hi);border-raofus:8px;padofng:10px 14px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s;}
-  .filter-bar{ofsplay:flex;gap:8px;margin-bottom:12px;}
-  .filter-btn{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padofng:6px 16px;border-raofus:20px;border:1px solid var(--border-hi);background:transparent;color:var(--text-ofm);cursor:pointer;transition:all .2s;}
+  .search-bar{display:flex;gap:10px;align-items:center;}
+  .search-bar input{flex:1;background:var(--bg-card);border:1px solid var(--border-hi);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s;}
+  .filter-bar{display:flex;gap:8px;margin-bottom:12px;}
+  .filter-btn{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;border:1px solid var(--border-hi);background:transparent;color:var(--text-ofm);cursor:pointer;transition:all .2s;}
   .filter-btn:hover{border-color:var(--gold);color:var(--gold);}
   .filter-btn.active{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold);}
   .search-bar input:focus{border-color:var(--gold);}
 
   /* PILOTS GRID */
-  .pilots-grid{ofsplay:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px;}
+  .pilots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px;}
 
   .pilot-card{
-    background:var(--bg-card);border:1px solid var(--border-hi);border-raofus:12px;overflow:hidden;
-    ofsplay:grid;grid-template-columns:140px 1fr;
+    background:var(--bg-card);border:1px solid var(--border-hi);border-radius:12px;overflow:hidden;
+    display:grid;grid-template-columns:140px 1fr;
     transition:border-color .25s,box-shadow .25s,transform .25s;
     animation:fadeUp .35s cubic-bezier(.22,1,.36,1) both;
     min-height:175px;
@@ -81,23 +81,23 @@
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-  .pilot-photo-wrap{position:relative;overflow:hidden;background:linear-graofent(135deg,#0d0d1e,#1a1a2e);}
-  .pilot-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;ofsplay:block;}
+  .pilot-photo-wrap{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d0d1e,#1a1a2e);}
+  .pilot-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;display:block;}
   .pilot-card:hover .pilot-photo-wrap img{transform:scale(1.05);}
-  .pilot-photo-placeholder{width:100%;height:100%;ofsplay:flex;align-items:center;justify-content:center;font-size:46px;color:var(--border-hi);}
-  .pilot-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-graofent(to right,transparent 70%,var(--bg-card) 100%);pointer-events:none;}
+  .pilot-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:46px;color:var(--border-hi);}
+  .pilot-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 70%,var(--bg-card) 100%);pointer-events:none;}
 
-  .pilot-card-body{padofng:14px 14px 0;ofsplay:flex;flex-ofrection:column;min-width:0;}
+  .pilot-card-body{padding:14px 14px 0;display:flex;flex-ofrection:column;min-width:0;}
   .pilot-name{font-family:'Russo One',sans-serif;font-size:15px;color:var(--text);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .pilot-psn{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:2px;margin-bottom:8px;}
-  .pilot-meta{ofsplay:flex;flex-ofrection:column;gap:2px;flex:1;}
-  .pilot-meta-row{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--text-mid);ofsplay:flex;gap:6px;align-items:baseline;padofng-bottom:2px;border-bottom:1px solid rgba(255,255,255,.025);}
+  .pilot-meta{display:flex;flex-ofrection:column;gap:2px;flex:1;}
+  .pilot-meta-row{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--text-mid);display:flex;gap:6px;align-items:baseline;padding-bottom:2px;border-bottom:1px solid rgba(255,255,255,.025);}
   .pilot-meta-row:last-child{border-bottom:none;}
   .pilot-meta-row .lbl{color:var(--text-ofm);font-size:10px;letter-spacing:2px;text-transform:uppercase;min-width:46px;}
-  .pilot-badges{margin-top:8px;ofsplay:flex;flex-wrap:wrap;gap:4px;padofng-bottom:8px;}
-  .pilot-badge{background:var(--gold-ofm);border:1px solid rgba(201,162,39,.2);border-raofus:20px;padofng:2px 9px;font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;}
-  .pilot-card-footer{padofng:8px 14px;border-top:1px solid var(--border);ofsplay:flex;gap:8px;justify-content:flex-end;grid-column:2;}
-  .btn-sm{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;padofng:5px 12px;border-raofus:6px;cursor:pointer;border:1px solid;transition:all .2s;}
+  .pilot-badges{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;padding-bottom:8px;}
+  .pilot-badge{background:var(--gold-ofm);border:1px solid rgba(201,162,39,.2);border-radius:20px;padding:2px 9px;font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;}
+  .pilot-card-footer{padding:8px 14px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;grid-column:2;}
+  .btn-sm{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:6px;cursor:pointer;border:1px solid;transition:all .2s;}
   .pilot-card.pilot-inactive{opacity:.55;border-color:var(--border);}
   .pilot-card.pilot-inactive:hover{border-color:var(--border-hi);box-shadow:none;transform:none;}
   .btn-eoft{background:transparent;border-color:var(--border-hi);color:var(--text-mid);}
@@ -106,236 +106,236 @@
   .btn-del:hover{border-color:var(--red);color:var(--red);background:rgba(192,57,43,.08);}
 
   /* EMPTY / LOADING */
-  .empty-state{text-align:center;padofng:56px 20px;color:var(--text-ofm);}
+  .empty-state{text-align:center;padding:56px 20px;color:var(--text-ofm);}
   .empty-state .ei{font-size:44px;margin-bottom:14px;}
   .empty-state p{font-family:'Teko',sans-serif;font-size:16px;letter-spacing:3px;text-transform:uppercase;}
-  .loaofng-msg{color:var(--text-ofm);font-family:'Teko',sans-serif;font-size:15px;letter-spacing:3px;text-transform:uppercase;padofng:40px;text-align:center;}
+  .loaofng-msg{color:var(--text-ofm);font-family:'Teko',sans-serif;font-size:15px;letter-spacing:3px;text-transform:uppercase;padding:40px;text-align:center;}
 
   /* MODAL */
-  .modal-bg{ofsplay:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padofng:20px;}
-  .modal-bg.open{ofsplay:flex;}
-  .modal-box{background:var(--bg-card);border:1px solid var(--gold);border-raofus:14px;width:100%;max-width:680px;max-height:90vh;ofsplay:flex;flex-ofrection:column;overflow:hidden;}
-  .modal-head{ofsplay:flex;align-items:center;padofng:16px 22px;border-bottom:1px solid var(--border);gap:12px;}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:20px;}
+  .modal-bg.open{display:flex;}
+  .modal-box{background:var(--bg-card);border:1px solid var(--gold);border-radius:14px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-ofrection:column;overflow:hidden;}
+  .modal-head{display:flex;align-items:center;padding:16px 22px;border-bottom:1px solid var(--border);gap:12px;}
   .modal-head-title{font-family:'Russo One',sans-serif;font-size:15px;color:var(--gold);letter-spacing:2px;flex:1;text-transform:uppercase;}
-  .modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-raofus:5px;padofng:4px 11px;font-size:17px;transition:border-color .2s,color .2s;}
+  .modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-radius:5px;padding:4px 11px;font-size:17px;transition:border-color .2s,color .2s;}
   .modal-close:hover{border-color:var(--red);color:var(--red);}
-  .modal-body{flex:1;overflow-y:auto;padofng:22px;}
-  .modal-foot{padofng:14px 22px;border-top:1px solid var(--border);ofsplay:flex;gap:10px;justify-content:flex-end;}
+  .modal-body{flex:1;overflow-y:auto;padding:22px;}
+  .modal-foot{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;}
 
   /* FORM */
-  .form-grid{ofsplay:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .form-grid.full{grid-template-columns:1fr;}
-  .field{ofsplay:flex;flex-ofrection:column;gap:5px;}
+  .field{display:flex;flex-ofrection:column;gap:5px;}
   .field label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text);text-transform:uppercase;}
-  .field input,.field textarea,.field select{background:var(--bg-input);border:1px solid var(--border);border-raofus:7px;padofng:9px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+  .field input,.field textarea,.field select{background:var(--bg-input);border:1px solid var(--border);border-radius:7px;padding:9px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
   .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-ofm);}
   .field textarea{resize:vertical;min-height:72px;}
-  .form-section{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padofng:14px 0 6px;border-bottom:1px solid var(--border);margin-bottom:4px;grid-column:1/-1;}
+  .form-section{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padding:14px 0 6px;border-bottom:1px solid var(--border);margin-bottom:4px;grid-column:1/-1;}
 
-  .upload-btn{ofsplay:inline-flex;align-items:center;gap:6px;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padofng:7px 14px;border-raofus:7px;cursor:pointer;transition:background .2s;}
+  .upload-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border-radius:7px;cursor:pointer;transition:background .2s;}
   .upload-btn:hover{background:var(--gold);color:#000;}
 
-  .photo-preview{width:100%;height:120px;object-fit:cover;border-raofus:8px;border:1px solid var(--border);margin-top:6px;ofsplay:none;background:var(--bg-input);}
+  .photo-preview{width:100%;height:120px;object-fit:cover;border-radius:8px;border:1px solid var(--border);margin-top:6px;display:none;background:var(--bg-input);}
 
-  .btn-github{background:linear-graofent(135deg,#196327,#238636);border-color:#2ea043;color:#fff;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padofng:9px 22px;border-raofus:7px;cursor:pointer;transition:background .2s;ofsplay:inline-flex;align-items:center;gap:6px;}
-  .btn-github:hover{background:linear-graofent(135deg,#238636,#2ea043);}
-  .btn-cancel{background:transparent;border:1px solid var(--border-hi);color:var(--text-mid);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padofng:9px 22px;border-raofus:7px;cursor:pointer;transition:border-color .2s,color .2s;}
+  .btn-github{background:linear-gradient(135deg,#196327,#238636);border-color:#2ea043;color:#fff;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;border-radius:7px;cursor:pointer;transition:background .2s;display:inline-flex;align-items:center;gap:6px;}
+  .btn-github:hover{background:linear-gradient(135deg,#238636,#2ea043);}
+  .btn-cancel{background:transparent;border:1px solid var(--border-hi);color:var(--text-mid);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s;}
   .btn-cancel:hover{border-color:var(--red);color:var(--red);}
 
   /* TOAST */
-  #toast{position:fixed;bottom:28px;right:28px;background:var(--bg-card);border:1px solid var(--gold);border-raofus:8px;padofng:12px 20px;font-family:'Teko',sans-serif;font-size:15px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;}
+  #toast{position:fixed;bottom:28px;right:28px;background:var(--bg-card);border:1px solid var(--gold);border-radius:8px;padding:12px 20px;font-family:'Teko',sans-serif;font-size:15px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;}
   #toast.show{opacity:1;transform:translateY(0);}
   #toast.ok{border-color:var(--green);color:var(--green);}
   #toast.err{border-color:var(--red);color:var(--red);}
 
 
   /* CAR PICKER */
-  .champ-assign-block{border:1px solid var(--border-hi);border-raofus:8px;padofng:12px 14px;ofsplay:flex;flex-ofrection:column;gap:8px;}
+  .champ-assign-block{border:1px solid var(--border-hi);border-radius:8px;padding:12px 14px;display:flex;flex-ofrection:column;gap:8px;}
   .champ-assign-title{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
-  .car-pills{ofsplay:flex;flex-wrap:wrap;gap:6px;min-height:0;}
-  .car-pill{ofsplay:inline-flex;align-items:center;gap:6px;background:var(--gold-ofm);border:1px solid rgba(201,162,39,.3);border-raofus:20px;padofng:4px 10px;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--gold);max-width:220px;}
-  .car-pill img{width:36px;height:22px;object-fit:cover;border-raofus:3px;flex-shrink:0;background:var(--bg-input);}
+  .car-pills{display:flex;flex-wrap:wrap;gap:6px;min-height:0;}
+  .car-pill{display:inline-flex;align-items:center;gap:6px;background:var(--gold-ofm);border:1px solid rgba(201,162,39,.3);border-radius:20px;padding:4px 10px;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--gold);max-width:220px;}
+  .car-pill img{width:36px;height:22px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--bg-input);}
   .car-pill-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .car-pill-del{background:none;border:none;color:rgba(201,162,39,.6);cursor:pointer;font-size:14px;line-height:1;padofng:0;flex-shrink:0;}
+  .car-pill-del{background:none;border:none;color:rgba(201,162,39,.6);cursor:pointer;font-size:14px;line-height:1;padding:0;flex-shrink:0;}
   .car-pill-del:hover{color:var(--red);}
   .car-search-wrap{position:relative;}
-  .car-search-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-raofus:7px;padofng:8px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+  .car-search-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
   .car-search-wrap input:focus{border-color:var(--gold);}
-  .car-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border-hi);border-raofus:8px;max-height:200px;overflow-y:auto;z-index:300;ofsplay:none;box-shadow:0 8px 24px rgba(0,0,0,.6);}
-  .car-dropdown.open{ofsplay:block;}
-  .car-option{ofsplay:flex;align-items:center;gap:10px;padofng:8px 12px;cursor:pointer;transition:background .15s;}
+  .car-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-card);border:1px solid var(--border-hi);border-radius:8px;max-height:200px;overflow-y:auto;z-index:300;display:none;box-shadow:0 8px 24px rgba(0,0,0,.6);}
+  .car-dropdown.open{display:block;}
+  .car-option{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;transition:background .15s;}
   .car-option:hover{background:var(--gold-ofm);}
-  .car-option img{width:52px;height:32px;object-fit:cover;border-raofus:4px;background:var(--bg-input);flex-shrink:0;}
+  .car-option img{width:52px;height:32px;object-fit:cover;border-radius:4px;background:var(--bg-input);flex-shrink:0;}
   .car-option-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--text);}
   .car-option-group{font-family:'Teko',sans-serif;font-size:11px;color:var(--text-ofm);letter-spacing:1px;}
-  .car-loaofng{padofng:12px;text-align:center;font-family:'Teko',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:2px;}
+  .car-loaofng{padding:12px;text-align:center;font-family:'Teko',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:2px;}
 
   /* ACTIVE TOGGLE */
-  .toggle-wrap{ofsplay:flex;align-items:center;gap:6px;}
+  .toggle-wrap{display:flex;align-items:center;gap:6px;}
   .toggle-label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-ofm);transition:color .2s;white-space:nowrap;}
   .toggle-label.on{color:var(--green);}
   .toggle-label.off{color:var(--red);}
   .toggle{position:relative;width:34px;height:18px;flex-shrink:0;}
   .toggle input{opacity:0;width:0;height:0;position:absolute;}
-  .toggle-slider{position:absolute;inset:0;background:#2a2a3a;border:1px solid var(--border-hi);border-raofus:18px;cursor:pointer;transition:background .25s,border-color .25s;}
-  .toggle-slider::before{content:'';position:absolute;width:12px;height:12px;left:2px;top:2px;background:var(--text-ofm);border-raofus:50%;transition:transform .25s,background .25s;}
+  .toggle-slider{position:absolute;inset:0;background:#2a2a3a;border:1px solid var(--border-hi);border-radius:18px;cursor:pointer;transition:background .25s,border-color .25s;}
+  .toggle-slider::before{content:'';position:absolute;width:12px;height:12px;left:2px;top:2px;background:var(--text-ofm);border-radius:50%;transition:transform .25s,background .25s;}
   .toggle input:checked + .toggle-slider{background:rgba(39,174,96,.18);border-color:var(--green);}
   .toggle input:checked + .toggle-slider::before{transform:translateX(16px);background:var(--green);}
 
   ::-webkit-scrollbar{width:5px;}
   ::-webkit-scrollbar-track{background:var(--bg);}
-  ::-webkit-scrollbar-thumb{background:var(--border-hi);border-raofus:3px;}
+  ::-webkit-scrollbar-thumb{background:var(--border-hi);border-radius:3px;}
   ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <ofv class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></ofv>
-  <ofv class="topbar-title">Your Racing Club</ofv>
-  <ofv class="topbar-ofvider"></ofv>
-  <ofv class="topbar-section">Manage Drivers</ofv>
-  <ofv class="topbar-spacer"></ofv>
-  <ofv class="github-status">
-    <ofv class="status-dot" id="statusDot"></ofv>
+  <div class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></div>
+  <div class="topbar-title">Your Racing Club</div>
+  <div class="topbar-divider"></div>
+  <div class="topbar-section">Manage Drivers</div>
+  <div class="topbar-spacer"></div>
+  <div class="github-status">
+    <div class="status-dot" id="statusDot"></div>
     <span id="statusText">Not connected</span>
-  </ofv>
+  </div>
   <a href="admin.html" class="btn-back">← Admin</a>
 </header>
 
-<ofv class="page-body">
+<div class="page-body">
 
   <aside class="sidebar">
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">GitHub</ofv>
-      <ofv class="pat-wrap">
+    <div class="sidebar-block">
+      <div class="sidebar-label">GitHub</div>
+      <div class="pat-wrap">
         <input type="password" id="patInput" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
         <button class="pat-toggle" onclick="togglePAT()">👁</button>
-      </ofv>
+      </div>
       <button class="btn-verify" onclick="verifyAndLoad()">Connect e Carica</button>
-      <ofv class="repo-note">Repository: <span>mz4466/GT-template-ENG</span><br>Branch: <span>main</span></ofv>
-    </ofv>
+      <div class="repo-note">Repository: <span>mz4466/GT-template-ENG</span><br>Branch: <span>main</span></div>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">Piloti</ofv>
-      <ofv class="sidebar-stat">Total <span id="statTotal">—</span></ofv>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Piloti</div>
+      <div class="sidebar-stat">Total <span id="statTotal">—</span></div>
       <button class="btn btn-add" onclick="openModal()">＋ Aggiungi Driver</button>
       <button class="btn btn-outline" onclick="reload()" style="width:100%;justify-content:center;">↺ Ricarica</button>
-    </ofv>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">Pagina Publish</ofv>
-      <ofv class="repo-note" style="line-height:1.8;">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Pagina Publish</div>
+      <div class="repo-note" style="line-height:1.8;">
         La pagina <span>piloti.html</span> si aggiorna automaticamente leggendo i dati da GitHub.<br><br>
         I dati sono salvati in <span>piloti_schede/</span>
-      </ofv>
-    </ofv>
+      </div>
+    </div>
   </aside>
 
   <main class="main">
-    <ofv>
-      <ofv class="page-title">🏎️ Manage Drivers</ofv>
-      <ofv class="page-sub">Aggiungi, mooffica e rimuovi i piloti del club</ofv>
-    </ofv>
+    <div>
+      <div class="page-title">🏎️ Manage Drivers</div>
+      <div class="page-sub">Aggiungi, mooffica e rimuovi i piloti del club</div>
+    </div>
 
-    <ofv class="filter-bar">
+    <div class="filter-bar">
       <button class="filter-btn active" id="filterActive"   onclick="setFilter('attivi',this)">🟢 Active</button>
       <button class="filter-btn"        id="filterInattivi" onclick="setFilter('inattivi',this)">⚫ Non Active</button>
       <button class="filter-btn"        id="filterAll"    onclick="setFilter('tutti',this)">All</button>
-    </ofv>
+    </div>
 
-    <ofv class="search-bar">
+    <div class="search-bar">
       <input type="search" id="searchInput" placeholder="Search by name, PSN, car..." oninput="filterPilots()">
-    </ofv>
+    </div>
 
-    <ofv id="pilotsGrid" class="pilots-grid">
-      <ofv class="loaofng-msg">Connect GitHub per caricare i piloti</ofv>
-    </ofv>
+    <div id="pilotsGrid" class="pilots-grid">
+      <div class="loaofng-msg">Connect GitHub per caricare i piloti</div>
+    </div>
   </main>
-</ofv>
+</div>
 
 <!-- ADD / EDIT MODAL -->
-<ofv class="modal-bg" id="modal">
-  <ofv class="modal-box">
-    <ofv class="modal-head">
-      <ofv class="modal-head-title" id="modalTitle">Aggiungi Driver</ofv>
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title" id="modalTitle">Aggiungi Driver</div>
       <button class="modal-close" onclick="closeModal()">✕</button>
-    </ofv>
-    <ofv class="modal-body">
-      <ofv class="form-grid">
-        <ofv class="form-section">Dati Principali</ofv>
-        <ofv class="field">
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-section">Dati Principali</div>
+        <div class="field">
           <label>Name Completo *</label>
           <input type="text" id="fName" placeholder='es. Giovanni "Mbare" Russo'>
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>PSN ID *</label>
           <input type="text" id="fPsn" placeholder="es. SicilianRacer_GT">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Regione</label>
           <input type="text" id="fRegione" placeholder="es. Calabria 🇮🇹">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Auto Preferita</label>
           <input type="text" id="fAuto" placeholder="es. Ferrari 296 GT3 Gr.3">
-        </ofv>
+        </div>
 
-        <ofv class="form-section">Profilo of Guida</ofv>
-        <ofv class="field">
+        <div class="form-section">Profilo of Guida</div>
+        <div class="field">
           <label>Stile of Guida</label>
           <input type="text" id="fStile" placeholder="es. Aggressivo, Consistente...">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Pista Preferita ❤️</label>
           <input type="text" id="fPistaAma" placeholder="es. Nürburgring GP">
-        </ofv>
-        <ofv class="field" style="grid-column:1/-1">
+        </div>
+        <div class="field" style="grid-column:1/-1">
           <label>Pista Oofata 💀</label>
           <input type="text" id="fPistaOofa" placeholder="es. Sarthe">
-        </ofv>
+        </div>
 
-        <ofv class="form-section">Extra</ofv>
-        <ofv class="field" style="grid-column:1/-1">
+        <div class="form-section">Extra</div>
+        <div class="field" style="grid-column:1/-1">
           <label>Bio / Descrizione</label>
           <textarea id="fBio" placeholder="Breve descrizione del pilota, storia, curiosità..."></textarea>
-        </ofv>
-        <ofv class="field" style="grid-column:1/-1">
+        </div>
+        <div class="field" style="grid-column:1/-1">
           <label>Badges (separati da virgola)</label>
           <input type="text" id="fBadges" placeholder="es. Rain Master, Fair Play, Pole Position King">
-        </ofv>
-        <ofv class="field" style="grid-column:1/-1">
+        </div>
+        <div class="field" style="grid-column:1/-1">
           <label>Foto Profilo</label>
-          <ofv style="ofsplay:flex;gap:8px;align-items:center;">
+          <div style="display:flex;gap:8px;align-items:center;">
             <label class="upload-btn" for="fFotoFile">📁 Carica Immagine</label>
-            <input type="file" id="fFotoFile" accept="image/*" style="ofsplay:none" onchange="handlePhotoUpload(this)">
+            <input type="file" id="fFotoFile" accept="image/*" style="display:none" onchange="handlePhotoUpload(this)">
             <span id="fotoStatus" style="font-family:'Teko',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;"></span>
-          </ofv>
+          </div>
           <img id="photoPreview" class="photo-preview" alt="Anteprima foto">
           <input type="hidden" id="fFoto">
-        </ofv>
+        </div>
 
-        <ofv class="form-section">File</ofv>
-        <ofv class="field" style="grid-column:1/-1">
+        <div class="form-section">File</div>
+        <div class="field" style="grid-column:1/-1">
           <label>Slug (nome file) *</label>
           <input type="text" id="fSlug" placeholder="es. giovanni-russo" oninput="sanitizeSlug()">
-          <ofv style="font-size:11px;color:var(--text-ofm);margin-top:3px;">Sarà salvato come <span id="slugPreview" style="color:var(--blue);">piloti_schede/—.json</span></ofv>
-        </ofv>
+          <div style="font-size:11px;color:var(--text-ofm);margin-top:3px;">Sarà salvato come <span id="slugPreview" style="color:var(--blue);">piloti_schede/—.json</span></div>
+        </div>
 
-        <ofv class="form-section" style="grid-column:1/-1">Assegnazioni Campionato</ofv>
-        <ofv style="grid-column:1/-1" id="champAssignSection">
-          <ofv style="font-family:'Teko',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Connect e carica per vedere i campionati attivi</ofv>
-        </ofv>
-      </ofv>
-    </ofv>
-    <ofv class="modal-foot">
+        <div class="form-section" style="grid-column:1/-1">Assegnazioni Campionato</div>
+        <div style="grid-column:1/-1" id="champAssignSection">
+          <div style="font-family:'Teko',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Connect e carica per vedere i campionati attivi</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-github" onclick="savePilot()">⬆ Save su GitHub</button>
-    </ofv>
-  </ofv>
-</ofv>
+    </div>
+  </div>
+</div>
 
-<ofv id="toast"></ofv>
+<div id="toast"></div>
 
 <script>
 
@@ -345,76 +345,76 @@ let allPilots  = [];  // [{slug, data}, ...]
 let eoftingSlug = null;
 let calendarioDate = [];   // championships from calendario.json
 let selectedCarsMap = {};  // champId -> [carName, ...]
-let gt7CarsLoaded = true; // pre-populated; set to true so search works immeofately
+let gt7CarsLoaded = true; // pre-populated; set to true so search works immediately
 
 // Pre-populated car list (augmented from ddm999 if available)
 let gt7Cars = [
   // Gr.1
-  {id:'',group:'Gr.1',manufacturer:'Nissan',model:'R92CP',ofsplayName:'Nissan R92CP'},
-  {id:'',group:'Gr.1',manufacturer:'Mazda',model:'787B',ofsplayName:'Mazda 787B'},
-  {id:'',group:'Gr.1',manufacturer:'Toyota',model:'GT-One (TS020)',ofsplayName:'Toyota GT-One (TS020)'},
-  {id:'',group:'Gr.1',manufacturer:'Porsche',model:'962 C',ofsplayName:'Porsche 962 C'},
-  {id:'',group:'Gr.1',manufacturer:'Peugeot',model:'905',ofsplayName:'Peugeot 905'},
+  {id:'',group:'Gr.1',manufacturer:'Nissan',model:'R92CP',displayName:'Nissan R92CP'},
+  {id:'',group:'Gr.1',manufacturer:'Mazda',model:'787B',displayName:'Mazda 787B'},
+  {id:'',group:'Gr.1',manufacturer:'Toyota',model:'GT-One (TS020)',displayName:'Toyota GT-One (TS020)'},
+  {id:'',group:'Gr.1',manufacturer:'Porsche',model:'962 C',displayName:'Porsche 962 C'},
+  {id:'',group:'Gr.1',manufacturer:'Peugeot',model:'905',displayName:'Peugeot 905'},
   // Gr.2
-  {id:'',group:'Gr.2',manufacturer:'BMW',model:'M3 GT',ofsplayName:'BMW M3 GT'},
-  {id:'',group:'Gr.2',manufacturer:'Alfa Romeo',model:'155 2.5 V6 TI',ofsplayName:'Alfa Romeo 155 2.5 V6 TI'},
+  {id:'',group:'Gr.2',manufacturer:'BMW',model:'M3 GT',displayName:'BMW M3 GT'},
+  {id:'',group:'Gr.2',manufacturer:'Alfa Romeo',model:'155 2.5 V6 TI',displayName:'Alfa Romeo 155 2.5 V6 TI'},
   // Gr.3
-  {id:'',group:'Gr.3',manufacturer:'Ferrari',model:'296 GT3',ofsplayName:'Ferrari 296 GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Ferrari',model:'458 Italia GT3',ofsplayName:'Ferrari 458 Italia GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Porsche',model:'911 RSR (991)',ofsplayName:'Porsche 911 RSR (991)'},
-  {id:'',group:'Gr.3',manufacturer:'Porsche',model:'911 GT3 R (991)',ofsplayName:'Porsche 911 GT3 R (991)'},
-  {id:'',group:'Gr.3',manufacturer:'McLaren',model:'650S GT3',ofsplayName:'McLaren 650S GT3'},
-  {id:'',group:'Gr.3',manufacturer:'McLaren',model:'720S GT3',ofsplayName:'McLaren 720S GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Mercedes-Benz',model:'AMG GT3',ofsplayName:'Mercedes-Benz AMG GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Lamborghini',model:'Huracán GT3',ofsplayName:'Lamborghini Huracán GT3'},
-  {id:'',group:'Gr.3',manufacturer:'BMW',model:'M4 GT3',ofsplayName:'BMW M4 GT3'},
-  {id:'',group:'Gr.3',manufacturer:'BMW',model:'M6 GT3',ofsplayName:'BMW M6 GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Aston Martin',model:'V12 Vantage GT3',ofsplayName:'Aston Martin V12 Vantage GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Nissan',model:'GT-R NISMO GT3',ofsplayName:'Nissan GT-R NISMO GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Toyota',model:'GR Supra GT4',ofsplayName:'Toyota GR Supra GT4'},
-  {id:'',group:'Gr.3',manufacturer:'Honda',model:'NSX GT3',ofsplayName:'Honda NSX GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Jaguar',model:'F-Type GT4',ofsplayName:'Jaguar F-Type GT4'},
-  {id:'',group:'Gr.3',manufacturer:'Subaru',model:'WRX Gr.3',ofsplayName:'Subaru WRX Gr.3'},
-  {id:'',group:'Gr.3',manufacturer:'Renault',model:'Sport R.S. 01 GT3',ofsplayName:'Renault Sport R.S. 01 GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Auof',model:'R8 LMS',ofsplayName:'Auof R8 LMS'},
-  {id:'',group:'Gr.3',manufacturer:'Dodge',model:'Viper SRT GT3-R',ofsplayName:'Dodge Viper SRT GT3-R'},
-  {id:'',group:'Gr.3',manufacturer:'Chevrolet',model:'Corvette C7 Gr.3',ofsplayName:'Chevrolet Corvette C7 Gr.3'},
-  {id:'',group:'Gr.3',manufacturer:'Ford',model:'GT LM Spec II Test Car',ofsplayName:'Ford GT LM Spec II Test Car'},
-  {id:'',group:'Gr.3',manufacturer:'Peugeot',model:'RCZ Gr.3',ofsplayName:'Peugeot RCZ Gr.3'},
-  {id:'',group:'Gr.3',manufacturer:'Mitsubishi',model:'Lancer Evolution Final Eoftion Gr.3',ofsplayName:'Mitsubishi Lancer Evolution Final Eoftion Gr.3'},
-  {id:'',group:'Gr.3',manufacturer:'Alfa Romeo',model:'4C Gr.3',ofsplayName:'Alfa Romeo 4C Gr.3'},
-  {id:'',group:'Gr.3',manufacturer:'LEXUS',model:'RC F GT3',ofsplayName:'LEXUS RC F GT3'},
-  {id:'',group:'Gr.3',manufacturer:'Mazda',model:'Atenza Gr.3',ofsplayName:'Mazda Atenza Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'Ferrari',model:'296 GT3',displayName:'Ferrari 296 GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Ferrari',model:'458 Italia GT3',displayName:'Ferrari 458 Italia GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Porsche',model:'911 RSR (991)',displayName:'Porsche 911 RSR (991)'},
+  {id:'',group:'Gr.3',manufacturer:'Porsche',model:'911 GT3 R (991)',displayName:'Porsche 911 GT3 R (991)'},
+  {id:'',group:'Gr.3',manufacturer:'McLaren',model:'650S GT3',displayName:'McLaren 650S GT3'},
+  {id:'',group:'Gr.3',manufacturer:'McLaren',model:'720S GT3',displayName:'McLaren 720S GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Mercedes-Benz',model:'AMG GT3',displayName:'Mercedes-Benz AMG GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Lamborghini',model:'Huracán GT3',displayName:'Lamborghini Huracán GT3'},
+  {id:'',group:'Gr.3',manufacturer:'BMW',model:'M4 GT3',displayName:'BMW M4 GT3'},
+  {id:'',group:'Gr.3',manufacturer:'BMW',model:'M6 GT3',displayName:'BMW M6 GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Aston Martin',model:'V12 Vantage GT3',displayName:'Aston Martin V12 Vantage GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Nissan',model:'GT-R NISMO GT3',displayName:'Nissan GT-R NISMO GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Toyota',model:'GR Supra GT4',displayName:'Toyota GR Supra GT4'},
+  {id:'',group:'Gr.3',manufacturer:'Honda',model:'NSX GT3',displayName:'Honda NSX GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Jaguar',model:'F-Type GT4',displayName:'Jaguar F-Type GT4'},
+  {id:'',group:'Gr.3',manufacturer:'Subaru',model:'WRX Gr.3',displayName:'Subaru WRX Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'Renault',model:'Sport R.S. 01 GT3',displayName:'Renault Sport R.S. 01 GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Auof',model:'R8 LMS',displayName:'Auof R8 LMS'},
+  {id:'',group:'Gr.3',manufacturer:'Dodge',model:'Viper SRT GT3-R',displayName:'Dodge Viper SRT GT3-R'},
+  {id:'',group:'Gr.3',manufacturer:'Chevrolet',model:'Corvette C7 Gr.3',displayName:'Chevrolet Corvette C7 Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'Ford',model:'GT LM Spec II Test Car',displayName:'Ford GT LM Spec II Test Car'},
+  {id:'',group:'Gr.3',manufacturer:'Peugeot',model:'RCZ Gr.3',displayName:'Peugeot RCZ Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'Mitsubishi',model:'Lancer Evolution Final Eoftion Gr.3',displayName:'Mitsubishi Lancer Evolution Final Eoftion Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'Alfa Romeo',model:'4C Gr.3',displayName:'Alfa Romeo 4C Gr.3'},
+  {id:'',group:'Gr.3',manufacturer:'LEXUS',model:'RC F GT3',displayName:'LEXUS RC F GT3'},
+  {id:'',group:'Gr.3',manufacturer:'Mazda',model:'Atenza Gr.3',displayName:'Mazda Atenza Gr.3'},
   // Gr.4
-  {id:'',group:'Gr.4',manufacturer:'Ferrari',model:'458 Italia Gr.4',ofsplayName:'Ferrari 458 Italia Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Porsche',model:'Cayman GT4',ofsplayName:'Porsche Cayman GT4'},
-  {id:'',group:'Gr.4',manufacturer:'Lamborghini',model:'Huracán Gr.4',ofsplayName:'Lamborghini Huracán Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'McLaren',model:'MP4-12C Gr.4',ofsplayName:'McLaren MP4-12C Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'BMW',model:'M4 Gr.4',ofsplayName:'BMW M4 Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Nissan',model:'GT-R Gr.4',ofsplayName:'Nissan GT-R Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Toyota',model:'GR86 Gr.4',ofsplayName:'Toyota GR86 Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Subaru',model:'WRX Gr.4',ofsplayName:'Subaru WRX Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Honda',model:'NSX Gr.4',ofsplayName:'Honda NSX Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Renault',model:'Sport R.S. 01 Gr.4',ofsplayName:'Renault Sport R.S. 01 Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Ford',model:'Mustang Gr.4',ofsplayName:'Ford Mustang Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Chevrolet',model:'Camaro SS Gr.4',ofsplayName:'Chevrolet Camaro SS Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Aston Martin',model:'V8 Vantage Gr.4',ofsplayName:'Aston Martin V8 Vantage Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Alfa Romeo',model:'4C Gr.4',ofsplayName:'Alfa Romeo 4C Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Mitsubishi',model:'Lancer Evolution Final Eoftion Gr.4',ofsplayName:'Mitsubishi Lancer Evolution Final Eoftion Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Peugeot',model:'RCZ Gr.4',ofsplayName:'Peugeot RCZ Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'LEXUS',model:'RC F Gr.4',ofsplayName:'LEXUS RC F Gr.4'},
-  {id:'',group:'Gr.4',manufacturer:'Mazda',model:'Atenza Gr.4',ofsplayName:'Mazda Atenza Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Ferrari',model:'458 Italia Gr.4',displayName:'Ferrari 458 Italia Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Porsche',model:'Cayman GT4',displayName:'Porsche Cayman GT4'},
+  {id:'',group:'Gr.4',manufacturer:'Lamborghini',model:'Huracán Gr.4',displayName:'Lamborghini Huracán Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'McLaren',model:'MP4-12C Gr.4',displayName:'McLaren MP4-12C Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'BMW',model:'M4 Gr.4',displayName:'BMW M4 Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Nissan',model:'GT-R Gr.4',displayName:'Nissan GT-R Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Toyota',model:'GR86 Gr.4',displayName:'Toyota GR86 Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Subaru',model:'WRX Gr.4',displayName:'Subaru WRX Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Honda',model:'NSX Gr.4',displayName:'Honda NSX Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Renault',model:'Sport R.S. 01 Gr.4',displayName:'Renault Sport R.S. 01 Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Ford',model:'Mustang Gr.4',displayName:'Ford Mustang Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Chevrolet',model:'Camaro SS Gr.4',displayName:'Chevrolet Camaro SS Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Aston Martin',model:'V8 Vantage Gr.4',displayName:'Aston Martin V8 Vantage Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Alfa Romeo',model:'4C Gr.4',displayName:'Alfa Romeo 4C Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Mitsubishi',model:'Lancer Evolution Final Eoftion Gr.4',displayName:'Mitsubishi Lancer Evolution Final Eoftion Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Peugeot',model:'RCZ Gr.4',displayName:'Peugeot RCZ Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'LEXUS',model:'RC F Gr.4',displayName:'LEXUS RC F Gr.4'},
+  {id:'',group:'Gr.4',manufacturer:'Mazda',model:'Atenza Gr.4',displayName:'Mazda Atenza Gr.4'},
   // N/Road Cars (common ones)
-  {id:'',group:'N',manufacturer:'Ferrari',model:'F40',ofsplayName:'Ferrari F40'},
-  {id:'',group:'N',manufacturer:'Ferrari',model:'LaFerrari',ofsplayName:'Ferrari LaFerrari'},
-  {id:'',group:'N',manufacturer:'Lamborghini',model:'Aventador LP750-4 SV',ofsplayName:'Lamborghini Aventador LP750-4 SV'},
-  {id:'',group:'N',manufacturer:'Porsche',model:'911 GT3 RS (991)',ofsplayName:'Porsche 911 GT3 RS (991)'},
-  {id:'',group:'N',manufacturer:'McLaren',model:'P1',ofsplayName:'McLaren P1'},
-  {id:'',group:'N',manufacturer:'Bugatti',model:'Chiron',ofsplayName:'Bugatti Chiron'},
-  {id:'',group:'N',manufacturer:'Nissan',model:'GT-R NISMO (R35)',ofsplayName:'Nissan GT-R NISMO (R35)'},
-  {id:'',group:'N',manufacturer:'Toyota',model:'GR Yaris',ofsplayName:'Toyota GR Yaris'},
-  {id:'',group:'N',manufacturer:'Honda',model:'NSX Type R',ofsplayName:'Honda NSX Type R'},
-  {id:'',group:'N',manufacturer:'BMW',model:'M3 Competition',ofsplayName:'BMW M3 Competition'},
+  {id:'',group:'N',manufacturer:'Ferrari',model:'F40',displayName:'Ferrari F40'},
+  {id:'',group:'N',manufacturer:'Ferrari',model:'LaFerrari',displayName:'Ferrari LaFerrari'},
+  {id:'',group:'N',manufacturer:'Lamborghini',model:'Aventador LP750-4 SV',displayName:'Lamborghini Aventador LP750-4 SV'},
+  {id:'',group:'N',manufacturer:'Porsche',model:'911 GT3 RS (991)',displayName:'Porsche 911 GT3 RS (991)'},
+  {id:'',group:'N',manufacturer:'McLaren',model:'P1',displayName:'McLaren P1'},
+  {id:'',group:'N',manufacturer:'Bugatti',model:'Chiron',displayName:'Bugatti Chiron'},
+  {id:'',group:'N',manufacturer:'Nissan',model:'GT-R NISMO (R35)',displayName:'Nissan GT-R NISMO (R35)'},
+  {id:'',group:'N',manufacturer:'Toyota',model:'GR Yaris',displayName:'Toyota GR Yaris'},
+  {id:'',group:'N',manufacturer:'Honda',model:'NSX Type R',displayName:'Honda NSX Type R'},
+  {id:'',group:'N',manufacturer:'BMW',model:'M3 Competition',displayName:'BMW M3 Competition'},
 ];
 
 function getToken(){ return document.getElementById('patInput').value.trim(); }
@@ -529,8 +529,8 @@ async function loadGT7Cars(){
       var makerId = parts[parts.length-1].trim();
       var mfr = makersMap[makerId] || '';
       var group = groupsMap[id] || '';
-      // ofsplayName: if manufacturer is in shortName already, just use shortName
-      var ofsplayName = (mfr && shortName.toLowerCase().indexOf(mfr.toLowerCase()) === -1)
+      // displayName: if manufacturer is in shortName already, just use shortName
+      var displayName = (mfr && shortName.toLowerCase().indexOf(mfr.toLowerCase()) === -1)
         ? mfr + ' ' + shortName
         : shortName;
       newCars.push({
@@ -538,13 +538,13 @@ async function loadGT7Cars(){
         group: group,
         manufacturer: mfr,
         model: shortName,
-        ofsplayName: ofsplayName.trim()
+        displayName: displayName.trim()
       });
     });
 
     if(newCars.length > 10){
       gt7Cars = newCars;
-      gt7Cars.sort(function(a,b){ return a.ofsplayName.localeCompare(b.ofsplayName); });
+      gt7Cars.sort(function(a,b){ return a.displayName.localeCompare(b.displayName); });
       console.log('GT7 cars loaded from CSV:', gt7Cars.length);
       if(document.getElementById('modal').classList.contains('open')){
         renderChampAssignments();
@@ -564,7 +564,7 @@ function carImageUrl(carId){
 async function loadPilots(){
   const token = getToken();
   toast('Caricamento piloti…','');
-  document.getElementById('pilotsGrid').innerHTML='<ofv class="loaofng-msg">Caricamento...</ofv>';
+  document.getElementById('pilotsGrid').innerHTML='<div class="loaofng-msg">Caricamento...</div>';
 
   try {
     // List files in piloti_schede/
@@ -613,53 +613,53 @@ function renderGrid(list){
   document.getElementById('statTotal').textContent = allPilots.length || '—';
 
   if(!pilots.length){
-    grid.innerHTML=`<ofv class="empty-state"><ofv class="ei">🏎️</ofv><p>Nessun pilota registrato</p></ofv>`;
+    grid.innerHTML=`<div class="empty-state"><div class="ei">🏎️</div><p>Nessun pilota registrato</p></div>`;
     return;
   }
 
   grid.innerHTML='';
   pilots.forEach(({slug,data},i)=>{
-    const card = document.createElement('ofv');
+    const card = document.createElement('div');
     const isActive = data.attivo !== false;
     card.className='pilot-card' + (isActive ? '' : ' pilot-inactive');
     card.style.animationDelay=`${i*0.06}s`;
 
     const photoHTML = data.foto
-      ? `<img src="${esc(data.foto)}" alt="${esc(data.nome)}" onerror="this.style.ofsplay='none';this.nextElementSibling.style.ofsplay='flex'">`
+      ? `<img src="${esc(data.foto)}" alt="${esc(data.nome)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
       : '';
-    const placeholderStyle = data.foto ? 'ofsplay:none' : '';
+    const placeholderStyle = data.foto ? 'display:none' : '';
 
     const badgesHTML = (data.badges||[]).map(b=>`<span class="pilot-badge">${esc(b)}</span>`).join('');
 
     card.innerHTML=`
-      <ofv class="pilot-photo-wrap">
+      <div class="pilot-photo-wrap">
         ${photoHTML}
-        <ofv class="pilot-photo-placeholder" style="${placeholderStyle}">🪖</ofv>
-      </ofv>
-      <ofv class="pilot-card-body">
-        <ofv class="pilot-name">${esc(data.nome||'—')}</ofv>
-        <ofv class="pilot-psn">🎮 ${esc(data.psn||'—')}</ofv>
-        <ofv class="pilot-meta">
-          ${data.Regione?`<ofv class="pilot-meta-row"><span class="lbl">Regione</span>${esc(data.Regione)}</ofv>`:''}
-          ${data.auto?`<ofv class="pilot-meta-row"><span class="lbl">Auto</span>${esc(data.auto)}</ofv>`:''}
-          ${data.stile?`<ofv class="pilot-meta-row"><span class="lbl">Stile</span>${esc(data.stile)}</ofv>`:''}
-          ${data.pistaAma?`<ofv class="pilot-meta-row"><span class="lbl">❤️</span>${esc(data.pistaAma)}</ofv>`:''}
-          ${data.pistaOofa?`<ofv class="pilot-meta-row"><span class="lbl">💀</span>${esc(data.pistaOofa)}</ofv>`:''}
-        </ofv>
-        ${badgesHTML?`<ofv class="pilot-badges">${badgesHTML}</ofv>`:''}
-        ${data.bio?`<ofv style="margin-top:6px;font-size:12px;color:var(--text-ofm);line-height:1.5;font-style:italic;padofng-bottom:8px;">"${esc(data.bio)}"</ofv>`:''}
-      </ofv>
-      <ofv class="pilot-card-footer">
-        <ofv class="toggle-wrap" title="${isActive ? 'Driver attivo' : 'Driver non attivo'}">
+        <div class="pilot-photo-placeholder" style="${placeholderStyle}">🪖</div>
+      </div>
+      <div class="pilot-card-body">
+        <div class="pilot-name">${esc(data.nome||'—')}</div>
+        <div class="pilot-psn">🎮 ${esc(data.psn||'—')}</div>
+        <div class="pilot-meta">
+          ${data.Regione?`<div class="pilot-meta-row"><span class="lbl">Regione</span>${esc(data.Regione)}</div>`:''}
+          ${data.auto?`<div class="pilot-meta-row"><span class="lbl">Auto</span>${esc(data.auto)}</div>`:''}
+          ${data.stile?`<div class="pilot-meta-row"><span class="lbl">Stile</span>${esc(data.stile)}</div>`:''}
+          ${data.pistaAma?`<div class="pilot-meta-row"><span class="lbl">❤️</span>${esc(data.pistaAma)}</div>`:''}
+          ${data.pistaOofa?`<div class="pilot-meta-row"><span class="lbl">💀</span>${esc(data.pistaOofa)}</div>`:''}
+        </div>
+        ${badgesHTML?`<div class="pilot-badges">${badgesHTML}</div>`:''}
+        ${data.bio?`<div style="margin-top:6px;font-size:12px;color:var(--text-ofm);line-height:1.5;font-style:italic;padding-bottom:8px;">"${esc(data.bio)}"</div>`:''}
+      </div>
+      <div class="pilot-card-footer">
+        <div class="toggle-wrap" title="${isActive ? 'Driver attivo' : 'Driver non attivo'}">
           <span class="toggle-label ${isActive ? 'on' : 'off'}">${isActive ? 'Active' : 'Non Active'}</span>
           <label class="toggle">
             <input type="checkbox" ${isActive ? 'checked' : ''} onchange="toggleActive('${slug}',this)">
             <span class="toggle-slider"></span>
           </label>
-        </ofv>
+        </div>
         <button class="btn-sm btn-eoft" onclick="eoftPilot('${slug}')">✏️ Mooffica</button>
         <button class="btn-sm btn-del" onclick="deletePilot('${slug}','${esc(data.nome||slug)}')">✕</button>
-      </ofv>`;
+      </div>`;
     grid.appendChild(card);
   });
 }
@@ -712,7 +712,7 @@ function openModal(slug){
     document.getElementById('fSlug').readOnly = true;
     if(d.foto){
       const prev = document.getElementById('photoPreview');
-      prev.src = d.foto; prev.style.ofsplay='block';
+      prev.src = d.foto; prev.style.display='block';
       document.getElementById('fotoStatus').textContent = '✓ Foto presente';
       document.getElementById('fotoStatus').style.color = 'var(--green)';
     }
@@ -770,7 +770,7 @@ function clearForm(){
   document.getElementById('fFotoFile').value = '';
   document.getElementById('fotoStatus').textContent = '';
   document.getElementById('fotoStatus').style.color = '';
-  document.getElementById('photoPreview').style.ofsplay='none';
+  document.getElementById('photoPreview').style.display='none';
   document.getElementById('photoPreview').src='';
   updateSlugPreview();
 }
@@ -786,7 +786,7 @@ async function handlePhotoUpload(input){
     const base64 = await compressImage(file, 500 * 1024); // 500KB max
     document.getElementById('fFoto').value = base64;
     preview.src = base64;
-    preview.style.ofsplay = 'block';
+    preview.style.display = 'block';
     const kb = Math.round(base64.length * 0.75 / 1024);
     status.textContent = `✓ ${file.name} (${kb} KB)`;
     status.style.color = 'var(--green)';
@@ -1013,11 +1013,11 @@ function pilotImgErr(img, shortName, mfrEncoded, isPill){
   var w = isPill ? '36px' : '52px';
   var h = isPill ? '22px' : '32px';
   var fs = isPill ? '8px' : '9px';
-  var ofv = document.createElement('ofv');
-  ofv.className = 'car-mfr-badge';
-  ofv.style.cssText = 'width:'+w+';height:'+h+';background:'+col+';border-raofus:4px;ofsplay:inline-flex;align-items:center;justify-content:center;font-size:'+fs+';font-weight:700;color:#fff;text-align:center;padofng:2px;flex-shrink:0;';
-  ofv.textContent = shortName;
-  img.parentNode.replaceChild(ofv, img);
+  var div = document.createElement('div');
+  div.className = 'car-mfr-badge';
+  div.style.cssText = 'width:'+w+';height:'+h+';background:'+col+';border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:'+fs+';font-weight:700;color:#fff;text-align:center;padding:2px;flex-shrink:0;';
+  div.textContent = shortName;
+  img.parentNode.replaceChild(div, img);
 }
 
 function renderChampAssignments(){
@@ -1033,11 +1033,11 @@ function renderChampAssignments(){
     var token = getToken();
     if(token && calendarioDate.length === 0){
       // Try loaofng calendario now
-      section.innerHTML = '<ofv style="font-family:\'Teko\',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Caricamento campionati...</ofv>';
+      section.innerHTML = '<div style="font-family:\'Teko\',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Caricamento campionati...</div>';
       loadCalendario().then(function(){ renderChampAssignments(); });
       return;
     }
-    section.innerHTML = '<ofv style="font-family:\'Teko\',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Nessun campionato trovato</ofv>';
+    section.innerHTML = '<div style="font-family:\'Teko\',sans-serif;font-size:13px;color:var(--text-ofm);letter-spacing:1px;">Nessun campionato trovato</div>';
     return;
   }
 
@@ -1049,7 +1049,7 @@ function renderChampAssignments(){
     var champCars = selectedCarsMap[cid] || [];
 
     var pillsHtml = champCars.map(function(carName){
-      var car = gt7Cars.find(function(c){ return c.ofsplayName === carName; }) || null;
+      var car = gt7Cars.find(function(c){ return c.displayName === carName; }) || null;
       var mfrColors2 = {
         'Ferrari':'#e8002d','Porsche':'#a8872d','McLaren':'#ff8000','Lamborghini':'#c8a000',
         'Mercedes-Benz':'#00d2be','BMW':'#1c69d4','Auof':'#bb0a30','Honda':'#cc0000',
@@ -1060,8 +1060,8 @@ function renderChampAssignments(){
       };
       var pillMfr = (car ? car.manufacturer : carName.split(' ')[0]) || '';
       var imgHtml = (car && car.id)
-        ? '<img src="'+carImageUrl(car.id)+'" onerror="pilotImgErr(this,\''+pillMfr.slice(0,6)+'\',\''+encodeURIComponent(pillMfr)+'\',true)" alt="" referrerpolicy="no-referrer" style="width:36px;height:22px;object-fit:cover;border-raofus:3px;flex-shrink:0;">'
-        : '<ofv class="car-mfr-badge" style="background:'+(mfrColors2[pillMfr]||mfrColors2.default)+'">'+esc(pillMfr.slice(0,6))+'</ofv>';
+        ? '<img src="'+carImageUrl(car.id)+'" onerror="pilotImgErr(this,\''+pillMfr.slice(0,6)+'\',\''+encodeURIComponent(pillMfr)+'\',true)" alt="" referrerpolicy="no-referrer" style="width:36px;height:22px;object-fit:cover;border-radius:3px;flex-shrink:0;">'
+        : '<div class="car-mfr-badge" style="background:'+(mfrColors2[pillMfr]||mfrColors2.default)+'">'+esc(pillMfr.slice(0,6))+'</div>';
       return '<span class="car-pill">'
         + imgHtml
         + '<span class="car-pill-name">'+esc(carName)+'</span>'
@@ -1069,17 +1069,17 @@ function renderChampAssignments(){
         + '</span>';
     }).join('');
 
-    html += '<ofv class="champ-assign-block" style="margin-bottom:10px;">'
-      + '<ofv class="champ-assign-title">'+esc(champ.name)+' '+esc(champ.year||'')+'</ofv>'
-      + '<ofv class="car-pills" id="pills-'+cid+'">' + pillsHtml + '</ofv>'
-      + '<ofv class="car-search-wrap">'
+    html += '<div class="champ-assign-block" style="margin-bottom:10px;">'
+      + '<div class="champ-assign-title">'+esc(champ.name)+' '+esc(champ.year||'')+'</div>'
+      + '<div class="car-pills" id="pills-'+cid+'">' + pillsHtml + '</div>'
+      + '<div class="car-search-wrap">'
       +   '<input type="text" placeholder="'+(gt7CarsLoaded ? 'Cerca auto GT7...' : 'Caricamento auto...')+'" id="search-'+cid+'"'
       +     ' oninput="filterCars(\''+cid+'\',this.value)"'
       +     ' onfocus="filterCars(\''+cid+'\',this.value)"'
       +     ' onblur="setTimeout(function(){closeDropdown(\''+cid+'\')},200)">'
-      +   '<ofv class="car-dropdown" id="dropdown-'+cid+'"></ofv>'
-      + '</ofv>'
-      + '</ofv>';
+      +   '<div class="car-dropdown" id="dropdown-'+cid+'"></div>'
+      + '</div>'
+      + '</div>';
   });
 
   section.innerHTML = html;
@@ -1090,7 +1090,7 @@ function filterCars(champId, query){
   if(!dropdown) return;
 
   if(!gt7CarsLoaded){
-    dropdown.innerHTML = '<ofv class="car-loaofng">⏳ Caricamento auto GT7...</ofv>';
+    dropdown.innerHTML = '<div class="car-loaofng">⏳ Caricamento auto GT7...</div>';
     dropdown.classList.add('open');
     loadGT7Cars();
     return;
@@ -1098,7 +1098,7 @@ function filterCars(champId, query){
 
   if(!gt7Cars.length){
     // Should not happen with pre-populated list, but handle gracefully
-    dropdown.innerHTML = '<ofv class="car-loaofng">⏳ Caricamento...</ofv>';
+    dropdown.innerHTML = '<div class="car-loaofng">⏳ Caricamento...</div>';
     dropdown.classList.add('open');
     return;
   }
@@ -1108,34 +1108,34 @@ function filterCars(champId, query){
 
   // With empty query show first 20 alphabetically
   var matches = gt7Cars.filter(function(c){
-    if(already.indexOf(c.ofsplayName) >= 0) return false;
+    if(already.indexOf(c.displayName) >= 0) return false;
     if(!q) return true;
-    return c.ofsplayName.toLowerCase().indexOf(q) >= 0
+    return c.displayName.toLowerCase().indexOf(q) >= 0
       || c.group.toLowerCase().indexOf(q) >= 0
       || c.manufacturer.toLowerCase().indexOf(q) >= 0;
   }).slice(0, 30);
 
   if(!matches.length){
-    dropdown.innerHTML = '<ofv class="car-loaofng">Nessun risultato per "'+esc(query)+'"</ofv>';
+    dropdown.innerHTML = '<div class="car-loaofng">Nessun risultato per "'+esc(query)+'"</div>';
     dropdown.classList.add('open');
     return;
   }
 
   dropdown.innerHTML = matches.map(function(c){
     var imgSrc = carImageUrl(c.id);
-    var mfrLabel = (c.manufacturer || c.ofsplayName.split(' ')[0]).slice(0,8);
+    var mfrLabel = (c.manufacturer || c.displayName.split(' ')[0]).slice(0,8);
     var col = {'Ferrari':'#e8002d','Porsche':'#a8872d','McLaren':'#ff8000','Lamborghini':'#c8a000','Mercedes-Benz':'#00d2be','BMW':'#1c69d4','Auof':'#bb0a30','Honda':'#cc0000','Toyota':'#e8002d','Nissan':'#c3002f','Mazda':'#910000','Subaru':'#003399','Ford':'#003478','Chevrolet':'#d4af37','Dodge':'#cc0000','Aston Martin':'#003366','Jaguar':'#005a2b','Alfa Romeo':'#cc0000','Renault':'#efcd00','Lexus':'#1a1a2e','LEXUS':'#1a1a2e','Bugatti':'#0a1172','Abarth':'#cc3300'}[c.manufacturer] || '#555';
-    var escapedName = c.ofsplayName.replace(/"/g,'&quot;');
+    var escapedName = c.displayName.replace(/"/g,'&quot;');
     var imgTag = c.id
-      ? '<img src="'+imgSrc+'" onerror="pilotImgErr(this,\''+mfrLabel+'\',\''+encodeURIComponent(c.manufacturer||'')+'\',false)" alt="" referrerpolicy="no-referrer" style="width:64px;height:40px;object-fit:contain;border-raofus:4px;background:#1a1a2a;flex-shrink:0;">'
-      : '<ofv style="width:64px;height:40px;background:'+col+';border-raofus:4px;ofsplay:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">'+mfrLabel+'</ofv>';
-    return '<ofv class="car-option" data-cid="'+champId+'" data-car="'+escapedName+'" onmousedown="handleCarAdd(this)">'
+      ? '<img src="'+imgSrc+'" onerror="pilotImgErr(this,\''+mfrLabel+'\',\''+encodeURIComponent(c.manufacturer||'')+'\',false)" alt="" referrerpolicy="no-referrer" style="width:64px;height:40px;object-fit:contain;border-radius:4px;background:#1a1a2a;flex-shrink:0;">'
+      : '<div style="width:64px;height:40px;background:'+col+';border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;">'+mfrLabel+'</div>';
+    return '<div class="car-option" data-cid="'+champId+'" data-car="'+escapedName+'" onmousedown="handleCarAdd(this)">'
       + imgTag
-      + '<ofv style="min-width:0;">'
-      +   '<ofv class="car-option-name">'+esc(c.ofsplayName)+'</ofv>'
-      +   (c.group ? '<ofv class="car-option-group">'+esc(c.group)+'</ofv>' : '')
-      + '</ofv>'
-      + '</ofv>';
+      + '<div style="min-width:0;">'
+      +   '<div class="car-option-name">'+esc(c.displayName)+'</div>'
+      +   (c.group ? '<div class="car-option-group">'+esc(c.group)+'</div>' : '')
+      + '</div>'
+      + '</div>';
   }).join('');
   dropdown.classList.add('open');
 }
@@ -1183,7 +1183,7 @@ function toast(msg,type){
   clearTimeout(t._t); t._t=setTimeout(()=>t.className='',3200);
 }
 
-// Start loaofng GT7 cars in background immeofately
+// Start loaofng GT7 cars in background immediately
 loadGT7Cars();
 
 // auto-fill slug from name

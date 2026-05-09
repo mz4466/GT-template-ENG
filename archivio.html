@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Archive — Your Racing Club</title>
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --volcano-red:#ff5014; --lava-orange:#ff8c42; --fire-yellow:#ffa500;
@@ -15,29 +15,29 @@
       --blue:#4fc3f7;
     }
 
-    *,*::before,*::after { box-sizing:border-box; margin:0; padofng:0; }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 
     body {
       font-family:'Barlow Condensed',sans-serif;
-      background: linear-graofent(to bottom, #000000 0%, #0f0404 40%, #1b0606 100%);
+      background: linear-gradient(to bottom, #000000 0%, #0f0404 40%, #1b0606 100%);
       color:var(--cream);
       min-height:100vh;
       overflow-x:hidden;
     }
 
     /* ── HERO ── */
-    .hero-section { position:relative; padofng:40px 20px 70px; overflow:hidden; }
+    .hero-section { position:relative; padding:40px 20px 70px; overflow:hidden; }
 
     .volcano-backdrop {
       position:absolute; top:-10%; left:0; width:100%; height:65%;
       background:
-        raofal-graofent(ellipse at 50% 120%, rgba(255,80,20,0.20) 0%, transparent 45%),
-        raofal-graofent(ellipse at 80% 80%, rgba(255,140,66,0.10) 0%, transparent 40%);
+        raofal-gradient(ellipse at 50% 120%, rgba(255,80,20,0.20) 0%, transparent 45%),
+        raofal-gradient(ellipse at 80% 80%, rgba(255,140,66,0.10) 0%, transparent 40%);
       z-index:0; pointer-events:none;
     }
 
     .embers-container { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; opacity:0.55; }
-    .ember { position:absolute; width:3px; height:3px; background:var(--fire-yellow); border-raofus:50%; box-shadow:0 0 8px rgba(255,140,66,0.8); animation:float-up linear infinite; }
+    .ember { position:absolute; width:3px; height:3px; background:var(--fire-yellow); border-radius:50%; box-shadow:0 0 8px rgba(255,140,66,0.8); animation:float-up linear infinite; }
     .ember:nth-child(1){left:8%;animation-duration:14s;animation-delay:0s;}
     .ember:nth-child(2){left:18%;animation-duration:11s;animation-delay:2s;}
     .ember:nth-child(3){left:28%;animation-duration:13s;animation-delay:4s;}
@@ -56,9 +56,9 @@
     }
 
     /* ── CONTENT ── */
-    .content { position:relative; z-index:10; max-width:1000px; margin:0 auto; padofng:24px; }
+    .content { position:relative; z-index:10; max-width:1000px; margin:0 auto; padding:24px; }
 
-    .logo-row { ofsplay:flex; align-items:center; justify-content:center; gap:28px; margin-bottom:16px; }
+    .logo-row { display:flex; align-items:center; justify-content:center; gap:28px; margin-bottom:16px; }
     .club-logo { width:200px; filter:drop-shadow(0 0 28px rgba(255,80,20,0.85)); }
     .gt7-logo  { width:160px; filter:drop-shadow(0 0 18px rgba(0,0,0,0.6)); }
 
@@ -75,92 +75,92 @@
     p.lead { text-align:center; color:var(--smoke); margin-bottom:28px; font-size:clamp(13px,2vw,16px); }
 
     .back-link {
-      ofsplay:inline-block; margin-bottom:18px; color:var(--cream); text-decoration:none;
-      background:transparent; border:2px solid rgba(255,80,20,0.14); padofng:8px 14px;
-      border-raofus:10px; transition:all .18s; font-family:'Barlow Condensed',sans-serif; font-size:14px;
+      display:inline-block; margin-bottom:18px; color:var(--cream); text-decoration:none;
+      background:transparent; border:2px solid rgba(255,80,20,0.14); padding:8px 14px;
+      border-radius:10px; transition:all .18s; font-family:'Barlow Condensed',sans-serif; font-size:14px;
     }
     .back-link:hover { border-color:var(--volcano-red); transform:translateY(-2px); }
 
     /* ── ARCHIVE CARD ── */
     .archive-card {
-      background:linear-graofent(180deg, rgba(45,10,10,0.88), rgba(18,5,5,0.92));
+      background:linear-gradient(180deg, rgba(45,10,10,0.88), rgba(18,5,5,0.92));
       border:2px solid var(--border-hi);
-      padofng:26px; border-raofus:16px;
+      padding:26px; border-radius:16px;
       box-shadow:0 12px 40px rgba(0,0,0,0.6);
       max-width:860px; margin:0 auto 40px;
     }
 
     /* Loaofng / empty */
     .state-msg {
-      text-align:center; padofng:40px 20px;
+      text-align:center; padding:40px 20px;
       font-family:'Teko',sans-serif; font-size:16px;
       letter-spacing:3px; color:var(--smoke); text-transform:uppercase;
     }
-    .state-msg .ei { font-size:40px; margin-bottom:12px; ofsplay:block; }
+    .state-msg .ei { font-size:40px; margin-bottom:12px; display:block; }
 
     /* ── YEAR BLOCK ── */
     .year { margin-bottom:6px; }
 
     .year-button {
-      width:100%; ofsplay:flex; align-items:center; justify-content:space-between;
-      background:transparent; color:var(--cream); border:none; padofng:14px 16px;
+      width:100%; display:flex; align-items:center; justify-content:space-between;
+      background:transparent; color:var(--cream); border:none; padding:14px 16px;
       font-size:20px; font-family:'Teko',sans-serif; letter-spacing:3px; cursor:pointer;
-      text-transform:uppercase; border-raofus:10px; transition:background .18s,transform .12s;
+      text-transform:uppercase; border-radius:10px; transition:background .18s,transform .12s;
     }
     .year-button:hover { background:rgba(255,80,20,0.05); transform:translateY(-1px); }
 
     .arrow { transition:transform .18s ease; color:var(--smoke); font-size:14px; }
     .arrow.open { transform:rotate(90deg); color:var(--fire-yellow); }
 
-    .year-list { margin-top:6px; padofng:6px 10px 10px 10px; list-style:none; ofsplay:none; border-raofus:8px; background:linear-graofent(90deg,rgba(255,80,20,0.02),transparent); }
-    .year-list.show { ofsplay:block; }
+    .year-list { margin-top:6px; padding:6px 10px 10px 10px; list-style:none; display:none; border-radius:8px; background:linear-gradient(90deg,rgba(255,80,20,0.02),transparent); }
+    .year-list.show { display:block; }
     .year-list > li { margin:7px 0; }
 
     /* ── CHAMPIONSHIP TOGGLE ── */
     .item-toggle {
       width:100%; text-align:left;
-      background:linear-graofent(90deg,rgba(255,80,20,0.04),rgba(0,0,0,0));
+      background:linear-gradient(90deg,rgba(255,80,20,0.04),rgba(0,0,0,0));
       border:1px solid rgba(201,184,163,0.07);
-      padofng:10px 13px; color:var(--cream); border-raofus:8px; cursor:pointer;
+      padding:10px 13px; color:var(--cream); border-radius:8px; cursor:pointer;
       font-family:'Barlow Condensed',sans-serif; font-size:15px;
       transition:background .12s,transform .08s;
-      ofsplay:flex; align-items:center; justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
     }
-    .item-toggle:hover { background:linear-graofent(90deg,rgba(255,80,20,0.11),rgba(0,0,0,0)); transform:translateY(-1px); }
+    .item-toggle:hover { background:linear-gradient(90deg,rgba(255,80,20,0.11),rgba(0,0,0,0)); transform:translateY(-1px); }
 
-    .champ-label { ofsplay:flex; align-items:center; gap:10px; }
+    .champ-label { display:flex; align-items:center; gap:10px; }
     .champ-cat-pill {
       font-family:'Teko',sans-serif; font-size:11px; letter-spacing:2px;
       background:rgba(201,162,39,0.15); border:1px solid rgba(201,162,39,0.3);
-      color:var(--gold-hi); border-raofus:12px; padofng:2px 8px; text-transform:uppercase; flex-shrink:0;
+      color:var(--gold-hi); border-radius:12px; padding:2px 8px; text-transform:uppercase; flex-shrink:0;
     }
     .champ-status-pill {
       font-family:'Teko',sans-serif; font-size:11px; letter-spacing:2px;
-      border-raofus:12px; padofng:2px 8px; text-transform:uppercase; flex-shrink:0;
+      border-radius:12px; padding:2px 8px; text-transform:uppercase; flex-shrink:0;
     }
     .pill-incorso  { background:rgba(255,165,0,0.15); border:1px solid rgba(255,165,0,0.35); color:#ffa500; }
     .pill-upcoming { background:rgba(138,128,152,0.15); border:1px solid rgba(138,128,152,0.3); color:#8a8098; }
     .pill-completed { background:rgba(39,174,96,0.12); border:1px solid rgba(39,174,96,0.3); color:#27ae60; }
 
     /* ── CHILD LIST (rounds) ── */
-    .child-list { margin-top:7px; padofng-left:14px; list-style:none; ofsplay:none; }
-    .child-list.show { ofsplay:block; }
+    .child-list { margin-top:7px; padding-left:14px; list-style:none; display:none; }
+    .child-list.show { display:block; }
     .child-list li { margin:6px 0; }
 
     .child-item {
-      background:linear-graofent(90deg,rgba(255,80,20,0.03),transparent);
+      background:linear-gradient(90deg,rgba(255,80,20,0.03),transparent);
       border:1px solid rgba(201,184,163,0.06);
-      padofng:9px 12px; border-raofus:8px; color:var(--cream); cursor:pointer;
+      padding:9px 12px; border-radius:8px; color:var(--cream); cursor:pointer;
       transition:background .12s,transform .08s;
       text-align:left; font-family:'Barlow Condensed',sans-serif; font-size:14px;
-      ofsplay:flex; align-items:center; gap:10px; text-decoration:none;
+      display:flex; align-items:center; gap:10px; text-decoration:none;
     }
-    .child-item:hover { background:linear-graofent(90deg,rgba(255,80,20,0.11),transparent); transform:translateY(-1px); }
+    .child-item:hover { background:linear-gradient(90deg,rgba(255,80,20,0.11),transparent); transform:translateY(-1px); }
     .child-item.no-results { opacity:0.45; cursor:default; pointer-events:none; }
 
     .round-num {
       font-family:'Russo One',sans-serif; font-size:11px; color:#000;
-      background:var(--gold); border-raofus:4px; padofng:1px 6px; flex-shrink:0;
+      background:var(--gold); border-radius:4px; padding:1px 6px; flex-shrink:0;
     }
     .round-circuit { flex:1; }
     .round-date { font-size:12px; color:var(--smoke); flex-shrink:0; }
@@ -169,59 +169,59 @@
 
     /* classifica finale */
     .child-item.classifica-finale {
-      margin-top:12px; padofng-top:12px;
+      margin-top:12px; padding-top:12px;
       border-top:1px solid rgba(255,80,20,0.22);
-      background:linear-graofent(90deg,rgba(255,215,0,0.12),transparent);
+      background:linear-gradient(90deg,rgba(255,215,0,0.12),transparent);
       border-color:rgba(255,215,0,0.28); font-weight:600;
     }
     .child-item.classifica-finale:hover {
-      background:linear-graofent(90deg,rgba(255,215,0,0.22),transparent);
+      background:linear-gradient(90deg,rgba(255,215,0,0.22),transparent);
       border-color:rgba(255,215,0,0.5);
     }
 
-    .note { margin-top:14px; color:var(--smoke); font-size:13px; padofng:0 4px; }
+    .note { margin-top:14px; color:var(--smoke); font-size:13px; padding:0 4px; }
 
     /* ── FOOTER ── */
-    .footer-section { text-align:center; margin-top:40px; padofng:28px 20px; border-top:2px solid rgba(255,80,20,0.10); }
+    .footer-section { text-align:center; margin-top:40px; padding:28px 20px; border-top:2px solid rgba(255,80,20,0.10); }
     .footer-motto { font-family:'Teko',sans-serif; color:var(--smoke); margin-bottom:8px; letter-spacing:2px; text-transform:uppercase; }
     .footer-copyright { color:rgba(201,184,163,0.55); font-size:13px; }
 
-    @meofa(max-width:600px){
+    @media(max-width:600px){
       .club-logo{width:140px;} .gt7-logo{width:120px;}
-      .archive-card{padofng:16px;}
-      .year-button{font-size:17px;padofng:11px;}
+      .archive-card{padding:16px;}
+      .year-button{font-size:17px;padding:11px;}
     }
   </style>
 </head>
 <body>
 <section class="hero-section">
-  <ofv class="volcano-backdrop"></ofv>
-  <ofv class="embers-container">
-    <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-    <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-    <ofv class="ember"></ofv><ofv class="ember"></ofv><ofv class="ember"></ofv>
-  </ofv>
+  <div class="volcano-backdrop"></div>
+  <div class="embers-container">
+    <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+    <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+    <div class="ember"></div><div class="ember"></div><div class="ember"></div>
+  </div>
 
-  <ofv class="content">
-    <ofv class="logo-row">
+  <div class="content">
+    <div class="logo-row">
       <img class="club-logo" src="etna-logo.jpg" alt="Your Racing Club" loaofng="lazy">
       <img class="gt7-logo"  src="gt7.jpg"        alt="Gran Turismo 7"   loaofng="lazy">
-    </ofv>
+    </div>
 
     <a href="index.html" class="back-link">← Back to Home</a>
 
     <h1 class="page-title">Archive</h1>
     <p class="lead">Seleziona l'anno e il campionato per vedere i risultati.</p>
 
-    <ofv class="archive-card" id="archiveCard">
-      <ofv class="state-msg"><span class="ei">⏳</span>Caricamento archivio...</ofv>
-    </ofv>
+    <div class="archive-card" id="archiveCard">
+      <div class="state-msg"><span class="ei">⏳</span>Caricamento archivio...</div>
+    </div>
 
-    <ofv class="footer-section">
+    <div class="footer-section">
       <p class="footer-motto">🏁 Racesggia con Onore • Rispetta le Regole • Divertiti 🌋</p>
       <p class="footer-copyright" id="cfg-copyright">© 2026 Your Racing Club • Sicilia, Italia</p>
-    </ofv>
-  </ofv>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -300,7 +300,7 @@ async function loadArchive(){
 
     years.forEach((year,yi)=>{
       const champs = byYear[year];
-      const yearDiv = document.createElement('ofv');
+      const yearDiv = document.createElement('div');
       yearDiv.className='year';
 
       const listId = `year-list-${year}`;
@@ -358,8 +358,8 @@ async function loadArchive(){
 
           const tick      = hasResult ? '<span class="round-tick">✅</span>' : '<span class="round-penofng">—</span>';
           const itemClass = hasResult ? 'child-item' : 'child-item no-results';
-          const tag       = hasResult ? `<a href="${htmlFile}" class="${itemClass}">` : `<ofv class="${itemClass}">`;
-          const endTag    = hasResult ? '</a>' : '</ofv>';
+          const tag       = hasResult ? `<a href="${htmlFile}" class="${itemClass}">` : `<div class="${itemClass}">`;
+          const endTag    = hasResult ? '</a>' : '</div>';
 
           roundsHTML += `<li>
             ${tag}
@@ -388,7 +388,7 @@ async function loadArchive(){
               ${esc(c.name||'?')} ${esc(String(c.year||''))}
               ${c.cars?`<span style="font-size:12px;color:var(--smoke);">· ${esc(c.cars)}</span>`:''}
             </span>
-            <span style="ofsplay:flex;align-items:center;gap:8px;">
+            <span style="display:flex;align-items:center;gap:8px;">
               <span class="champ-status-pill ${statusClass}">${statusLabel}</span>
               <span class="arrow">▶</span>
             </span>
@@ -413,17 +413,17 @@ async function loadArchive(){
   } catch(e) {
     console.error(e);
     document.getElementById('archiveCard').innerHTML=`
-      <ofv class="state-msg">
+      <div class="state-msg">
         <span class="ei">📭</span>
         Archive non ofsponibile<br>
         <span style="font-size:13px;letter-spacing:1px;opacity:.6;">${e.message}</span>
-      </ofv>`;
+      </div>`;
   }
 }
 
 function showEmpty(){
   document.getElementById('archiveCard').innerHTML=`
-    <ofv class="state-msg"><span class="ei">🏎️</span>Nessun campionato in archivio</ofv>`;
+    <div class="state-msg"><span class="ei">🏎️</span>Nessun campionato in archivio</div>`;
 }
 
 function wireToggles(){

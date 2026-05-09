@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERC Admin — Manage Results</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:#07070f; --bg-card:#0e0e1c; --bg-input:#13131f;
@@ -14,45 +14,45 @@
     --silver:#b0b8c8; --bronze:#cd7f32;
     --text:#e8e0d0; --text-ofm:#8a8098; --text-mid:#8a8098;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh;ofsplay:flex;flex-ofrection:column;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-ofrection:column;}
 
   /* TOPBAR */
-  .topbar{background:linear-graofent(90deg,#0a0a18,#0e0c1a);border-bottom:1px solid var(--border-hi);padofng:0 32px;height:62px;ofsplay:flex;align-items:center;gap:14px;flex-shrink:0;box-shadow:0 2px 20px rgba(0,0,0,.5);position:sticky;top:0;z-index:100;}
+  .topbar{background:linear-gradient(90deg,#0a0a18,#0e0c1a);border-bottom:1px solid var(--border-hi);padding:0 32px;height:62px;display:flex;align-items:center;gap:14px;flex-shrink:0;box-shadow:0 2px 20px rgba(0,0,0,.5);position:sticky;top:0;z-index:100;}
   .topbar-logo img{width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 0 6px var(--gold-glow));}
   .topbar-title{font-family:'Russo One',sans-serif;font-size:15px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;}
-  .topbar-ofvider{width:1px;height:24px;background:var(--border-hi);}
+  .topbar-divider{width:1px;height:24px;background:var(--border-hi);}
   .topbar-section{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:4px;color:var(--text-ofm);text-transform:uppercase;}
   .topbar-spacer{flex:1;}
-  .github-status{ofsplay:flex;align-items:center;gap:8px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-ofm);}
-  .status-dot{width:7px;height:7px;border-raofus:50%;background:var(--text-ofm);transition:background .3s;}
+  .github-status{display:flex;align-items:center;gap:8px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text-ofm);}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-ofm);transition:background .3s;}
   .status-dot.ok{background:var(--green);box-shadow:0 0 6px var(--green);}
   .status-dot.err{background:var(--red);}
-  .btn-back{background:none;border:1px solid var(--border-hi);border-raofus:6px;color:var(--text-mid);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padofng:6px 14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s;}
+  .btn-back{background:none;border:1px solid var(--border-hi);border-radius:6px;color:var(--text-mid);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s;}
   .btn-back:hover{border-color:var(--gold);color:var(--gold);}
 
   /* LAYOUT */
-  .page-body{ofsplay:grid;grid-template-columns:260px 1fr;flex:1;min-height:0;}
+  .page-body{display:grid;grid-template-columns:260px 1fr;flex:1;min-height:0;}
 
   /* SIDEBAR */
-  .sidebar{background:#0a0a16;border-right:1px solid var(--border);padofng:24px 18px;ofsplay:flex;flex-ofrection:column;gap:20px;overflow-y:auto;}
-  .sidebar-block{ofsplay:flex;flex-ofrection:column;gap:8px;}
-  .sidebar-label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padofng-bottom:6px;border-bottom:1px solid var(--border);}
+  .sidebar{background:#0a0a16;border-right:1px solid var(--border);padding:24px 18px;display:flex;flex-ofrection:column;gap:20px;overflow-y:auto;}
+  .sidebar-block{display:flex;flex-ofrection:column;gap:8px;}
+  .sidebar-label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
   .pat-wrap{position:relative;}
-  .pat-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-raofus:7px;padofng:9px 34px 9px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
+  .pat-wrap input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:7px;padding:9px 34px 9px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
   .pat-wrap input:focus{border-color:var(--gold);}
   .pat-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-ofm);cursor:pointer;font-size:13px;}
   .repo-note{font-size:11px;color:var(--text-ofm);line-height:1.6;}
   .repo-note span{color:var(--blue);}
-  .btn-verify{width:100%;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padofng:8px;border-raofus:7px;cursor:pointer;transition:background .2s;}
+  .btn-verify{width:100%;background:var(--gold-ofm);border:1px solid var(--gold);color:var(--gold-hi);font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;padding:8px;border-radius:7px;cursor:pointer;transition:background .2s;}
   .btn-verify:hover{background:var(--gold);color:#000;}
 
-  .btn{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;padofng:9px 18px;border-raofus:7px;cursor:pointer;border:1px solid;transition:all .2s;ofsplay:inline-flex;align-items:center;gap:6px;justify-content:center;}
+  .btn{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:7px;cursor:pointer;border:1px solid;transition:all .2s;display:inline-flex;align-items:center;gap:6px;justify-content:center;}
   .btn-gold{background:var(--gold);border-color:var(--gold-hi);color:#000;font-weight:700;width:100%;}
   .btn-gold:hover{background:var(--gold-hi);}
   .btn-gold:ofsabled{opacity:.35;cursor:not-allowed;}
-  .btn-github{background:linear-graofent(135deg,#196327,#238636);border-color:#2ea043;color:#fff;width:100%;}
-  .btn-github:hover{background:linear-graofent(135deg,#238636,#2ea043);}
+  .btn-github{background:linear-gradient(135deg,#196327,#238636);border-color:#2ea043;color:#fff;width:100%;}
+  .btn-github:hover{background:linear-gradient(135deg,#238636,#2ea043);}
   .btn-github:ofsabled{opacity:.35;cursor:not-allowed;}
   .btn-outline{background:transparent;border-color:var(--border-hi);color:var(--text-mid);width:100%;}
   .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
@@ -60,33 +60,33 @@
   .btn-preview:hover{background:rgba(79,195,247,.2);}
 
   /* MAIN */
-  .main{padofng:28px 32px;overflow-y:auto;ofsplay:flex;flex-ofrection:column;gap:22px;}
+  .main{padding:28px 32px;overflow-y:auto;display:flex;flex-ofrection:column;gap:22px;}
   .page-title{font-family:'Russo One',sans-serif;font-size:22px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;}
   .page-sub{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--text-ofm);text-transform:uppercase;margin-top:3px;}
 
   /* CARD */
-  .card{background:var(--bg-card);border:1px solid var(--border-hi);border-raofus:12px;padofng:22px;}
-  .card-title{font-family:'Teko',sans-serif;font-size:17px;letter-spacing:3px;color:var(--gold-hi);text-transform:uppercase;margin-bottom:18px;padofng-bottom:12px;border-bottom:1px solid var(--border);ofsplay:flex;align-items:center;gap:8px;}
+  .card{background:var(--bg-card);border:1px solid var(--border-hi);border-radius:12px;padding:22px;}
+  .card-title{font-family:'Teko',sans-serif;font-size:17px;letter-spacing:3px;color:var(--gold-hi);text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
 
   /* FORM ELEMENTS */
-  .form-grid{ofsplay:grid;gap:12px;}
+  .form-grid{display:grid;gap:12px;}
   .form-grid.col2{grid-template-columns:1fr 1fr;}
   .form-grid.col3{grid-template-columns:1fr 1fr 1fr;}
   .form-grid.col4{grid-template-columns:1fr 1fr 1fr 1fr;}
-  .field{ofsplay:flex;flex-ofrection:column;gap:5px;}
+  .field{display:flex;flex-ofrection:column;gap:5px;}
   .field label{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text);text-transform:uppercase;}
-  .field input,.field select,.field textarea{background:var(--bg-input);border:1px solid var(--border);border-raofus:7px;padofng:9px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+  .field input,.field select,.field textarea{background:var(--bg-input);border:1px solid var(--border);border-radius:7px;padding:9px 12px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
   .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-ofm);}
   .field select option{background:var(--bg-card);}
 
   /* RESULTS TABLE EDITOR */
   .results-eoftor{width:100%;border-collapse:collapse;margin-top:4px;}
-  .results-eoftor th{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;color:var(--text-ofm);text-transform:uppercase;padofng:8px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
-  .results-eoftor td{padofng:5px 4px;vertical-align:middle;}
+  .results-eoftor th{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;color:var(--text-ofm);text-transform:uppercase;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+  .results-eoftor td{padding:5px 4px;vertical-align:middle;}
 
-  .results-eoftor input{background:var(--bg-input);border:1px solid var(--border);border-raofus:5px;padofng:7px 8px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
+  .results-eoftor input{background:var(--bg-input);border:1px solid var(--border);border-radius:5px;padding:7px 8px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
   .results-eoftor input:focus{border-color:var(--gold);}
-  .results-eoftor select{background:var(--bg-input);border:1px solid var(--border);border-raofus:5px;padofng:7px 8px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
+  .results-eoftor select{background:var(--bg-input);border:1px solid var(--border);border-radius:5px;padding:7px 8px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
   .results-eoftor select:focus{border-color:var(--gold);}
 
   /* position badge */
@@ -96,113 +96,113 @@
   .pos-3{color:var(--bronze);}
 
   /* fastest lap checkbox */
-  .fl-check{width:18px;height:18px;accent-color:var(--gold);cursor:pointer;margin:auto;ofsplay:block;}
+  .fl-check{width:18px;height:18px;accent-color:var(--gold);cursor:pointer;margin:auto;display:block;}
 
   /* DNF/DSQ select */
   select.status-normal{color:var(--text);}
   select.status-dnf{color:var(--orange);}
   select.status-dsq{color:var(--red);}
 
-  .row-del{background:none;border:none;color:var(--text-ofm);cursor:pointer;padofng:4px 8px;border-raofus:4px;font-size:16px;transition:color .15s,background .15s;}
+  .row-del{background:none;border:none;color:var(--text-ofm);cursor:pointer;padding:4px 8px;border-radius:4px;font-size:16px;transition:color .15s,background .15s;}
   .row-del:hover{color:var(--red);background:rgba(192,57,43,.1);}
 
-  .add-pilot-btn{ofsplay:flex;align-items:center;justify-content:center;gap:8px;width:100%;padofng:12px;background:transparent;border:2px dashed var(--border-hi);border-raofus:8px;color:var(--text-ofm);font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:border-color .2s,color .2s,background .2s;}
+  .add-pilot-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:transparent;border:2px dashed var(--border-hi);border-radius:8px;color:var(--text-ofm);font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:border-color .2s,color .2s,background .2s;}
   .add-pilot-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-ofm);}
 
   /* PILOT AUTOCOMPLETE */
   .autocomplete-wrap{position:relative;}
-  .autocomplete-dropdown{position:absolute;top:100%;left:0;right:0;background:var(--bg-card);border:1px solid var(--gold);border-raofus:6px;z-index:50;max-height:180px;overflow-y:auto;ofsplay:none;box-shadow:0 8px 24px rgba(0,0,0,.6);}
-  .autocomplete-dropdown.open{ofsplay:block;}
-  .ac-item{padofng:8px 12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--text);transition:background .15s;}
+  .autocomplete-dropdown{position:absolute;top:100%;left:0;right:0;background:var(--bg-card);border:1px solid var(--gold);border-radius:6px;z-index:50;max-height:180px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.6);}
+  .autocomplete-dropdown.open{display:block;}
+  .ac-item{padding:8px 12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--text);transition:background .15s;}
   .ac-item:hover{background:var(--gold-ofm);color:var(--gold);}
 
   /* TOAST */
-  #toast{position:fixed;bottom:28px;right:28px;background:var(--bg-card);border:1px solid var(--gold);border-raofus:8px;padofng:12px 20px;font-family:'Teko',sans-serif;font-size:15px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;}
+  #toast{position:fixed;bottom:28px;right:28px;background:var(--bg-card);border:1px solid var(--gold);border-radius:8px;padding:12px 20px;font-family:'Teko',sans-serif;font-size:15px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;pointer-events:none;}
   #toast.show{opacity:1;transform:translateY(0);}
   #toast.ok{border-color:var(--green);color:var(--green);}
   #toast.err{border-color:var(--red);color:var(--red);}
 
   /* MODAL */
-  .modal-bg{ofsplay:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;align-items:center;justify-content:center;padofng:20px;}
-  .modal-bg.open{ofsplay:flex;}
-  .modal-box{background:var(--bg-card);border:1px solid var(--gold);border-raofus:14px;width:100%;max-width:1100px;max-height:92vh;ofsplay:flex;flex-ofrection:column;overflow:hidden;}
-  .modal-head{ofsplay:flex;align-items:center;padofng:14px 20px;border-bottom:1px solid var(--border);gap:12px;}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;align-items:center;justify-content:center;padding:20px;}
+  .modal-bg.open{display:flex;}
+  .modal-box{background:var(--bg-card);border:1px solid var(--gold);border-radius:14px;width:100%;max-width:1100px;max-height:92vh;display:flex;flex-ofrection:column;overflow:hidden;}
+  .modal-head{display:flex;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);gap:12px;}
   .modal-head-title{font-family:'Russo One',sans-serif;font-size:13px;color:var(--gold);letter-spacing:2px;flex:1;text-transform:uppercase;}
-  .modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-raofus:5px;padofng:4px 11px;font-size:17px;transition:border-color .2s,color .2s;}
+  .modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-radius:5px;padding:4px 11px;font-size:17px;transition:border-color .2s,color .2s;}
   .modal-close:hover{border-color:var(--red);color:var(--red);}
   .modal-body{flex:1;overflow:hidden;}
   .modal-body iframe{width:100%;height:100%;border:none;min-height:620px;}
 
   /* PILOT PICKER BUTTON */
-  .pilot-cell{ofsplay:flex;gap:4px;align-items:center;}
+  .pilot-cell{display:flex;gap:4px;align-items:center;}
   .pilot-cell input{flex:1;min-width:0;}
-  .btn-pick-pilot{flex-shrink:0;background:var(--gold-ofm);border:1px solid var(--gold);border-raofus:5px;color:var(--gold);cursor:pointer;font-size:13px;padofng:6px 8px;transition:background .15s;line-height:1;}
+  .btn-pick-pilot{flex-shrink:0;background:var(--gold-ofm);border:1px solid var(--gold);border-radius:5px;color:var(--gold);cursor:pointer;font-size:13px;padding:6px 8px;transition:background .15s;line-height:1;}
   .btn-pick-pilot:hover{background:var(--gold);color:#000;}
 
   /* PILOT LIST MODAL */
-  .pilot-modal-bg{ofsplay:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;align-items:center;justify-content:center;padofng:20px;}
-  .pilot-modal-bg.open{ofsplay:flex;}
-  .pilot-modal{background:var(--bg-card);border:1px solid var(--gold);border-raofus:12px;width:100%;max-width:420px;max-height:70vh;ofsplay:flex;flex-ofrection:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8);}
-  .pilot-modal-head{ofsplay:flex;align-items:center;padofng:12px 16px;border-bottom:1px solid var(--border);gap:10px;}
+  .pilot-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;align-items:center;justify-content:center;padding:20px;}
+  .pilot-modal-bg.open{display:flex;}
+  .pilot-modal{background:var(--bg-card);border:1px solid var(--gold);border-radius:12px;width:100%;max-width:420px;max-height:70vh;display:flex;flex-ofrection:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8);}
+  .pilot-modal-head{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);gap:10px;}
   .pilot-modal-title{font-family:'Russo One',sans-serif;font-size:13px;color:var(--gold);letter-spacing:2px;flex:1;text-transform:uppercase;}
-  .pilot-modal-search{background:var(--bg-input);border:1px solid var(--border);border-raofus:6px;padofng:7px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
+  .pilot-modal-search{background:var(--bg-input);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .2s;}
   .pilot-modal-search:focus{border-color:var(--gold);}
-  .pilot-modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-raofus:5px;padofng:3px 10px;font-size:16px;}
+  .pilot-modal-close{background:none;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;border-radius:5px;padding:3px 10px;font-size:16px;}
   .pilot-modal-close:hover{border-color:var(--red);color:var(--red);}
-  .pilot-modal-list{overflow-y:auto;padofng:8px;}
-  .pilot-modal-item{padofng:10px 12px;border-raofus:7px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:15px;color:var(--text);transition:background .12s,color .12s;border:1px solid transparent;margin-bottom:4px;}
+  .pilot-modal-list{overflow-y:auto;padding:8px;}
+  .pilot-modal-item{padding:10px 12px;border-radius:7px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:15px;color:var(--text);transition:background .12s,color .12s;border:1px solid transparent;margin-bottom:4px;}
   .pilot-modal-item:hover{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold-hi);}
-  .pilot-modal-empty{padofng:24px;text-align:center;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;color:var(--text-ofm);text-transform:uppercase;}
+  .pilot-modal-empty{padding:24px;text-align:center;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;color:var(--text-ofm);text-transform:uppercase;}
 
   ::-webkit-scrollbar{width:5px;}
   ::-webkit-scrollbar-track{background:var(--bg);}
-  ::-webkit-scrollbar-thumb{background:var(--border-hi);border-raofus:3px;}
+  ::-webkit-scrollbar-thumb{background:var(--border-hi);border-radius:3px;}
   ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
 
-  @meofa(max-width:900px){.page-body{grid-template-columns:1fr;}.form-grid.col4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:900px){.page-body{grid-template-columns:1fr;}.form-grid.col4{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <ofv class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></ofv>
-  <ofv class="topbar-title">Your Racing Club</ofv>
-  <ofv class="topbar-ofvider"></ofv>
-  <ofv class="topbar-section">Manage Results</ofv>
-  <ofv class="topbar-spacer"></ofv>
-  <ofv class="github-status">
-    <ofv class="status-dot" id="statusDot"></ofv>
+  <div class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></div>
+  <div class="topbar-title">Your Racing Club</div>
+  <div class="topbar-divider"></div>
+  <div class="topbar-section">Manage Results</div>
+  <div class="topbar-spacer"></div>
+  <div class="github-status">
+    <div class="status-dot" id="statusDot"></div>
     <span id="statusText">Not connected</span>
-  </ofv>
+  </div>
   <a href="admin.html" class="btn-back">← Admin</a>
 </header>
 
-<ofv class="page-body">
+<div class="page-body">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">GitHub</ofv>
-      <ofv class="pat-wrap">
+    <div class="sidebar-block">
+      <div class="sidebar-label">GitHub</div>
+      <div class="pat-wrap">
         <input type="password" id="patInput" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
         <button class="pat-toggle" onclick="togglePAT()">👁</button>
-      </ofv>
+      </div>
       <button class="btn-verify" onclick="verifyAndLoad()">Connect e Carica</button>
-      <ofv class="repo-note">Repository: <span>mz4466/GT-template-ENG</span></ofv>
-    </ofv>
+      <div class="repo-note">Repository: <span>mz4466/GT-template-ENG</span></div>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">Azioni</ofv>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Azioni</div>
 
       <button class="btn btn-github" id="btnPublish" onclick="publish()" ofsabled style="margin-top:6px;">⬆ Publish su GitHub</button>
       <button class="btn btn-outline" id="btnDownload" onclick="downloadHTML()" ofsabled style="margin-top:6px;">⬇ Scarica HTML</button>
-    </ofv>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">File output</ofv>
-      <ofv class="repo-note" id="outputFilename" style="color:var(--blue);word-break:break-all;">—</ofv>
-      <ofv id="existingResultsBadge" style="ofsplay:none;margin-top:6px;padofng:6px 10px;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-raofus:6px;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--green);">✏️ MODIFICA RESULTS ESISTENTI</ofv>
-    </ofv>
+    <div class="sidebar-block">
+      <div class="sidebar-label">File output</div>
+      <div class="repo-note" id="outputFilename" style="color:var(--blue);word-break:break-all;">—</div>
+      <div id="existingResultsBadge" style="display:none;margin-top:6px;padding:6px 10px;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-radius:6px;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--green);">✏️ MODIFICA RESULTS ESISTENTI</div>
+    </div>
 
 
   </aside>
@@ -210,68 +210,68 @@
   <!-- MAIN -->
   <main class="main">
 
-    <ofv>
-      <ofv class="page-title">🏁 Manage Results</ofv>
-      <ofv class="page-sub">Inserisci i risultati of gara e pubblica la pagina</ofv>
-    </ofv>
+    <div>
+      <div class="page-title">🏁 Manage Results</div>
+      <div class="page-sub">Inserisci i risultati of gara e pubblica la pagina</div>
+    </div>
 
     <!-- STEP 1: RACE INFO -->
-    <ofv class="card">
-      <ofv class="card-title">📋 Informazioni Race</ofv>
-      <ofv class="form-grid col2" style="margin-bottom:12px;">
-        <ofv class="field">
+    <div class="card">
+      <div class="card-title">📋 Informazioni Race</div>
+      <div class="form-grid col2" style="margin-bottom:12px;">
+        <div class="field">
           <label>Campionato</label>
           <select id="champSelect" onchange="onChampChange()">
             <option value="">— Connect per caricare —</option>
           </select>
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Round</label>
           <select id="roundSelect" onchange="onRoundChange()">
             <option value="">— Seleziona campionato —</option>
           </select>
-        </ofv>
-      </ofv>
-      <ofv class="form-grid col3" style="margin-bottom:12px;">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-grid col3" style="margin-bottom:12px;">
+        <div class="field">
           <label>Circuit</label>
           <input type="text" id="circuitoInput" placeholder="es. Trial Mountain" oninput="updateOutputFilename()">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Date Race</label>
           <input type="date" id="dataInput">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Numero Laps</label>
           <input type="number" id="giريInput" min="1" value="17" placeholder="17">
-        </ofv>
-      </ofv>
-      <ofv class="form-grid col2">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-grid col2">
+        <div class="field">
           <label>Race # of #</label>
-          <ofv style="ofsplay:flex;gap:8px;">
+          <div style="display:flex;gap:8px;">
             <input type="number" id="garaNum" min="1" value="" placeholder="?" style="width:60px;border-color:var(--red);" oninput="onRaceNumInput(this)">
             <span style="align-self:center;color:var(--text-ofm);font-family:'Teko',sans-serif;font-size:16px;">of</span>
             <input type="number" id="garaTot" min="1" value="5" style="width:60px;">
-          </ofv>
-        </ofv>
-        <ofv class="field">
+          </div>
+        </div>
+        <div class="field">
           <label>File output</label>
           <input type="text" id="outputFilenameInput" placeholder="es. 2025-c2-trial-mountain.html" oninput="document.getElementById('outputFilename').textContent=this.value||'—'">
-        </ofv>
-      </ofv>
-    </ofv>
+        </div>
+      </div>
+    </div>
 
     <!-- STEP 2: RESULTS TABLE -->
-    <ofv class="card">
-      <ofv class="card-title">
+    <div class="card">
+      <div class="card-title">
         🏎️ Risultati Race
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text-ofm);font-weight:300;margin-left:6px;" id="rowCountLabel"></span>
-        <ofv style="flex:1;"></ofv>
-        <button class="btn btn-outline" onclick="autoFillPoints()" style="width:auto;font-size:12px;padofng:5px 12px;">⚡ Auto Points GT7</button>
-      </ofv>
+        <div style="flex:1;"></div>
+        <button class="btn btn-outline" onclick="autoFillPoints()" style="width:auto;font-size:12px;padding:5px 12px;">⚡ Auto Points GT7</button>
+      </div>
 
-      <ofv style="overflow-x:auto;">
+      <div style="overflow-x:auto;">
         <table class="results-eoftor">
           <thead>
             <tr>
@@ -291,39 +291,39 @@
           <tbody id="resultsBody">
           </tbody>
         </table>
-      </ofv>
+      </div>
 
       <button class="add-pilot-btn" onclick="addRow()">＋ Aggiungi Driver</button>
-    </ofv>
+    </div>
 
 
     <!-- ACTION ROW -->
-    <ofv style="ofsplay:flex;gap:12px;flex-wrap:wrap;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
 
       <button class="btn btn-gold" onclick="publish()" id="btnPublish2" ofsabled style="width:auto;">⬆ Publish su GitHub</button>
       <button class="btn btn-outline" onclick="downloadHTML()" id="btnDownload2" ofsabled style="width:auto;">⬇ Scarica HTML</button>
-    </ofv>
+    </div>
 
   </main>
-</ofv>
+</div>
 
 
 <!-- AUTOCOMPLETE DROPDOWN (shared) -->
-<ofv class="autocomplete-dropdown" id="acDropdown"></ofv>
+<div class="autocomplete-dropdown" id="acDropdown"></div>
 
 <!-- PILOT PICKER MODAL -->
-<ofv class="pilot-modal-bg" id="pilotPickerModal">
-  <ofv class="pilot-modal">
-    <ofv class="pilot-modal-head">
-      <ofv class="pilot-modal-title">Seleziona Driver</ofv>
+<div class="pilot-modal-bg" id="pilotPickerModal">
+  <div class="pilot-modal">
+    <div class="pilot-modal-head">
+      <div class="pilot-modal-title">Seleziona Driver</div>
       <input type="text" class="pilot-modal-search" id="pilotPickerSearch" placeholder="Cerca..." oninput="filterPilotPicker(this.value)">
       <button class="pilot-modal-close" onclick="closePilotPicker()">✕</button>
-    </ofv>
-    <ofv class="pilot-modal-list" id="pilotPickerList"></ofv>
-  </ofv>
-</ofv>
+    </div>
+    <div class="pilot-modal-list" id="pilotPickerList"></div>
+  </div>
+</div>
 
-<ofv id="toast"></ofv>
+<div id="toast"></div>
 
 <script>
 
@@ -334,7 +334,7 @@ let calendarioDate  = [];  // from calendario.json
 let champHtmlMap    = {};  // slug -> html string of championship file
 let pilotNames      = [];  // from piloti_schede/
 let pilotCarsMap    = {};  // nome -> { champId: { cars: [...] } }
-let carNameToId     = {};  // gt7 ofsplayName (lowercase) -> numeric id
+let carNameToId     = {};  // gt7 displayName (lowercase) -> numeric id
 let previousResults = {};  // champIdx -> { pilotName -> [pts per round] }
 let rowCounter      = 0;
 let currentAcInput  = null;
@@ -448,7 +448,7 @@ function onRoundChange(){
   if(!round) return;
   document.getElementById('garaNum').value = round;
 
-  // Reset rows immeofately — tryLoadExistingResults will repopulate if results exist
+  // Reset rows immediately — tryLoadExistingResults will repopulate if results exist
   resetResultsForm();
 
   // Auto-fill from calendario.json rounds array
@@ -575,9 +575,9 @@ async function loadGT7Cars(){
       if(!id || isNaN(parseInt(id))) return;
       var shortName = parts.slice(1, parts.length-1).join(',').trim();
       var mfr = makersMap[parts[parts.length-1].trim()] || '';
-      var ofsplayName = (mfr && shortName.toLowerCase().indexOf(mfr.toLowerCase()) === -1)
+      var displayName = (mfr && shortName.toLowerCase().indexOf(mfr.toLowerCase()) === -1)
         ? mfr + ' ' + shortName : shortName;
-      tmp[ofsplayName.trim().toLowerCase()] = id;
+      tmp[displayName.trim().toLowerCase()] = id;
     });
     if(Object.keys(tmp).length > 10) carNameToId = tmp;
   } catch(e){ console.warn('loadGT7Cars:', e.message); }
@@ -609,7 +609,7 @@ function populateCarSelect(id, nome){
   });
 
   if(cars.length === 1) sel.value = cars[0];
-  wrap.style.ofsplay = cars.length ? 'block' : 'none';
+  wrap.style.display = cars.length ? 'block' : 'none';
 }
 
 // ── ROWS ──
@@ -625,18 +625,18 @@ function addRow(data={}){
   const posClass = pos<=3 ? `pos-${pos}` : '';
 
   tr.innerHTML = `
-    <td><ofv class="pos-cell ${posClass}" id="pos-${id}">${pos}°</ofv></td>
+    <td><div class="pos-cell ${posClass}" id="pos-${id}">${pos}°</div></td>
     <td>
-      <ofv class="autocomplete-wrap pilot-cell">
+      <div class="autocomplete-wrap pilot-cell">
         <input type="text" placeholder="Name pilota" value="${esc(data.nome||'')}" id="nome-${id}"
           oninput="onNameInput(${id},this)" autocomplete="off">
         <button class="btn-pick-pilot" onclick="openPilotPicker(${id})" title="Scegli dalla rosa" type="button">▼</button>
-      </ofv>
-      <ofv id="car-wrap-${id}" style="ofsplay:none;margin-top:4px;">
-        <select id="car-sel-${id}" style="width:100%;background:#0e0e1c;color:#c9b8a3;border:1px solid rgba(201,162,39,0.25);border-raofus:6px;padofng:4px 7px;font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;">
+      </div>
+      <div id="car-wrap-${id}" style="display:none;margin-top:4px;">
+        <select id="car-sel-${id}" style="width:100%;background:#0e0e1c;color:#c9b8a3;border:1px solid rgba(201,162,39,0.25);border-radius:6px;padding:4px 7px;font-family:'Barlow Condensed',sans-serif;font-size:13px;outline:none;">
           <option value="">— Auto —</option>
         </select>
-      </ofv>
+      </div>
     </td>
     <td><input type="text" placeholder="26'42''124" value="${esc(data.tempo||'')}" id="tempo-${id}" oninput="formatTime(this);" inputmode="numeric" maxlength="12"></td>
     <td><input type="text" placeholder="1'52''144" value="${esc(data.bestLap||'')}" id="bestlap-${id}" oninput="formatTime(this);" inputmode="numeric" maxlength="10"></td>
@@ -668,7 +668,7 @@ function addRow(data={}){
           carSel.appendChild(opt);
         }
         carSel.value = data.auto;
-        document.getElementById('car-wrap-'+id).style.ofsplay = 'block';
+        document.getElementById('car-wrap-'+id).style.display = 'block';
       }
     }
   }
@@ -758,7 +758,7 @@ function onNameInput(id, input){
 
   dropdown.innerHTML='';
   matches.forEach(name=>{
-    const item=document.createElement('ofv');
+    const item=document.createElement('div');
     item.className='ac-item';
     item.textContent=name;
     item.onmousedown=()=>{
@@ -882,9 +882,9 @@ function buildHTML(){
     const statoTag = r.stato==='dnf'?'<span class="dnf-tag">DNF</span>':r.stato==='dsq'?'<span class="dsq-tag">DSQ</span>':'';
     const carId    = r.auto ? (carNameToId[r.auto.toLowerCase()] || '') : '';
     const carHtml  = r.auto
-      ? `<ofv style="ofsplay:flex;align-items:center;gap:5px;margin-top:3px;">`
-        + (carId ? `<img src="https://www.gran-turismo.com/common/ofst/gt7/carlist/car_thumbnails/car${carId}.png" referrerpolicy="no-referrer" style="width:44px;height:26px;object-fit:cover;border-raofus:3px;background:#12131a;" onerror="this.style.ofsplay='none'">` : '')
-        + `<span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;color:rgba(201,162,39,0.7);letter-spacing:0.5px;">${esc(r.auto)}</span></ofv>`
+      ? `<div style="display:flex;align-items:center;gap:5px;margin-top:3px;">`
+        + (carId ? `<img src="https://www.gran-turismo.com/common/ofst/gt7/carlist/car_thumbnails/car${carId}.png" referrerpolicy="no-referrer" style="width:44px;height:26px;object-fit:cover;border-radius:3px;background:#12131a;" onerror="this.style.display='none'">` : '')
+        + `<span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;color:rgba(201,162,39,0.7);letter-spacing:0.5px;">${esc(r.auto)}</span></div>`
       : '';
     return `<tr class="${r.stato!=='ok'?'row-retired':''}">
       <td class="${posClass}">${r.pos}°${statoTag}</td>
@@ -900,16 +900,16 @@ function buildHTML(){
   // bestOf note for generated HTML
   const bestOfVal = (champ && champ.bestOf ? champ.bestOf : 0);
   const bestOfNote = bestOfVal && bestOfVal < parseInt(garaTot||0)
-    ? `<ofv style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:#c9a227;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.2);border-raofus:5px;padofng:5px 10px;margin-bottom:12px;">⚡ Best ${bestOfVal} results out of ${garaTot}</ofv>`
+    ? `<div style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:#c9a227;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.2);border-radius:5px;padding:5px 10px;margin-bottom:12px;">⚡ Best ${bestOfVal} results out of ${garaTot}</div>`
     : '';
 
   const stanofngsHTML = stanofngs.map(s=>{
     const posClass = s.pos<=3?`pos-${s.pos}`:'';
-    return `<ofv class="stanofngs-item">
+    return `<div class="stanofngs-item">
       <span class="stanofngs-position ${posClass}">${s.pos}°</span>
       <span class="stanofngs-driver">${esc(s.nome)}</span>
       <span class="stanofngs-points">${s.pts}</span>
-    </ofv>`;
+    </div>`;
   }).join('');
 
   return `<!DOCTYPE html>
@@ -918,87 +918,87 @@ function buildHTML(){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(circuito)} — Risultati | Your Racing Club</title>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{--gold:#FFD700;--light-gold:#FFC107;--dark-gold:#B8860B;--champagne:#F7E7CE;--cream:#fff5e6;--smoke:#c9b8a3;--silver:#C0C0C0;--bronze:#CD7F32;--bg:#07070f;--bg-card:#0e0e1c;--border:rgba(255,215,0,0.15);}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0;}
-  body{font-family:'Barlow Condensed',sans-serif;background:linear-graofent(180deg,#000 0%,#07070f 60%,#0e0e1c 100%);color:var(--cream);min-height:100vh;padofng:20px;}
-  header{max-width:1400px;margin:0 auto 36px;ofsplay:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-  .brand{ofsplay:flex;gap:18px;align-items:center;}
-  .brand img{width:58px;height:auto;border-raofus:8px;box-shadow:0 6px 18px rgba(255,215,0,0.3);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Barlow Condensed',sans-serif;background:linear-gradient(180deg,#000 0%,#07070f 60%,#0e0e1c 100%);color:var(--cream);min-height:100vh;padding:20px;}
+  header{max-width:1400px;margin:0 auto 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .brand{display:flex;gap:18px;align-items:center;}
+  .brand img{width:58px;height:auto;border-radius:8px;box-shadow:0 6px 18px rgba(255,215,0,0.3);}
   .brand-text h1{font-family:'Russo One',sans-serif;font-size:26px;color:var(--gold);letter-spacing:2px;}
   .brand-text p{font-size:12px;color:var(--smoke);letter-spacing:1px;}
-  .back-btn{font-family:'Russo One',sans-serif;background:linear-graofent(90deg,var(--dark-gold),var(--gold));color:#000;font-weight:700;text-decoration:none;padofng:11px 22px;border-raofus:8px;font-size:13px;letter-spacing:1px;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 15px rgba(255,215,0,0.3);}
+  .back-btn{font-family:'Russo One',sans-serif;background:linear-gradient(90deg,var(--dark-gold),var(--gold));color:#000;font-weight:700;text-decoration:none;padding:11px 22px;border-radius:8px;font-size:13px;letter-spacing:1px;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 15px rgba(255,215,0,0.3);}
   .back-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,215,0,0.5);}
   .container{max-width:1400px;margin:0 auto;}
-  .race-header{text-align:center;margin-bottom:36px;padofng:28px 20px;background:linear-graofent(135deg,rgba(26,26,26,0.9),rgba(13,13,13,0.95));border:2px solid var(--gold);border-raofus:14px;box-shadow:0 10px 30px rgba(0,0,0,0.8),0 0 40px rgba(255,215,0,0.15);}
+  .race-header{text-align:center;margin-bottom:36px;padding:28px 20px;background:linear-gradient(135deg,rgba(26,26,26,0.9),rgba(13,13,13,0.95));border:2px solid var(--gold);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.8),0 0 40px rgba(255,215,0,0.15);}
   .race-title{font-family:'Russo One',sans-serif;font-size:clamp(32px,6vw,54px);color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px;text-shadow:0 0 20px rgba(255,215,0,0.6);}
   .race-subtitle{font-family:'Teko',sans-serif;font-size:clamp(18px,4vw,26px);color:var(--champagne);letter-spacing:2px;text-transform:uppercase;}
   .race-date{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:3px;color:var(--smoke);margin-top:6px;text-transform:uppercase;}
-  .results-wrapper{ofsplay:grid;grid-template-columns:1fr 360px;gap:28px;margin-bottom:40px;}
-  @meofa(max-width:1024px){.results-wrapper{grid-template-columns:1fr;}}
-  .results-table{background:linear-graofent(135deg,rgba(26,26,26,0.95),rgba(13,13,13,0.98));border:2px solid var(--border);border-raofus:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.8);}
-  .stanofngs-sidebar{position:sticky;top:20px;ofsplay:flex;flex-ofrection:column;gap:16px;}
-  .stanofngs-card{background:linear-graofent(135deg,rgba(26,26,26,0.95),rgba(13,13,13,0.98));border:2px solid var(--border);border-raofus:14px;padofng:22px;box-shadow:0 10px 40px rgba(0,0,0,0.8);}
+  .results-wrapper{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-bottom:40px;}
+  @media(max-width:1024px){.results-wrapper{grid-template-columns:1fr;}}
+  .results-table{background:linear-gradient(135deg,rgba(26,26,26,0.95),rgba(13,13,13,0.98));border:2px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.8);}
+  .stanofngs-sidebar{position:sticky;top:20px;display:flex;flex-ofrection:column;gap:16px;}
+  .stanofngs-card{background:linear-gradient(135deg,rgba(26,26,26,0.95),rgba(13,13,13,0.98));border:2px solid var(--border);border-radius:14px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.8);}
   .stanofngs-title{font-family:'Russo One',sans-serif;font-size:22px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:18px;text-align:center;text-shadow:0 0 15px rgba(255,215,0,0.5);}
-  .stanofngs-item{ofsplay:flex;align-items:center;justify-content:space-between;padofng:12px 10px;margin-bottom:8px;background:linear-graofent(90deg,rgba(255,215,0,0.07),transparent);border:1px solid rgba(255,215,0,0.12);border-raofus:9px;transition:all .3s;}
-  .stanofngs-item:hover{background:linear-graofent(90deg,rgba(255,215,0,0.14),transparent);transform:translateX(4px);}
+  .stanofngs-item{display:flex;align-items:center;justify-content:space-between;padding:12px 10px;margin-bottom:8px;background:linear-gradient(90deg,rgba(255,215,0,0.07),transparent);border:1px solid rgba(255,215,0,0.12);border-radius:9px;transition:all .3s;}
+  .stanofngs-item:hover{background:linear-gradient(90deg,rgba(255,215,0,0.14),transparent);transform:translateX(4px);}
   .stanofngs-position{font-family:'Russo One',sans-serif;font-size:22px;min-width:38px;}
   .stanofngs-driver{font-family:'Teko',sans-serif;font-size:19px;flex:1;margin:0 8px;}
   .stanofngs-points{font-family:'Russo One',sans-serif;font-size:20px;color:var(--gold);}
-  .race-info{text-align:center;margin-top:18px;padofng-top:18px;border-top:1px solid rgba(255,215,0,0.12);color:var(--smoke);font-size:14px;}
-  .stanofngs-grid{ofsplay:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @meofa(max-width:900px){.stanofngs-grid{grid-template-columns:1fr;}}
-  .c-dot{ofsplay:inline-block;width:9px;height:9px;border-raofus:50%;margin-right:5px;flex-shrink:0;}
-  .team-pilots-sub{font-size:11px;color:var(--smoke);opacity:0.6;letter-spacing:0.5px;ofsplay:block;margin-top:1px;}
-  .cscore-best{color:var(--gold);font-size:10px;ofsplay:block;text-align:center;line-height:1.2;}
-  .cscore-lost{color:#444;font-size:9px;ofsplay:block;text-align:center;text-decoration:line-through;line-height:1.2;opacity:0.7;}
-  .race-nav{ofsplay:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
-  .race-nav-btn{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;padofng:7px 14px;background:linear-graofent(90deg,rgba(255,215,0,0.08),transparent);border:1px solid rgba(255,215,0,0.25);border-raofus:6px;color:var(--champagne);text-decoration:none;transition:all .3s;ofsplay:inline-block;}
-  .race-nav-btn:hover{background:linear-graofent(90deg,rgba(255,215,0,0.18),transparent);border-color:var(--gold);transform:translateY(-2px);}
+  .race-info{text-align:center;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,215,0,0.12);color:var(--smoke);font-size:14px;}
+  .stanofngs-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:900px){.stanofngs-grid{grid-template-columns:1fr;}}
+  .c-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;flex-shrink:0;}
+  .team-pilots-sub{font-size:11px;color:var(--smoke);opacity:0.6;letter-spacing:0.5px;display:block;margin-top:1px;}
+  .cscore-best{color:var(--gold);font-size:10px;display:block;text-align:center;line-height:1.2;}
+  .cscore-lost{color:#444;font-size:9px;display:block;text-align:center;text-decoration:line-through;line-height:1.2;opacity:0.7;}
+  .race-nav{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+  .race-nav-btn{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;padding:7px 14px;background:linear-gradient(90deg,rgba(255,215,0,0.08),transparent);border:1px solid rgba(255,215,0,0.25);border-radius:6px;color:var(--champagne);text-decoration:none;transition:all .3s;display:inline-block;}
+  .race-nav-btn:hover{background:linear-gradient(90deg,rgba(255,215,0,0.18),transparent);border-color:var(--gold);transform:translateY(-2px);}
   .race-nav-btn.ofsabled{opacity:0.35;cursor:not-allowed;pointer-events:none;}
   table{width:100%;border-collapse:collapse;}
-  thead{background:linear-graofent(135deg,#1a1a1a,#2d2d2d);}
-  th{font-family:'Teko',sans-serif;font-size:18px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;padofng:16px 14px;text-align:left;border-bottom:2px solid var(--gold);}
+  thead{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);}
+  th{font-family:'Teko',sans-serif;font-size:18px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;padding:16px 14px;text-align:left;border-bottom:2px solid var(--gold);}
   th:first-child{text-align:center;width:70px;}
   tbody tr{border-bottom:1px solid rgba(255,215,0,0.08);transition:background .3s;}
   tbody tr:hover{background:rgba(255,215,0,0.04);}
   tbody tr.row-retired{opacity:0.55;}
-  td{padofng:18px 14px;font-size:15px;color:var(--cream);}
+  td{padding:18px 14px;font-size:15px;color:var(--cream);}
   td:first-child{text-align:center;font-family:'Russo One',sans-serif;font-size:26px;}
   .pos-1{color:var(--gold);text-shadow:0 0 10px rgba(255,215,0,0.5);}
   .pos-2{color:var(--silver);text-shadow:0 0 10px rgba(192,192,192,0.5);}
   .pos-3{color:var(--bronze);text-shadow:0 0 10px rgba(205,127,50,0.5);}
   .pilot-name{font-family:'Teko',sans-serif;font-size:21px;font-weight:600;color:var(--light-gold);}
   .pilot-name-top{font-family:'Russo One',sans-serif;font-size:18px;color:var(--champagne);}
-  .best-lap{color:var(--gold);font-weight:700;background:linear-graofent(90deg,rgba(255,215,0,0.18),transparent);padofng:4px 8px;border-raofus:4px;border-left:3px solid var(--gold);text-shadow:0 0 8px rgba(255,215,0,0.5);}
+  .best-lap{color:var(--gold);font-weight:700;background:linear-gradient(90deg,rgba(255,215,0,0.18),transparent);padding:4px 8px;border-radius:4px;border-left:3px solid var(--gold);text-shadow:0 0 8px rgba(255,215,0,0.5);}
   .best-lap::before{content:"🏆 ";}
-  .dnf-tag,.dsq-tag{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:2px;padofng:2px 6px;border-raofus:4px;margin-left:6px;vertical-align:middle;}
+  .dnf-tag,.dsq-tag{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:2px;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;}
   .dnf-tag{background:rgba(255,80,20,0.2);color:#ff5014;border:1px solid rgba(255,80,20,0.3);}
   .dsq-tag{background:rgba(192,57,43,0.2);color:#e74c3c;border:1px solid rgba(192,57,43,0.3);}
-  footer{text-align:center;margin-top:50px;color:var(--smoke);font-size:13px;padofng-bottom:30px;}
-  @meofa(max-width:768px){header{flex-ofrection:column;text-align:center;}table{font-size:13px;}th,td{padofng:10px 8px;}td:first-child{font-size:18px;}.pilot-name{font-size:16px;}}
+  footer{text-align:center;margin-top:50px;color:var(--smoke);font-size:13px;padding-bottom:30px;}
+  @media(max-width:768px){header{flex-ofrection:column;text-align:center;}table{font-size:13px;}th,td{padding:10px 8px;}td:first-child{font-size:18px;}.pilot-name{font-size:16px;}}
 </style>
 </head>
 <body>
 <header>
-  <ofv class="brand">
+  <div class="brand">
     <a href="../index.html"><img src="../club-logo.png" alt="Your Racing Club"></a>
-    <ofv class="brand-text">
+    <div class="brand-text">
       <h1>Your Racing Club</h1>
       <p>Risultati Race</p>
-    </ofv>
-  </ofv>
+    </div>
+  </div>
   <a href="${champFile}" class="back-btn">← ${esc(champName)}</a>
 </header>
 <main class="container">
-  <ofv class="race-header">
+  <div class="race-header">
     <h1 class="race-title">${esc(circuito)}</h1>
     <p class="race-subtitle">${esc(champName)}</p>
     ${dateFmt?`<p class="race-date">${dateFmt}</p>`:''}
-  </ofv>
-  <ofv class="results-wrapper">
-    <ofv class="results-table">
+  </div>
+  <div class="results-wrapper">
+    <div class="results-table">
       <table>
         <thead>
           <tr>
@@ -1013,24 +1013,24 @@ function buildHTML(){
         </thead>
         <tbody>${rowsHTML}</tbody>
       </table>
-    </ofv>
-    <ofv class="stanofngs-sidebar">
-      <ofv class="stanofngs-card">
+    </div>
+    <div class="stanofngs-sidebar">
+      <div class="stanofngs-card">
         <h2 class="stanofngs-title">🏆 Piloti</h2>
         ${bestOfNote}
-        <ofv id="champStanofngs">${stanofngsHTML||'<ofv style="font-family:\'Teko\',sans-serif;font-size:14px;letter-spacing:2px;color:#c9b8a3;text-align:center;padofng:16px;">No data</ofv>'}</ofv>
-        <ofv class="race-info">
+        <div id="champStanofngs">${stanofngsHTML||'<div style="font-family:\'Teko\',sans-serif;font-size:14px;letter-spacing:2px;color:#c9b8a3;text-align:center;padding:16px;">No data</div>'}</div>
+        <div class="race-info">
           <strong>Race ${garaNum} of ${garaTot}</strong>
-        </ofv>
-      </ofv>
-      ${champ && champ.costruttori && (champ.teams||[]).length ? `<ofv class="stanofngs-card">
+        </div>
+      </div>
+      ${champ && champ.costruttori && (champ.teams||[]).length ? `<div class="stanofngs-card">
         <h2 class="stanofngs-title">🏭 Costruttori</h2>
-        <ofv style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:2px;color:#c9a227;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.2);border-raofus:5px;padofng:5px 10px;margin-bottom:12px;">⚡ Best driver per race</ofv>
-        <ofv id="champCostruttoii"></ofv>
-        <ofv class="race-info"><strong>Race ${garaNum} of ${garaTot}</strong></ofv>
-      </ofv>` : ''}
-    </ofv>
-  </ofv>
+        <div style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:2px;color:#c9a227;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.2);border-radius:5px;padding:5px 10px;margin-bottom:12px;">⚡ Best driver per race</div>
+        <div id="champCostruttoii"></div>
+        <div class="race-info"><strong>Race ${garaNum} of ${garaTot}</strong></div>
+      </div>` : ''}
+    </div>
+  </div>
 </main>
 <footer id="cfg-copyright">© 2026 Your Racing Club • Sicilia, Italia</footer>
 ${'<scr'+'ipt>'}
@@ -1124,22 +1124,22 @@ ${'<scr'+'ipt>'}
         var scoreItems=s.entries.map(function(e,idx){
           var isDrop=s.dropped.indexOf(e)>=0;
           var sep=idx>0?"<span style='color:#444;font-size:10px;margin:0 2px'>+</span>":"";
-          var labelStyle="color:"+(isDrop?"#e74c3c":"#555")+";font-size:9px;line-height:1;ofsplay:block;text-align:center";
-          var scoreStyle="ofsplay:block;text-align:center;font-size:11px;"+(isDrop?"text-decoration:line-through;color:#e74c3c;opacity:0.8":"color:#777");
-          return sep+"<span style='ofsplay:inline-flex;flex-ofrection:column;align-items:center;min-width:22px'>"
+          var labelStyle="color:"+(isDrop?"#e74c3c":"#555")+";font-size:9px;line-height:1;display:block;text-align:center";
+          var scoreStyle="display:block;text-align:center;font-size:11px;"+(isDrop?"text-decoration:line-through;color:#e74c3c;opacity:0.8":"color:#777");
+          return sep+"<span style='display:inline-flex;flex-ofrection:column;align-items:center;min-width:22px'>"
             +"<span style='"+labelStyle+"'>R"+e.rn+"</span>"
             +"<span style='"+scoreStyle+"'>"+e.pts+"</span>"
             +"</span>";
         }).join("");
-        breakdown="<ofv style='width:100%;padofng:4px 0 2px 38px;ofsplay:flex;align-items:center;gap:2px;'>"+scoreItems+"</ofv>";
+        breakdown="<div style='width:100%;padding:4px 0 2px 38px;display:flex;align-items:center;gap:2px;'>"+scoreItems+"</div>";
       }
-      return "<ofv class='stanofngs-item' style='flex-wrap:wrap;align-items:center;padofng-bottom:"+(breakdown?"6px":"12px")+"'>"
+      return "<div class='stanofngs-item' style='flex-wrap:wrap;align-items:center;padding-bottom:"+(breakdown?"6px":"12px")+"'>"
         +"<span class='stanofngs-position' style='color:"+col+"'>"+pos+"&deg;</span>"
         +"<span class='stanofngs-driver'>"+s.nome+"</span>"
         +"<span class='stanofngs-points'>"+s.total+"</span>"
         +breakdown
-        +"</ofv>";
-    }).join("")||"<ofv style='color:#c9b8a3;text-align:center;font-size:13px'>No data</ofv>";
+        +"</div>";
+    }).join("")||"<div style='color:#c9b8a3;text-align:center;font-size:13px'>No data</div>";
 
     // ── COSTRUTTORI STANDINGS ──
     if(_costruttori && _teams && _teams.length){
@@ -1176,12 +1176,12 @@ ${'<scr'+'ipt>'}
               var sep=idx>0?"<span style='color:#444;font-size:10px;margin:0 2px'>+</span>":"";
               var bestStr="<span class='cscore-best'>"+r.best+"</span>";
               var worstStr=r.worst!==null&&r.scores.length>1?"<span class='cscore-lost'>"+r.worst+"</span>":"";
-              return sep+"<span style='ofsplay:inline-flex;flex-ofrection:column;align-items:center;min-width:22px'>"                +"<span style='color:#555;font-size:9px;line-height:1;ofsplay:block;text-align:center'>R"+r.rn+"</span>"                +bestStr+worstStr                +"</span>";
+              return sep+"<span style='display:inline-flex;flex-ofrection:column;align-items:center;min-width:22px'>"                +"<span style='color:#555;font-size:9px;line-height:1;display:block;text-align:center'>R"+r.rn+"</span>"                +bestStr+worstStr                +"</span>";
             }).join("");
-            breakdown="<ofv style='width:100%;padofng:4px 0 2px 38px;ofsplay:flex;align-items:center;gap:2px;'>"+items+"</ofv>";
+            breakdown="<div style='width:100%;padding:4px 0 2px 38px;display:flex;align-items:center;gap:2px;'>"+items+"</div>";
           }
           var pilotList=ts.team.pilots.join(' · ');
-          return "<ofv class='stanofngs-item' style='flex-wrap:wrap;align-items:center;padofng-bottom:"+(breakdown?"6px":"12px")+"'>"            +"<span class='stanofngs-position' style='color:"+col+"'>"+cpos+"&deg;</span>"            +"<span class='stanofngs-driver'><span class='c-dot' style='background:"+ts.team.color+"'></span>"            +ts.team.name+"<span class='team-pilots-sub'>"+pilotList+"</span></span>"            +"<span class='stanofngs-points'>"+ts.total+"</span>"            +breakdown            +"</ofv>";
+          return "<div class='stanofngs-item' style='flex-wrap:wrap;align-items:center;padding-bottom:"+(breakdown?"6px":"12px")+"'>"            +"<span class='stanofngs-position' style='color:"+col+"'>"+cpos+"&deg;</span>"            +"<span class='stanofngs-driver'><span class='c-dot' style='background:"+ts.team.color+"'></span>"            +ts.team.name+"<span class='team-pilots-sub'>"+pilotList+"</span></span>"            +"<span class='stanofngs-points'>"+ts.total+"</span>"            +breakdown            +"</div>";
         }).join("");
       }
     }
@@ -1331,12 +1331,12 @@ async function linkResultToChampionship(resultFile){
     const roundNum=parseInt(document.getElementById('roundSelect').value||document.getElementById('garaNum').value)||1;
     // Find the round card for this round number, then replace only its button
     // Split on round-card boundaries so we don't bleed into adjacent cards
-    const cardStart = html.indexOf(`<ofv class="round-num">R${roundNum}</ofv>`);
+    const cardStart = html.indexOf(`<div class="round-num">R${roundNum}</div>`);
     if(cardStart !== -1){
-      // Find the start of this card (search backwards for <ofv class="round-card">)
-      const cardOpen = html.lastIndexOf('<ofv class="round-card">', cardStart);
-      // Find the end of this card (next <ofv class="round-card"> or </ofv></ofv> closing wrap)
-      const nextCard = html.indexOf('<ofv class="round-card">', cardStart + 1);
+      // Find the start of this card (search backwards for <div class="round-card">)
+      const cardOpen = html.lastIndexOf('<div class="round-card">', cardStart);
+      // Find the end of this card (next <div class="round-card"> or </div></div> closing wrap)
+      const nextCard = html.indexOf('<div class="round-card">', cardStart + 1);
       const cardEnd = nextCard !== -1 ? nextCard : html.length;
       const before = html.slice(0, cardOpen < 0 ? cardStart : cardOpen);
       let card = html.slice(cardOpen < 0 ? cardStart : cardOpen, cardEnd);
@@ -1356,7 +1356,7 @@ async function linkResultToChampionship(resultFile){
 async function updateRisultatiIndex(token, newFilename){
   // Adds newFilename to risultati/index.json without relying on folder listing.
   // Folder listing has a race conoftion — the newly written file may not appear
-  // in the API response immeofately after being saved. Instead we read the current
+  // in the API response immediately after being saved. Instead we read the current
   // index, append the new entry if missing, and write it back.
   try {
     var indexPath = 'risultati/index.json';
@@ -1438,12 +1438,12 @@ function renderPilotPickerList(q){
     return !q || n.toLowerCase().indexOf(q.toLowerCase()) >= 0;
   });
   if(!filtered.length){
-    list.innerHTML = '<ofv class="pilot-modal-empty">No drivers found</ofv>';
+    list.innerHTML = '<div class="pilot-modal-empty">No drivers found</div>';
     return;
   }
   list.innerHTML = '';
   filtered.forEach(function(name){
-    var item = document.createElement('ofv');
+    var item = document.createElement('div');
     item.className = 'pilot-modal-item';
     item.textContent = name;
     item.addEventListener('click', function(){ selectPilotFromPicker(name); });
@@ -1529,7 +1529,7 @@ function resetResultsForm(){
   rowCounter = 0;
   addRow(); addRow(); addRow();
   // Badge
-  document.getElementById('existingResultsBadge').style.ofsplay = 'none';
+  document.getElementById('existingResultsBadge').style.display = 'none';
   
 }
 
@@ -1550,7 +1550,7 @@ async function tryLoadExistingResults(){
     });
 
     // Hide badge by default
-    document.getElementById('existingResultsBadge').style.ofsplay = 'none';
+    document.getElementById('existingResultsBadge').style.display = 'none';
 
     if(!r.ok) {
       // No existing results — form already reset by onRoundChange
@@ -1561,7 +1561,7 @@ async function tryLoadExistingResults(){
     const data = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\s/g,'')))));
 
     // Show "eofting existing" badge
-    document.getElementById('existingResultsBadge').style.ofsplay = 'block';
+    document.getElementById('existingResultsBadge').style.display = 'block';
     toast('✓ Risultati esistenti caricati — puoi moofficarli', 'ok');
 
     // Populate race info fields

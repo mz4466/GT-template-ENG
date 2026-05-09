@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social — Your Racing Club</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#07070f;--card:#0e0e1c;--card2:#0a0a16;
@@ -13,53 +13,53 @@
   --red:#ff5014;--orange:#ff8c42;
   --text:#e8e0d0;--muted:#8a8098;--ofm:#5a5470;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padofng:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh}
 /* HEADER */
-.site-header{background:linear-graofent(180deg,rgba(10,10,24,0.98),var(--bg));border-bottom:2px solid var(--gold);padofng:22px 28px;ofsplay:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{ofsplay:flex;align-items:center;gap:14px}
-.brand img{width:52px;height:52px;object-fit:contain;border-raofus:8px;filter:drop-shadow(0 0 10px rgba(201,162,39,0.3))}
+.site-header{background:linear-gradient(180deg,rgba(10,10,24,0.98),var(--bg));border-bottom:2px solid var(--gold);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:52px;height:52px;object-fit:contain;border-radius:8px;filter:drop-shadow(0 0 10px rgba(201,162,39,0.3))}
 .brand-name{font-family:'Russo One',sans-serif;font-size:20px;color:var(--gold);letter-spacing:2px}
 .brand-sub{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:3px;color:var(--ofm);text-transform:uppercase}
-.back-btn{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border-hi);padofng:7px 14px;border-raofus:7px;transition:all .2s}
+.back-btn{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--border-hi);padding:7px 14px;border-radius:7px;transition:all .2s}
 .back-btn:hover{border-color:var(--gold);color:var(--gold)}
 /* PAGE TITLE */
-.page-hero{padofng:28px 28px 20px;text-align:center}
+.page-hero{padding:28px 28px 20px;text-align:center}
 .page-title{font-family:'Russo One',sans-serif;font-size:clamp(28px,5vw,46px);color:var(--gold);letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 30px rgba(201,162,39,0.4)}
 .page-sub{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:3px;color:var(--ofm);text-transform:uppercase;margin-top:4px}
 /* NAV BARS */
-.nav-strip{padofng:0 20px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-.nav-strip::-webkit-scrollbar{ofsplay:none}
-.nav-inner{ofsplay:inline-flex;gap:6px;padofng:10px 0}
-.nav-pill{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;padofng:5px 18px;border-raofus:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s;white-space:nowrap;user-select:none}
+.nav-strip{padding:0 20px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.nav-strip::-webkit-scrollbar{display:none}
+.nav-inner{display:inline-flex;gap:6px;padding:10px 0}
+.nav-pill{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;padding:5px 18px;border-radius:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s;white-space:nowrap;user-select:none}
 .nav-pill:hover{border-color:var(--gold);color:var(--muted)}
 .nav-pill.active{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold)}
 .nav-pill.race-pill.active{background:rgba(255,80,20,0.08);border-color:rgba(255,80,20,0.4);color:var(--orange)}
-.nav-ofvider{height:1px;background:var(--border);margin:0 20px}
+.nav-divider{height:1px;background:var(--border);margin:0 20px}
 /* MEDIA TYPE TABS */
-.type-bar{ofsplay:flex;gap:8px;padofng:14px 20px;flex-wrap:wrap}
-.type-tab{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;padofng:5px 16px;border-raofus:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s}
+.type-bar{display:flex;gap:8px;padding:14px 20px;flex-wrap:wrap}
+.type-tab{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;padding:5px 16px;border-radius:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s}
 .type-tab.active{background:var(--card);border-color:var(--border-hi);color:var(--text)}
 /* CONTENT AREA */
-.content{max-width:1200px;margin:0 auto;padofng:16px 20px 60px}
+.content{max-width:1200px;margin:0 auto;padding:16px 20px 60px}
 /* PHOTO GRID */
-.photo-grid{ofsplay:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
-.photo-item{border-raofus:8px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:border-color .2s,transform .15s;background:var(--card)}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.photo-item{border-radius:8px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:border-color .2s,transform .15s;background:var(--card)}
 .photo-item:hover{border-color:var(--gold);transform:scale(1.02)}
-.photo-item img{width:100%;aspect-ratio:16/10;object-fit:cover;ofsplay:block}
-.photo-caption{padofng:7px 10px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;color:var(--muted)}
+.photo-item img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.photo-caption{padding:7px 10px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;color:var(--muted)}
 /* VIDEO LIST */
-.video-list{ofsplay:flex;flex-ofrection:column;gap:10px}
-.video-card{background:var(--card);border:1px solid var(--border-hi);border-raofus:10px;overflow:hidden;transition:border-color .2s}
+.video-list{display:flex;flex-ofrection:column;gap:10px}
+.video-card{background:var(--card);border:1px solid var(--border-hi);border-radius:10px;overflow:hidden;transition:border-color .2s}
 .video-card:hover{border-color:var(--gold)}
 .video-embed{width:100%;aspect-ratio:16/9}
-.video-embed iframe{width:100%;height:100%;border:none;ofsplay:block}
-.video-meta{padofng:12px 16px}
+.video-embed iframe{width:100%;height:100%;border:none;display:block}
+.video-meta{padding:12px 16px}
 .video-title{font-family:'Teko',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);margin-bottom:3px}
 .video-sub{font-size:13px;color:var(--ofm)}
 /* ARTICLE LIST */
-.article-list{ofsplay:flex;flex-ofrection:column;gap:12px}
-.article-card{background:var(--card);border:1px solid var(--border-hi);border-raofus:10px;padofng:20px 22px;transition:border-color .2s}
+.article-list{display:flex;flex-ofrection:column;gap:12px}
+.article-card{background:var(--card);border:1px solid var(--border-hi);border-radius:10px;padding:20px 22px;transition:border-color .2s}
 .article-card:hover{border-color:var(--gold)}
 .article-title{font-family:'Teko',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:10px}
 .article-body{font-size:15px;color:var(--muted);line-height:1.7}
@@ -69,65 +69,65 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-
 .article-body em,.article-body i{color:var(--muted)}
 .article-date{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;color:var(--ofm);margin-top:10px;text-transform:uppercase}
 /* LIGHTBOX */
-.lightbox{ofsplay:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;padofng:20px}
-.lightbox.open{ofsplay:flex}
-.lightbox-img{max-width:90vw;max-height:88vh;object-fit:contain;border-raofus:6px}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:6px}
 .lightbox-close{position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;opacity:0.6;transition:opacity .2s}
 .lightbox-close:hover{opacity:1}
 .lightbox-caption{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:'Teko',sans-serif;font-size:15px;letter-spacing:2px;color:rgba(255,255,255,0.6);white-space:nowrap}
 /* EMPTY STATE */
-.empty{text-align:center;padofng:60px 20px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--ofm);text-transform:uppercase}
-.empty-icon{font-size:40px;margin-bottom:12px;ofsplay:block}
+.empty{text-align:center;padding:60px 20px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--ofm);text-transform:uppercase}
+.empty-icon{font-size:40px;margin-bottom:12px;display:block}
 /* LOADING */
-.loaofng{text-align:center;padofng:40px;color:var(--ofm);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.loaofng{text-align:center;padding:40px;color:var(--ofm);font-family:'Teko',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <ofv class="brand">
-    <a href="index.html"><img src="etna-logo.jpg" alt="ERC" onerror="this.style.ofsplay='none'"></a>
-    <ofv>
-      <ofv class="brand-name">Your Racing Club</ofv>
-      <ofv class="brand-sub">Social</ofv>
-    </ofv>
-  </ofv>
+  <div class="brand">
+    <a href="index.html"><img src="etna-logo.jpg" alt="ERC" onerror="this.style.display='none'"></a>
+    <div>
+      <div class="brand-name">Your Racing Club</div>
+      <div class="brand-sub">Social</div>
+    </div>
+  </div>
   <a href="index.html" class="back-btn">← Home</a>
 </header>
 
-<ofv class="page-hero">
+<div class="page-hero">
   <h1 class="page-title">Social</h1>
   <p class="page-sub">Foto · Video · Interviste · Articoli</p>
-</ofv>
+</div>
 
 <!-- YEAR NAV -->
-<ofv class="nav-strip" id="yearNav"><ofv class="nav-inner" id="yearInner"></ofv></ofv>
-<ofv class="nav-ofvider"></ofv>
+<div class="nav-strip" id="yearNav"><div class="nav-inner" id="yearInner"></div></div>
+<div class="nav-divider"></div>
 <!-- CHAMPIONSHIP NAV -->
-<ofv class="nav-strip" id="champNav" style="ofsplay:none"><ofv class="nav-inner" id="champInner"></ofv></ofv>
-<ofv class="nav-ofvider" id="champDivider" style="ofsplay:none"></ofv>
+<div class="nav-strip" id="champNav" style="display:none"><div class="nav-inner" id="champInner"></div></div>
+<div class="nav-divider" id="champDivider" style="display:none"></div>
 <!-- RACE NAV -->
-<ofv class="nav-strip" id="raceNav" style="ofsplay:none"><ofv class="nav-inner" id="raceInner"></ofv></ofv>
-<ofv class="nav-ofvider" id="raceDivider" style="ofsplay:none"></ofv>
+<div class="nav-strip" id="raceNav" style="display:none"><div class="nav-inner" id="raceInner"></div></div>
+<div class="nav-divider" id="raceDivider" style="display:none"></div>
 
 <!-- MEDIA TYPE TABS -->
-<ofv class="type-bar" id="typeBar" style="ofsplay:none">
-  <ofv class="type-tab" data-type="photos">📷 Foto</ofv>
-  <ofv class="type-tab" data-type="videos">🎥 Video</ofv>
-  <ofv class="type-tab" data-type="interviews">🎤 Interviste</ofv>
-  <ofv class="type-tab" data-type="articles">📝 Articoli</ofv>
-</ofv>
+<div class="type-bar" id="typeBar" style="display:none">
+  <div class="type-tab" data-type="photos">📷 Foto</div>
+  <div class="type-tab" data-type="videos">🎥 Video</div>
+  <div class="type-tab" data-type="interviews">🎤 Interviste</div>
+  <div class="type-tab" data-type="articles">📝 Articoli</div>
+</div>
 
-<ofv class="content" id="mainContent">
-  <ofv class="loaofng" id="loaofngMsg">Caricamento...</ofv>
-</ofv>
+<div class="content" id="mainContent">
+  <div class="loaofng" id="loaofngMsg">Caricamento...</div>
+</div>
 
 <!-- LIGHTBOX -->
-<ofv class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
-  <ofv class="lightbox-caption" id="lightboxCaption"></ofv>
-</ofv>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <script>
 const RAW = 'https://raw.githubusercontent.com/mz4466/GT-template-ENG/main';
@@ -149,13 +149,13 @@ async function init() {
     return;
   }
   socialIndex = idx;
-  document.getElementById('loaofngMsg').style.ofsplay = 'none';
+  document.getElementById('loaofngMsg').style.display = 'none';
 
   // Build year tabs
   var years = [...new Set(idx.map(function(c){ return c.year; }))].sort(function(a,b){ return b-a; });
   var yearInner = document.getElementById('yearInner');
   years.forEach(function(y, i) {
-    var pill = document.createElement('ofv');
+    var pill = document.createElement('div');
     pill.className = 'nav-pill' + (i===0?' active':'');
     pill.textContent = y;
     pill.onclick = function() { selectYear(y); };
@@ -173,14 +173,14 @@ function selectYear(year) {
   var champInner = document.getElementById('champInner');
   champInner.innerHTML = '';
   yearChamps.forEach(function(c, i) {
-    var pill = document.createElement('ofv');
+    var pill = document.createElement('div');
     pill.className = 'nav-pill' + (i===0?' active':'');
     pill.textContent = c.name;
     pill.onclick = function() { selectChamp(c); };
     champInner.appendChild(pill);
   });
-  document.getElementById('champNav').style.ofsplay = 'block';
-  document.getElementById('champDivider').style.ofsplay = 'block';
+  document.getElementById('champNav').style.display = 'block';
+  document.getElementById('champDivider').style.display = 'block';
 
   if (yearChamps.length) selectChamp(yearChamps[0]);
 }
@@ -192,19 +192,19 @@ function selectChamp(champ) {
   var raceInner = document.getElementById('raceInner');
   raceInner.innerHTML = '';
   (champ.races||[]).forEach(function(race, i) {
-    var pill = document.createElement('ofv');
+    var pill = document.createElement('div');
     pill.className = 'nav-pill race-pill' + (i===0?' active':'');
     pill.textContent = race.label;
     pill.onclick = function() { selectRace(champ, race); };
     raceInner.appendChild(pill);
   });
-  document.getElementById('raceNav').style.ofsplay = 'block';
-  document.getElementById('raceDivider').style.ofsplay = 'block';
-  document.getElementById('typeBar').style.ofsplay = 'flex';
+  document.getElementById('raceNav').style.display = 'block';
+  document.getElementById('raceDivider').style.display = 'block';
+  document.getElementById('typeBar').style.display = 'flex';
   setActiveType(state.type);
 
   if ((champ.races||[]).length) selectRace(champ, champ.races[0]);
-  else { document.getElementById('mainContent').innerHTML = '<ofv class="empty"><span class="empty-icon">🏁</span>Nessuna gara ofsponibile</ofv>'; }
+  else { document.getElementById('mainContent').innerHTML = '<div class="empty"><span class="empty-icon">🏁</span>Nessuna gara ofsponibile</div>'; }
 }
 
 function selectRace(champ, race) {
@@ -223,59 +223,59 @@ document.querySelectorAll('.type-tab').forEach(function(t){ t.onclick = function
 
 async function loadContent(champ, race, type) {
   var content = document.getElementById('mainContent');
-  content.innerHTML = '<ofv class="loaofng">Caricamento...</ofv>';
+  content.innerHTML = '<div class="loaofng">Caricamento...</div>';
 
   var path = SOCIAL_BASE + '/' + champ.year + '/' + champ.slug + '/' + race.slug + '/index.json';
   var items = await fetchJSON(path);
   if (!items || !items.length) {
-    content.innerHTML = '<ofv class="empty"><span class="empty-icon">📂</span>Nessun contenuto per questa gara</ofv>';
+    content.innerHTML = '<div class="empty"><span class="empty-icon">📂</span>Nessun contenuto per questa gara</div>';
     return;
   }
 
   var filtered = items.filter(function(item){ return item.type === type || (type==='photos' && item.type==='photo') || (type==='videos' && item.type==='video') || (type==='interviews' && item.type==='interview') || (type==='articles' && item.type==='article'); });
 
   if (!filtered.length) {
-    content.innerHTML = '<ofv class="empty"><span class="empty-icon">📂</span>Nessun contenuto in questa categoria</ofv>';
+    content.innerHTML = '<div class="empty"><span class="empty-icon">📂</span>Nessun contenuto in questa categoria</div>';
     return;
   }
 
   if (type === 'photos') {
-    var grid = '<ofv class="photo-grid">';
+    var grid = '<div class="photo-grid">';
     filtered.forEach(function(item) {
       var src = item.url || (SOCIAL_BASE + '/' + champ.year + '/' + champ.slug + '/' + race.slug + '/' + item.file);
-      grid += '<ofv class="photo-item" onclick="openLightbox(\'' + src.replace(/'/g,'%27') + '\',\'' + esc(item.title||'') + '\')">'
-        + '<img src="' + src + '" alt="' + esc(item.title||'') + '" loaofng="lazy" onerror="this.parentElement.style.ofsplay=\'none\'">'
-        + (item.title ? '<ofv class="photo-caption">' + esc(item.title) + '</ofv>' : '')
-        + '</ofv>';
+      grid += '<div class="photo-item" onclick="openLightbox(\'' + src.replace(/'/g,'%27') + '\',\'' + esc(item.title||'') + '\')">'
+        + '<img src="' + src + '" alt="' + esc(item.title||'') + '" loaofng="lazy" onerror="this.parentElement.style.display=\'none\'">'
+        + (item.title ? '<div class="photo-caption">' + esc(item.title) + '</div>' : '')
+        + '</div>';
     });
-    grid += '</ofv>';
+    grid += '</div>';
     content.innerHTML = grid;
   }
   else if (type === 'videos' || type === 'interviews') {
-    var list = '<ofv class="video-list">';
+    var list = '<div class="video-list">';
     filtered.forEach(function(item) {
       var embedUrl = item.url ? youtubeEmbed(item.url) : null;
-      list += '<ofv class="video-card">';
+      list += '<div class="video-card">';
       if (embedUrl) {
-        list += '<ofv class="video-embed"><iframe src="' + embedUrl + '" allowfullscreen loaofng="lazy"></iframe></ofv>';
+        list += '<div class="video-embed"><iframe src="' + embedUrl + '" allowfullscreen loaofng="lazy"></iframe></div>';
       }
-      list += '<ofv class="video-meta"><ofv class="video-title">' + esc(item.title||'Video') + '</ofv>';
-      if (item.desc) list += '<ofv class="video-sub">' + esc(item.desc) + '</ofv>';
-      list += '</ofv></ofv>';
+      list += '<div class="video-meta"><div class="video-title">' + esc(item.title||'Video') + '</div>';
+      if (item.desc) list += '<div class="video-sub">' + esc(item.desc) + '</div>';
+      list += '</div></div>';
     });
-    list += '</ofv>';
+    list += '</div>';
     content.innerHTML = list;
   }
   else if (type === 'articles') {
-    var art = '<ofv class="article-list">';
+    var art = '<div class="article-list">';
     filtered.forEach(function(item) {
-      art += '<ofv class="article-card">'
-        + '<ofv class="article-title">' + esc(item.title||'Articolo') + '</ofv>'
-        + '<ofv class="article-body">' + (item.body||'') + '</ofv>'
-        + (item.date ? '<ofv class="article-date">' + esc(item.date) + '</ofv>' : '')
-        + '</ofv>';
+      art += '<div class="article-card">'
+        + '<div class="article-title">' + esc(item.title||'Articolo') + '</div>'
+        + '<div class="article-body">' + (item.body||'') + '</div>'
+        + (item.date ? '<div class="article-date">' + esc(item.date) + '</div>' : '')
+        + '</div>';
     });
-    art += '</ofv>';
+    art += '</div>';
     content.innerHTML = art;
   }
 }

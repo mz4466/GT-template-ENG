@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERC Admin — Create Championship</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #07070f;
@@ -23,24 +23,24 @@
     --text-mid:  #8a8098;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padofng: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Barlow Condensed', sans-serif;
     min-height: 100vh;
-    ofsplay: flex;
+    display: flex;
     flex-ofrection: column;
   }
 
   /* ── TOPBAR ── */
   .topbar {
-    background: linear-graofent(90deg, #0a0a18, #0e0c1a);
+    background: linear-gradient(90deg, #0a0a18, #0e0c1a);
     border-bottom: 1px solid var(--border-hi);
-    padofng: 0 32px;
+    padding: 0 32px;
     height: 62px;
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     gap: 14px;
     flex-shrink: 0;
@@ -64,7 +64,7 @@
     text-transform: uppercase;
   }
 
-  .topbar-ofvider { width: 1px; height: 24px; background: var(--border-hi); }
+  .topbar-divider { width: 1px; height: 24px; background: var(--border-hi); }
 
   .topbar-section {
     font-family: 'Teko', sans-serif;
@@ -77,7 +77,7 @@
   .topbar-spacer { flex: 1; }
 
   .github-status {
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'Teko', sans-serif;
@@ -88,7 +88,7 @@
 
   .status-dot {
     width: 7px; height: 7px;
-    border-raofus: 50%;
+    border-radius: 50%;
     background: var(--text-ofm);
     transition: background 0.3s;
   }
@@ -98,13 +98,13 @@
   .btn-back {
     background: none;
     border: 1px solid var(--border-hi);
-    border-raofus: 6px;
+    border-radius: 6px;
     color: var(--text-mid);
     font-family: 'Teko', sans-serif;
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padofng: 6px 14px;
+    padding: 6px 14px;
     cursor: pointer;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s;
@@ -113,7 +113,7 @@
 
   /* ── LAYOUT ── */
   .page-body {
-    ofsplay: grid;
+    display: grid;
     grid-template-columns: 260px 1fr;
     flex: 1;
     min-height: 0;
@@ -123,14 +123,14 @@
   .sidebar {
     background: #0a0a16;
     border-right: 1px solid var(--border);
-    padofng: 24px 18px;
-    ofsplay: flex;
+    padding: 24px 18px;
+    display: flex;
     flex-ofrection: column;
     gap: 20px;
     overflow-y: auto;
   }
 
-  .sidebar-block { ofsplay: flex; flex-ofrection: column; gap: 8px; }
+  .sidebar-block { display: flex; flex-ofrection: column; gap: 8px; }
 
   .sidebar-label {
     font-family: 'Teko', sans-serif;
@@ -138,7 +138,7 @@
     letter-spacing: 3px;
     color: var(--text-ofm);
     text-transform: uppercase;
-    padofng-bottom: 6px;
+    padding-bottom: 6px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -148,8 +148,8 @@
     width: 100%;
     background: var(--bg-input);
     border: 1px solid var(--border);
-    border-raofus: 7px;
-    padofng: 9px 34px 9px 11px;
+    border-radius: 7px;
+    padding: 9px 34px 9px 11px;
     color: var(--text);
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 13px;
@@ -180,12 +180,12 @@
     font-size: 15px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padofng: 9px 18px;
-    border-raofus: 7px;
+    padding: 9px 18px;
+    border-radius: 7px;
     cursor: pointer;
     border: 1px solid;
     transition: all 0.2s;
-    ofsplay: inline-flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
   }
@@ -210,19 +210,19 @@
     border-color: var(--border);
     color: var(--text-ofm);
     font-size: 13px;
-    padofng: 7px 14px;
+    padding: 7px 14px;
   }
   .btn-ghost:hover { border-color: var(--red); color: var(--red); }
 
   .btn-github {
-    background: linear-graofent(135deg, #196327, #238636);
+    background: linear-gradient(135deg, #196327, #238636);
     border-color: #2ea043;
     color: #fff;
     width: 100%;
     justify-content: center;
     font-size: 14px;
   }
-  .btn-github:hover { background: linear-graofent(135deg, #238636, #2ea043); }
+  .btn-github:hover { background: linear-gradient(135deg, #238636, #2ea043); }
   .btn-github:ofsabled { opacity: 0.35; cursor: not-allowed; }
 
   .btn-verify {
@@ -234,8 +234,8 @@
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padofng: 8px;
-    border-raofus: 7px;
+    padding: 8px;
+    border-radius: 7px;
     cursor: pointer;
     transition: background 0.2s;
   }
@@ -250,15 +250,15 @@
 
   /* ── MAIN ── */
   .main {
-    padofng: 32px 36px;
+    padding: 32px 36px;
     overflow-y: auto;
-    ofsplay: flex;
+    display: flex;
     flex-ofrection: column;
     gap: 24px;
   }
 
   .page-header {
-    ofsplay: flex;
+    display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 12px;
@@ -285,8 +285,8 @@
   .card {
     background: var(--bg-card);
     border: 1px solid var(--border-hi);
-    border-raofus: 12px;
-    padofng: 24px;
+    border-radius: 12px;
+    padding: 24px;
   }
 
   .card-title {
@@ -296,16 +296,16 @@
     color: var(--gold-hi);
     text-transform: uppercase;
     margin-bottom: 18px;
-    padofng-bottom: 12px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     gap: 8px;
   }
 
   /* ── FORM FIELDS ── */
   .form-row {
-    ofsplay: grid;
+    display: grid;
     gap: 14px;
     margin-bottom: 14px;
   }
@@ -314,7 +314,7 @@
   .form-row.col3 { grid-template-columns: 2fr 1fr 1fr; }
   .form-row.col4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
 
-  .field { ofsplay: flex; flex-ofrection: column; gap: 6px; }
+  .field { display: flex; flex-ofrection: column; gap: 6px; }
 
   .field label {
     font-family: 'Teko', sans-serif;
@@ -329,8 +329,8 @@
   .field textarea {
     background: var(--bg-input);
     border: 1px solid var(--border);
-    border-raofus: 7px;
-    padofng: 10px 12px;
+    border-radius: 7px;
+    padding: 10px 12px;
     color: var(--text);
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 15px;
@@ -351,7 +351,7 @@
 
   /* ── RACE CARDS LIST ── */
   .races-list {
-    ofsplay: flex;
+    display: flex;
     flex-ofrection: column;
     gap: 14px;
   }
@@ -359,7 +359,7 @@
   .race-card {
     background: var(--bg-input);
     border: 1px solid var(--border-hi);
-    border-raofus: 10px;
+    border-radius: 10px;
     overflow: hidden;
     animation: slideIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
   }
@@ -370,10 +370,10 @@
   }
 
   .race-card-header {
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     gap: 12px;
-    padofng: 12px 16px;
+    padding: 12px 16px;
     background: rgba(201,162,39,0.05);
     border-bottom: 1px solid var(--border);
     cursor: pointer;
@@ -387,8 +387,8 @@
     font-size: 13px;
     color: #000;
     background: var(--gold);
-    border-raofus: 6px;
-    padofng: 3px 10px;
+    border-radius: 6px;
+    padding: 3px 10px;
     letter-spacing: 1px;
     flex-shrink: 0;
   }
@@ -422,34 +422,34 @@
   .race-card.collapsed .chevron { transform: rotate(-90deg); }
 
   .race-card-body {
-    padofng: 18px 16px;
-    ofsplay: grid;
+    padding: 18px 16px;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .race-card.collapsed .race-card-body { ofsplay: none; }
+  .race-card.collapsed .race-card-body { display: none; }
 
   .race-card-body .form-row { margin-bottom: 0; }
 
   .race-card-footer {
-    padofng: 10px 16px;
+    padding: 10px 16px;
     border-top: 1px solid var(--border);
-    ofsplay: flex;
+    display: flex;
     justify-content: flex-end;
   }
 
   /* add round button */
   .add-round-btn {
-    ofsplay: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padofng: 16px;
+    padding: 16px;
     background: transparent;
     border: 2px dashed var(--border-hi);
-    border-raofus: 10px;
+    border-radius: 10px;
     color: var(--text-ofm);
     font-family: 'Teko', sans-serif;
     font-size: 16px;
@@ -467,7 +467,7 @@
 
   /* ── ACTION ROW ── */
   .action-row {
-    ofsplay: flex;
+    display: flex;
     gap: 12px;
     align-items: center;
     flex-wrap: wrap;
@@ -479,8 +479,8 @@
     color: #4fc3f7;
     background: rgba(79,195,247,0.08);
     border: 1px solid rgba(79,195,247,0.2);
-    border-raofus: 5px;
-    padofng: 5px 12px;
+    border-radius: 5px;
+    padding: 5px 12px;
     letter-spacing: 1px;
   }
 
@@ -490,8 +490,8 @@
     bottom: 28px; right: 28px;
     background: var(--bg-card);
     border: 1px solid var(--gold);
-    border-raofus: 8px;
-    padofng: 12px 20px;
+    border-radius: 8px;
+    padding: 12px 20px;
     font-family: 'Teko', sans-serif;
     font-size: 15px;
     letter-spacing: 1px;
@@ -508,28 +508,28 @@
 
   /* ── MODAL PREVIEW ── */
   .modal-bg {
-    ofsplay: none;
+    display: none;
     position: fixed; inset: 0;
     background: rgba(0,0,0,0.88);
     z-index: 200;
     align-items: center;
     justify-content: center;
   }
-  .modal-bg.open { ofsplay: flex; }
+  .modal-bg.open { display: flex; }
 
   .modal-box {
     background: var(--bg-card);
     border: 1px solid var(--gold);
-    border-raofus: 12px;
+    border-radius: 12px;
     width: 94vw; max-width: 1000px;
     max-height: 90vh;
-    ofsplay: flex; flex-ofrection: column;
+    display: flex; flex-ofrection: column;
     overflow: hidden;
   }
 
   .modal-head {
-    ofsplay: flex; align-items: center;
-    padofng: 14px 20px;
+    display: flex; align-items: center;
+    padding: 14px 20px;
     border-bottom: 1px solid var(--border);
     gap: 12px;
   }
@@ -547,8 +547,8 @@
     border: 1px solid var(--border-hi);
     color: var(--text-ofm);
     cursor: pointer;
-    border-raofus: 5px;
-    padofng: 4px 11px;
+    border-radius: 5px;
+    padding: 4px 11px;
     font-size: 17px;
     transition: border-color 0.2s, color 0.2s;
   }
@@ -558,9 +558,9 @@
   .modal-body iframe { width: 100%; height: 100%; border: none; min-height: 580px; }
 
   .modal-foot {
-    padofng: 12px 20px;
+    padding: 12px 20px;
     border-top: 1px solid var(--border);
-    ofsplay: flex; gap: 10px; justify-content: flex-end;
+    display: flex; gap: 10px; justify-content: flex-end;
   }
 
   /* ── HELP MODAL ── */
@@ -575,7 +575,7 @@
     color: var(--gold-hi);
     text-transform: uppercase;
     margin-bottom: 10px;
-    padofng-bottom: 6px;
+    padding-bottom: 6px;
     border-bottom: 1px solid var(--border);
   }
 
@@ -588,8 +588,8 @@
 
   .help-section ul,
   .help-section ol {
-    padofng-left: 18px;
-    ofsplay: flex;
+    padding-left: 18px;
+    display: flex;
     flex-ofrection: column;
     gap: 6px;
   }
@@ -606,8 +606,8 @@
   .help-section code {
     background: var(--bg-input);
     border: 1px solid var(--border-hi);
-    border-raofus: 4px;
-    padofng: 1px 7px;
+    border-radius: 4px;
+    padding: 1px 7px;
     font-family: monospace;
     font-size: 13px;
     color: #4fc3f7;
@@ -616,8 +616,8 @@
   .help-note {
     background: var(--gold-ofm);
     border: 1px solid rgba(201,162,39,0.25);
-    border-raofus: 8px;
-    padofng: 14px 16px;
+    border-radius: 8px;
+    padding: 14px 16px;
     font-size: 14px;
     color: var(--text-mid);
     line-height: 1.6;
@@ -629,14 +629,14 @@
   /* scrollbar */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border-hi); border-raofus: 3px; }
+  ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
   /* Trophy picker */
   .trophy-option {
     border: 2px solid var(--border-hi);
-    border-raofus: 10px;
-    padofng: 8px;
+    border-radius: 10px;
+    padding: 8px;
     cursor: pointer;
     text-align: center;
     transition: border-color 0.2s, background 0.2s;
@@ -644,7 +644,7 @@
   }
   .trophy-option:hover { border-color: var(--gold); background: var(--gold-ofm); }
   .trophy-option.selected { border-color: var(--gold); background: var(--gold-ofm); box-shadow: 0 0 12px rgba(201,162,39,0.2); }
-  .trophy-option img { width: 100%; max-width: 80px; height: 90px; object-fit: contain; ofsplay: block; margin: 0 auto 4px; }
+  .trophy-option img { width: 100%; max-width: 80px; height: 90px; object-fit: contain; display: block; margin: 0 auto 4px; }
   .trophy-option .trophy-name {
     font-family: 'Teko', sans-serif; font-size: 11px; letter-spacing: 1px;
     color: var(--text-ofm); text-transform: uppercase; line-height: 1.2;
@@ -652,28 +652,28 @@
   .trophy-option.selected .trophy-name { color: var(--gold); }
 
   /* ── COSTRUTTORI ── */
-  .costruttori-section { ofsplay:none; margin-top:14px; }
-  .costruttori-section.show { ofsplay:block; }
-  .toggle-row { ofsplay:flex; align-items:center; gap:12px; padofng:12px 0; }
+  .costruttori-section { display:none; margin-top:14px; }
+  .costruttori-section.show { display:block; }
+  .toggle-row { display:flex; align-items:center; gap:12px; padding:12px 0; }
   .toggle-cb { width:18px; height:18px; accent-color:var(--gold); cursor:pointer; flex-shrink:0; }
   .toggle-label { font-family:'Teko',sans-serif; font-size:14px; letter-spacing:2px; color:var(--text); text-transform:uppercase; cursor:pointer; user-select:none; }
   .toggle-sub { font-size:12px; color:var(--text-ofm); letter-spacing:0.5px; margin-top:1px; }
-  .team-grid { ofsplay:grid; gap:8px; margin-top:10px; }
-  .team-row-inp { ofsplay:grid; grid-template-columns:36px 1fr 1fr 1fr auto; gap:8px; align-items:center; }
-  .team-color-inp { width:36px; height:32px; border:1px solid var(--border-hi); border-raofus:6px; cursor:pointer; background:none; padofng:2px; }
-  .team-name-inp { background:var(--bg-input); border:1px solid var(--border-hi); border-raofus:6px; padofng:7px 10px; color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:14px; outline:none; }
+  .team-grid { display:grid; gap:8px; margin-top:10px; }
+  .team-row-inp { display:grid; grid-template-columns:36px 1fr 1fr 1fr auto; gap:8px; align-items:center; }
+  .team-color-inp { width:36px; height:32px; border:1px solid var(--border-hi); border-radius:6px; cursor:pointer; background:none; padding:2px; }
+  .team-name-inp { background:var(--bg-input); border:1px solid var(--border-hi); border-radius:6px; padding:7px 10px; color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:14px; outline:none; }
   .team-name-inp:focus { border-color:var(--gold); }
-  .team-pilot-sel { background:var(--bg-input); border:1px solid var(--border-hi); border-raofus:6px; padofng:7px 8px; color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:13px; outline:none; }
+  .team-pilot-sel { background:var(--bg-input); border:1px solid var(--border-hi); border-radius:6px; padding:7px 8px; color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:13px; outline:none; }
   .team-pilot-sel:focus { border-color:var(--gold); }
-  .team-del { background:none; border:none; color:rgba(192,57,43,.5); cursor:pointer; font-size:18px; line-height:1; padofng:0; }
+  .team-del { background:none; border:none; color:rgba(192,57,43,.5); cursor:pointer; font-size:18px; line-height:1; padding:0; }
   .team-del:hover { color:var(--red); }
-  .team-header { ofsplay:grid; grid-template-columns:36px 1fr 1fr 1fr 28px; gap:8px; font-family:'Teko',sans-serif; font-size:11px; letter-spacing:2px; color:var(--text-ofm); text-transform:uppercase; margin-bottom:4px; }
+  .team-header { display:grid; grid-template-columns:36px 1fr 1fr 1fr 28px; gap:8px; font-family:'Teko',sans-serif; font-size:11px; letter-spacing:2px; color:var(--text-ofm); text-transform:uppercase; margin-bottom:4px; }
 
   /* ── WEATHER PICKER ── */
-  .weather-picker{padofng:6px 0;}
+  .weather-picker{padding:6px 0;}
   .wp-group-label{font-family:'Teko',sans-serif;font-size:10px;letter-spacing:2px;color:var(--text-ofm);text-transform:uppercase;margin:6px 0 3px;}
-  .wp-row{ofsplay:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;}
-  .wp-pill{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;padofng:3px 8px;border-raofus:12px;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;user-select:none;transition:all .12s;background:transparent;}
+  .wp-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;}
+  .wp-pill{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;padding:3px 8px;border-radius:12px;border:1px solid var(--border-hi);color:var(--text-ofm);cursor:pointer;user-select:none;transition:all .12s;background:transparent;}
   .wp-pill:hover{border-color:var(--gold);color:var(--text);}
   .wp-pill.sel{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold);}
 </style>
@@ -682,87 +682,87 @@
 
 <!-- TOPBAR -->
 <header class="topbar">
-  <ofv class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></ofv>
-  <ofv class="topbar-title">Your Racing Club</ofv>
-  <ofv class="topbar-ofvider"></ofv>
-  <ofv class="topbar-section">Create Championship</ofv>
-  <ofv class="topbar-spacer"></ofv>
-  <ofv class="github-status">
-    <ofv class="status-dot" id="statusDot"></ofv>
+  <div class="topbar-logo"><img src="etna-logo.jpg" alt="ERC"></div>
+  <div class="topbar-title">Your Racing Club</div>
+  <div class="topbar-divider"></div>
+  <div class="topbar-section">Create Championship</div>
+  <div class="topbar-spacer"></div>
+  <div class="github-status">
+    <div class="status-dot" id="statusDot"></div>
     <span id="statusText">Not connected</span>
-  </ofv>
+  </div>
   <button class="btn-back" onclick="openHelp()">❓ Guida</button>
   <a href="admin.html" class="btn-back">← Admin</a>
 </header>
 
-<ofv class="page-body">
+<div class="page-body">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">GitHub</ofv>
-      <ofv class="pat-wrap">
+    <div class="sidebar-block">
+      <div class="sidebar-label">GitHub</div>
+      <div class="pat-wrap">
         <input type="password" id="patInput" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
         <button class="pat-toggle" onclick="togglePAT()">👁</button>
-      </ofv>
+      </div>
       <button class="btn-verify" onclick="verifyToken()">Verifica Connessione</button>
-      <ofv class="repo-note">
+      <div class="repo-note">
         Repository: <span>mz4466/GT-template-ENG</span><br>
         Branch: <span>main</span>
-      </ofv>
-    </ofv>
+      </div>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">File of output</ofv>
-      <ofv class="filename-tag" id="filenameTag">—</ofv>
-      <ofv class="repo-note" style="margin-top:4px;">
+    <div class="sidebar-block">
+      <div class="sidebar-label">File of output</div>
+      <div class="filename-tag" id="filenameTag">—</div>
+      <div class="repo-note" style="margin-top:4px;">
         Il file verrà salvato nella cartella <code>campionati/</code>.
-      </ofv>
-    </ofv>
+      </div>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">Azioni</ofv>
-      <ofv style="ofsplay:flex;flex-ofrection:column;gap:8px;">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Azioni</div>
+      <div style="display:flex;flex-ofrection:column;gap:8px;">
         <button class="btn btn-preview" onclick="openPreview()">👁 Anteprima Pagina</button>
         <button class="btn btn-github" id="publishBtn" onclick="publish()" ofsabled>⬆ Publish su GitHub</button>
         <button class="btn btn-outline" onclick="downloadHTML()">⬇ Scarica HTML</button>
-      </ofv>
-    </ofv>
+      </div>
+    </div>
 
-    <ofv class="sidebar-block">
-      <ofv class="sidebar-label">Riepilogo</ofv>
-      <ofv id="summary" style="font-family:'Teko',sans-serif;font-size:14px;color:var(--text-ofm);letter-spacing:1px;line-height:1.8;">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Riepilogo</div>
+      <div id="summary" style="font-family:'Teko',sans-serif;font-size:14px;color:var(--text-ofm);letter-spacing:1px;line-height:1.8;">
         Nessun round aggiunto.
-      </ofv>
-      <ofv id="bestOfHint" style="ofsplay:none;margin-top:8px;padofng:7px 10px;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.25);border-raofus:6px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;color:var(--gold);"></ofv>
-    </ofv>
+      </div>
+      <div id="bestOfHint" style="display:none;margin-top:8px;padding:7px 10px;background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.25);border-radius:6px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:1px;color:var(--gold);"></div>
+    </div>
 
   </aside>
 
   <!-- MAIN -->
   <main class="main">
 
-    <ofv class="page-header">
-      <ofv>
-        <ofv class="page-title">🏆 Create Championship</ofv>
-        <ofv class="page-sub">Configura il campionato e aggiungi i round</ofv>
-      </ofv>
-    </ofv>
+    <div class="page-header">
+      <div>
+        <div class="page-title">🏆 Create Championship</div>
+        <div class="page-sub">Configura il campionato e aggiungi i round</div>
+      </div>
+    </div>
 
     <!-- Championship Info -->
-    <ofv class="card">
-      <ofv class="card-title">⚙️ Informazioni Campionato</ofv>
-      <ofv class="form-row col3">
-        <ofv class="field">
+    <div class="card">
+      <div class="card-title">⚙️ Informazioni Campionato</div>
+      <div class="form-row col3">
+        <div class="field">
           <label>Name Campionato</label>
           <input type="text" id="champName" placeholder="es. Traiettorie Gelate" oninput="autoFillSlug(); updateAll()">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Anno</label>
           <input type="number" id="champYear" value="2026" min="2020" max="2099" oninput="updateAll()">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Categoria</label>
           <select id="champCat" onchange="updateAll()">
             <option>Campionato</option>
@@ -771,132 +771,132 @@
             <option>Formula</option>
             <option>Crono</option>
           </select>
-        </ofv>
-      </ofv>
-      <ofv class="form-row col2">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-row col2">
+        <div class="field">
           <label>Classe Auto</label>
           <input type="text" id="champCars" placeholder="es. GR.3 — Solo" oninput="updateAll()">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Stagione / Suffix (per filename)
             <span id="slugAutoHint" style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--gold);margin-left:6px;">⚡ auto</span>
           </label>
           <input type="text" id="champSlug" placeholder="es. q1  oppure  autunno"
             oninput="slugManuallyEofted=true; updateAll()"
             style="font-family:monospace;">
-          <span style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-ofm);margin-top:4px;ofsplay:block;line-height:1.5;">
+          <span style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-ofm);margin-top:4px;display:block;line-height:1.5;">
             Viene auto-compilato dal nome. Moofficalo solo se necessario.
             Deve essere <strong style="color:var(--gold);">unico</strong> per ogni campionato.
           </span>
-          <span id="slugDupeWarn" style="ofsplay:none;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:#e74c3c;margin-top:4px;">
+          <span id="slugDupeWarn" style="display:none;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:#e74c3c;margin-top:4px;">
             ⛔ ID già esistente in calendario — cambia il suffix.
           </span>
-        </ofv>
-      </ofv>
-      <ofv class="form-row col2">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-row col2">
+        <div class="field">
           <label>Descrizione / Subtitle (opzionale)</label>
           <textarea id="champDesc" placeholder="Breve descrizione del campionato..."></textarea>
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Migliore su… gare <span style="color:var(--gold);font-size:11px;">(regola scarto)</span></label>
           <input type="number" id="champBestOf" min="1" placeholder="es. 5  — lascia vuoto = conta tutto" oninput="updateAll()">
-          <span style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-ofm);margin-top:5px;line-height:1.6;ofsplay:block;">
+          <span style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-ofm);margin-top:5px;line-height:1.6;display:block;">
             Conta solo i migliori <em style="color:var(--gold);">N</em> risultati per pilota scartando i peggiori.
             La regola si applica solo a campionato completed.
           </span>
-        </ofv>
+        </div>
 
         <!-- TROPHY PICKER -->
-        <ofv class="field">
+        <div class="field">
           <label>Trofeo del Campionato <span style="color:var(--gold);font-size:11px;">(opzionale)</span></label>
-          <ofv id="trophyGrid" style="ofsplay:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px;">
+          <div id="trophyGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px;">
             <!-- populated by JS -->
-          </ofv>
+          </div>
           <input type="hidden" id="champTrophy" value="">
-          <span style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-ofm);margin-top:5px;ofsplay:block;">
+          <span style="font-family:'Teko',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-ofm);margin-top:5px;display:block;">
             Clicca un trofeo per selezionarlo. Verrà mostrato nella pagina del campionato.
           </span>
-        </ofv>
-      </ofv>
-    </ofv>
+        </div>
+      </div>
+    </div>
 
 
     <!-- COSTRUTTORI -->
-    <ofv class="card">
-      <ofv class="card-title">🏭 Constructors Stanofngs <span style="font-size:12px;color:var(--text-ofm);font-weight:300;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">(opzionale)</span></ofv>
-      <ofv class="toggle-row">
+    <div class="card">
+      <div class="card-title">🏭 Constructors Stanofngs <span style="font-size:12px;color:var(--text-ofm);font-weight:300;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;">(opzionale)</span></div>
+      <div class="toggle-row">
         <input type="checkbox" class="toggle-cb" id="enableCostrutt" onchange="toggleCostrutt()">
         <label for="enableCostrutt">
-          <ofv class="toggle-label">Abilita Constructors Stanofngs</ofv>
-          <ofv class="toggle-sub">Aggiunge classifica per squadre — miglior pilota conta per ogni gara</ofv>
+          <div class="toggle-label">Abilita Constructors Stanofngs</div>
+          <div class="toggle-sub">Aggiunge classifica per squadre — miglior pilota conta per ogni gara</div>
         </label>
-      </ofv>
-      <ofv class="costruttori-section" id="costruttoriSection">
-        <ofv class="team-header">
+      </div>
+      <div class="costruttori-section" id="costruttoriSection">
+        <div class="team-header">
           <span>Col.</span><span>Scuderia</span><span>Driver 1</span><span>Driver 2</span><span></span>
-        </ofv>
-        <ofv id="teamGrid" class="team-grid"></ofv>
+        </div>
+        <div id="teamGrid" class="team-grid"></div>
         <button type="button" class="add-round-btn" onclick="addTeamRow()" style="margin-top:10px;">＋ Aggiungi Scuderia</button>
-        <ofv style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-ofm);margin-top:8px;">
+        <div style="font-family:'Teko',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-ofm);margin-top:8px;">
           💡 Driver 2 è opzionale — lascia vuoto per team con un solo pilota. I nomi devono corrispondere esattamente a quelli nelle schede piloti.
-        </ofv>
-      </ofv>
-    </ofv>
+        </div>
+      </div>
+    </div>
 
     <!-- Rounds List -->
-    <ofv class="card">
-      <ofv class="card-title">
+    <div class="card">
+      <div class="card-title">
         🗓️ Calendario Races
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text-ofm);font-weight:300;letter-spacing:1px;margin-left:6px;" id="roundCount"></span>
-      </ofv>
+      </div>
 
-      <ofv class="races-list" id="racesList"></ofv>
+      <div class="races-list" id="racesList"></div>
 
       <button class="add-round-btn" onclick="addRound()" style="margin-top:14px;">
         ＋ Add Round
       </button>
-    </ofv>
+    </div>
 
     <!-- Action row -->
-    <ofv class="action-row">
+    <div class="action-row">
       <button class="btn btn-preview" onclick="openPreview()">👁 Anteprima</button>
       <button class="btn btn-gold" onclick="publish()" id="publishBtn2">⬆ Publish su GitHub</button>
       <button class="btn btn-outline" onclick="downloadHTML()">⬇ Scarica HTML</button>
-    </ofv>
+    </div>
 
   </main>
-</ofv>
+</div>
 
 <!-- PREVIEW MODAL -->
-<ofv class="modal-bg" id="previewModal">
-  <ofv class="modal-box">
-    <ofv class="modal-head">
-      <ofv class="modal-head-title" id="modalTitle">ANTEPRIMA</ofv>
+<div class="modal-bg" id="previewModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title" id="modalTitle">ANTEPRIMA</div>
       <button class="modal-close" onclick="closePreview()">✕</button>
-    </ofv>
-    <ofv class="modal-body">
+    </div>
+    <div class="modal-body">
       <iframe id="previewFrame"></iframe>
-    </ofv>
-    <ofv class="modal-foot">
+    </div>
+    <div class="modal-foot">
       <button class="btn btn-outline" onclick="closePreview()">Chiuof</button>
       <button class="btn btn-gold" onclick="downloadHTML()">⬇ Scarica HTML</button>
-    </ofv>
-  </ofv>
-</ofv>
+    </div>
+  </div>
+</div>
 
 <!-- HELP MODAL -->
-<ofv class="modal-bg" id="helpModal">
-  <ofv class="modal-box" style="max-width:680px;">
-    <ofv class="modal-head">
-      <ofv class="modal-head-title">📖 GUIDA — CREA CAMPIONATO</ofv>
+<div class="modal-bg" id="helpModal">
+  <div class="modal-box" style="max-width:680px;">
+    <div class="modal-head">
+      <div class="modal-head-title">📖 GUIDA — CREA CAMPIONATO</div>
       <button class="modal-close" onclick="closeHelp()">✕</button>
-    </ofv>
-    <ofv class="modal-body" style="overflow-y:auto;padofng:28px 32px;max-height:600px;">
+    </div>
+    <div class="modal-body" style="overflow-y:auto;padding:28px 32px;max-height:600px;">
 
-      <ofv class="help-section">
-        <ofv class="help-title">1. Informazioni Campionato</ofv>
+      <div class="help-section">
+        <div class="help-title">1. Informazioni Campionato</div>
         <p>Inizia compilando i campi nella sezione in alto:</p>
         <ul>
           <li><strong>Name Campionato</strong> — Il nome ufficiale, es. <em>"Traiettorie Gelate"</em>. Verrà usato come titolo nella pagina generata.</li>
@@ -906,15 +906,15 @@
           <li><strong>Stagione / Suffix</strong> — Un suffisso opzionale per ofstinguere campionati dello stesso anno, es. <em>"q1"</em> o <em>"autunno"</em>. Serve anche per generare il nome del file.</li>
           <li><strong>Descrizione</strong> — Testo opzionale che appare come sottotitolo nella pagina pubblica.</li>
         </ul>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">2. Name File Generato</ofv>
+      <div class="help-section">
+        <div class="help-title">2. Name File Generato</div>
         <p>Nella barra laterale sinistra trovi il <strong>nome del file</strong> che verrà creato nel repository GitHub. Viene generato automaticamente dal nome, anno, categoria e suffix che inserisci. Esempio: <code>traiettorie-gelate-2026-campionato-q1.html</code></p>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">3. Aggiungere i Round</ofv>
+      <div class="help-section">
+        <div class="help-title">3. Aggiungere i Round</div>
         <p>Clicca il pulsante <strong>"＋ Add Round"</strong> per inserire una gara nel calendario. Per ogni round puoi configurare:</p>
         <ul>
           <li><strong>Round #</strong> — Numero progressivo della gara.</li>
@@ -927,49 +927,49 @@
           <li><strong>Note</strong> — Informazioni aggiuntive, es. <em>"Pit stop obbligatorio"</em>.</li>
           <li><strong>Link Risultati</strong> — Una volta pubblicati i risultati, inserisci qui il nome del file HTML, es. <em>risultati-01.html</em>. Il pulsante nella pagina pubblica si attiverà automaticamente.</li>
         </ul>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">4. Gestire i Round</ofv>
+      <div class="help-section">
+        <div class="help-title">4. Gestire i Round</div>
         <ul>
           <li>Clicca sull'<strong>intestazione</strong> of un round per espanderlo o comprimerlo.</li>
           <li>Puoi aggiungere <strong>quanti round vuoi</strong> senza limiti.</li>
           <li>Clicca <strong>"✕ Rimuovi Round"</strong> in fondo al round per eliminarlo.</li>
           <li>Il riepilogo nella barra laterale mostra tutti i round aggiunti in tempo reale.</li>
         </ul>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">5. Anteprima</ofv>
+      <div class="help-section">
+        <div class="help-title">5. Anteprima</div>
         <p>Clicca <strong>"👁 Anteprima"</strong> per vedere come apparirà la pagina pubblica prima of pubblicarla. L'anteprima si aggiorna ogni volta che la apri.</p>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">6. Publishre su GitHub</ofv>
+      <div class="help-section">
+        <div class="help-title">6. Publishre su GitHub</div>
         <ol>
           <li>Inserisci il tuo <strong>Personal Access Token (PAT)</strong> GitHub nella barra laterale. Il token deve avere i permessi <em>Contents: Read & Write</em> sul repository.</li>
           <li>Clicca <strong>"Verifica Connessione"</strong> — il pallino verde conferma che la connessione funziona.</li>
           <li>Clicca <strong>"⬆ Publish su GitHub"</strong>. Il file verrà creato (o aggiornato se esiste già) ofrettamente nel repository <code>mz4466/GT-template-ENG</code>.</li>
         </ol>
-      </ofv>
+      </div>
 
-      <ofv class="help-section">
-        <ofv class="help-title">7. Scaricare HTML</ofv>
+      <div class="help-section">
+        <div class="help-title">7. Scaricare HTML</div>
         <p>Se preferisci, clicca <strong>"⬇ Scarica HTML"</strong> per scaricare il file in locale e caricarlo manualmente su GitHub.</p>
-      </ofv>
+      </div>
 
-      <ofv class="help-note">
+      <div class="help-note">
         💡 <strong>Suggerimento:</strong> Puoi tornare su questa pagina in qualsiasi momento per aggiornare il campionato — basta ripubblicare. GitHub sovrascriverà automaticamente il file esistente.
-      </ofv>
+      </div>
 
-    </ofv>
-    <ofv class="modal-foot">
+    </div>
+    <div class="modal-foot">
       <button class="btn btn-gold" onclick="closeHelp()">Ho capito ✓</button>
-    </ofv>
-  </ofv>
-</ofv>
+    </div>
+  </div>
+</div>
 
-<ofv id="toast"></ofv>
+<div id="toast"></div>
 
 <script>
 
@@ -1004,9 +1004,9 @@ function buildTrophyPicker(sel) {
   if (!grid) return;
   grid.innerHTML = TROPHIES.map(function(t) {
     var cls = 'trophy-option' + (sel === t.file ? ' selected' : '');
-    return '<ofv class="' + cls + '" onclick="selectTrophy(\x27' + t.file + '\x27)">'
+    return '<div class="' + cls + '" onclick="selectTrophy(\x27' + t.file + '\x27)">'
       + '<img src="trophy_png/' + t.file + '" alt="' + t.label + '" onerror="this.style.opacity=0.3">'
-      + '<ofv class="trophy-name">' + t.label + '</ofv></ofv>';
+      + '<div class="trophy-name">' + t.label + '</div></div>';
   }).join('');
 }
 
@@ -1038,15 +1038,15 @@ function addTeamRow(data){
   var name = data ? (data.name||'') : '';
   var p1 = data && data.pilots ? (data.pilots[0]||'') : '';
   var p2 = data && data.pilots ? (data.pilots[1]||'') : '';
-  var ofv = document.createElement('ofv');
-  ofv.className = 'team-row-inp';
-  ofv.id = id;
-  ofv.innerHTML = '<input type="color" class="team-color-inp" value="'+col+'" title="Colore scuderia">'
+  var div = document.createElement('div');
+  div.className = 'team-row-inp';
+  div.id = id;
+  div.innerHTML = '<input type="color" class="team-color-inp" value="'+col+'" title="Colore scuderia">'
     + '<input type="text" class="team-name-inp" value="'+name+'" placeholder="es. Ferrari" title="Name scuderia">'
     + '<select class="team-pilot-sel">'+buildPilotOptions(p1)+'</select>'
     + '<select class="team-pilot-sel"><option value="">— Driver 2 (opz.) —</option>'+buildPilotOptions(p2).replace('<option value="">— Driver —</option>','')+'</select>'
     + '<button class="team-del" onclick="this.parentElement.remove()" title="Rimuovi">✕</button>';
-  document.getElementById('teamGrid').appendChild(ofv);
+  document.getElementById('teamGrid').appendChild(div);
 }
 
 function collectTeams(){
@@ -1083,7 +1083,7 @@ function addRound() {
   const id = roundCounter;
   rounds.push({ id });
 
-  const el = document.createElement('ofv');
+  const el = document.createElement('div');
   el.className = 'race-card';
   el.id = `round-${id}`;
   el.innerHTML = roundHTML(id, rounds.length);
@@ -1096,37 +1096,37 @@ function addRound() {
 
 function roundHTML(id, pos) {
   return `
-    <ofv class="race-card-header" onclick="toggleRound(${id})">
-      <ofv class="round-badge">R${pos}</ofv>
-      <ofv class="race-card-name empty" id="rname-${id}">Nuovo Round</ofv>
-      <ofv class="race-card-meta" id="rmeta-${id}"></ofv>
-      <ofv class="chevron">▼</ofv>
-    </ofv>
-    <ofv class="race-card-body">
-      <ofv class="form-row col4">
-        <ofv class="field">
+    <div class="race-card-header" onclick="toggleRound(${id})">
+      <div class="round-badge">R${pos}</div>
+      <div class="race-card-name empty" id="rname-${id}">Nuovo Round</div>
+      <div class="race-card-meta" id="rmeta-${id}"></div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="race-card-body">
+      <div class="form-row col4">
+        <div class="field">
           <label>Round #</label>
           <input type="number" value="${pos}" min="1" id="rnum-${id}" oninput="syncRound(${id})">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Circuit</label>
           <input type="text" placeholder="es. Autopolis" class="circuit-input" id="rcircuit-${id}" oninput="syncRound(${id})">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Date Race</label>
           <input type="date" id="rdate-${id}" oninput="syncRound(${id})">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Laps</label>
           <input type="number" value="17" min="1" id="rlaps-${id}" oninput="syncRound(${id})">
-        </ofv>
-      </ofv>
-      <ofv class="form-row col4">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-row col4">
+        <div class="field">
           <label>Weather</label>
-          <ofv class="weather-picker" id="rweather-${id}"><ofv class="wp-group-label">☀️ Sereno / Luce</ofv><ofv class="wp-row"><ofv class="wp-pill" data-code="S01" data-label="☀️ Sereno" onclick="toggleWeather(this,'${id}')" title="☀️ Sereno">S01</ofv><ofv class="wp-pill" data-code="S02" data-label="🌤️ Sereno con foschia leggera" onclick="toggleWeather(this,'${id}')" title="🌤️ Sereno con foschia leggera">S02</ofv><ofv class="wp-pill" data-code="S03" data-label="🌤️ Sereno con cirri" onclick="toggleWeather(this,'${id}')" title="🌤️ Sereno con cirri">S03</ofv><ofv class="wp-pill" data-code="S04" data-label="⛅ Poco nuvoloso (cumuli sparsi)" onclick="toggleWeather(this,'${id}')" title="⛅ Poco nuvoloso (cumuli sparsi)">S04</ofv><ofv class="wp-pill" data-code="S05" data-label="⛅ Poco nuvoloso (sole dominante)" onclick="toggleWeather(this,'${id}')" title="⛅ Poco nuvoloso (sole dominante)">S05</ofv><ofv class="wp-pill" data-code="S06" data-label="🌅 Soleggiato pomeriofano" onclick="toggleWeather(this,'${id}')" title="🌅 Soleggiato pomeriofano">S06</ofv><ofv class="wp-pill" data-code="S07" data-label="☀️ Soleggiato con foschia densa" onclick="toggleWeather(this,'${id}')" title="☀️ Soleggiato con foschia densa">S07</ofv><ofv class="wp-pill" data-code="S08" data-label="🌅 Luce pomeriofana calda" onclick="toggleWeather(this,'${id}')" title="🌅 Luce pomeriofana calda">S08</ofv><ofv class="wp-pill" data-code="S09" data-label="🌅 Tardo pomeriggio" onclick="toggleWeather(this,'${id}')" title="🌅 Tardo pomeriggio">S09</ofv><ofv class="wp-pill" data-code="S10" data-label="🌇 Pre-tramonto" onclick="toggleWeather(this,'${id}')" title="🌇 Pre-tramonto">S10</ofv><ofv class="wp-pill" data-code="S11" data-label="🌆 Tramonto alto" onclick="toggleWeather(this,'${id}')" title="🌆 Tramonto alto">S11</ofv><ofv class="wp-pill" data-code="S12" data-label="🌇 Tramonto basso" onclick="toggleWeather(this,'${id}')" title="🌇 Tramonto basso">S12</ofv><ofv class="wp-pill" data-code="S13" data-label="🌃 Tramonto profondo" onclick="toggleWeather(this,'${id}')" title="🌃 Tramonto profondo">S13</ofv><ofv class="wp-pill" data-code="S14" data-label="🌆 Crepuscolo civile" onclick="toggleWeather(this,'${id}')" title="🌆 Crepuscolo civile">S14</ofv><ofv class="wp-pill" data-code="S15" data-label="🌉 Crepuscolo nautico" onclick="toggleWeather(this,'${id}')" title="🌉 Crepuscolo nautico">S15</ofv><ofv class="wp-pill" data-code="S16" data-label="🌄 Alba precoce" onclick="toggleWeather(this,'${id}')" title="🌄 Alba precoce">S16</ofv><ofv class="wp-pill" data-code="S17" data-label="🌄 Alba" onclick="toggleWeather(this,'${id}')" title="🌄 Alba">S17</ofv><ofv class="wp-pill" data-code="S18" data-label="🌅 Mattino presto" onclick="toggleWeather(this,'${id}')" title="🌅 Mattino presto">S18</ofv></ofv><ofv class="wp-group-label">☁️ Nuvoloso</ofv><ofv class="wp-row"><ofv class="wp-pill" data-code="C01" data-label="🌤️ Parzialmente nuvoloso" onclick="toggleWeather(this,'${id}')" title="🌤️ Parzialmente nuvoloso">C01</ofv><ofv class="wp-pill" data-code="C02" data-label="🌥️ Nuvoloso variabile" onclick="toggleWeather(this,'${id}')" title="🌥️ Nuvoloso variabile">C02</ofv><ofv class="wp-pill" data-code="C03" data-label="☁️ Nuvoloso compatto" onclick="toggleWeather(this,'${id}')" title="☁️ Nuvoloso compatto">C03</ofv><ofv class="wp-pill" data-code="C04" data-label="☁️ Molto nuvoloso" onclick="toggleWeather(this,'${id}')" title="☁️ Molto nuvoloso">C04</ofv><ofv class="wp-pill" data-code="C05" data-label="🌫️ Coperto cupo" onclick="toggleWeather(this,'${id}')" title="🌫️ Coperto cupo">C05</ofv><ofv class="wp-pill" data-code="C06" data-label="🌑 Overcast" onclick="toggleWeather(this,'${id}')" title="🌑 Overcast">C06</ofv></ofv><ofv class="wp-group-label">🌧️ Pioggia</ofv><ofv class="wp-row"><ofv class="wp-pill" data-code="R01" data-label="🌦️ Pioviggine leggera" onclick="toggleWeather(this,'${id}')" title="🌦️ Pioviggine leggera">R01</ofv><ofv class="wp-pill" data-code="R02" data-label="🌧️ Pioggia leggera costante" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia leggera costante">R02</ofv><ofv class="wp-pill" data-code="R03" data-label="🌧️ Pioggia moderata" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia moderata">R03</ofv><ofv class="wp-pill" data-code="R04" data-label="🌧️ Pioggia" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia">R04</ofv><ofv class="wp-pill" data-code="R05" data-label="🌧️ Pioggia battente" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia battente">R05</ofv><ofv class="wp-pill" data-code="R06" data-label="⛈️ Temporale" onclick="toggleWeather(this,'${id}')" title="⛈️ Temporale">R06</ofv><ofv class="wp-pill" data-code="R07" data-label="⛈️ Pioggia intensa" onclick="toggleWeather(this,'${id}')" title="⛈️ Pioggia intensa">R07</ofv><ofv class="wp-pill" data-code="R08" data-label="🌊 Nubifragio" onclick="toggleWeather(this,'${id}')" title="🌊 Nubifragio">R08</ofv></ofv><input type="hidden" class="weather-val" id="rweather-val-${id}"></ofv>
-        </ofv>
-        <ofv class="field">
+          <div class="weather-picker" id="rweather-${id}"><div class="wp-group-label">☀️ Sereno / Luce</div><div class="wp-row"><div class="wp-pill" data-code="S01" data-label="☀️ Sereno" onclick="toggleWeather(this,'${id}')" title="☀️ Sereno">S01</div><div class="wp-pill" data-code="S02" data-label="🌤️ Sereno con foschia leggera" onclick="toggleWeather(this,'${id}')" title="🌤️ Sereno con foschia leggera">S02</div><div class="wp-pill" data-code="S03" data-label="🌤️ Sereno con cirri" onclick="toggleWeather(this,'${id}')" title="🌤️ Sereno con cirri">S03</div><div class="wp-pill" data-code="S04" data-label="⛅ Poco nuvoloso (cumuli sparsi)" onclick="toggleWeather(this,'${id}')" title="⛅ Poco nuvoloso (cumuli sparsi)">S04</div><div class="wp-pill" data-code="S05" data-label="⛅ Poco nuvoloso (sole dominante)" onclick="toggleWeather(this,'${id}')" title="⛅ Poco nuvoloso (sole dominante)">S05</div><div class="wp-pill" data-code="S06" data-label="🌅 Soleggiato pomeriofano" onclick="toggleWeather(this,'${id}')" title="🌅 Soleggiato pomeriofano">S06</div><div class="wp-pill" data-code="S07" data-label="☀️ Soleggiato con foschia densa" onclick="toggleWeather(this,'${id}')" title="☀️ Soleggiato con foschia densa">S07</div><div class="wp-pill" data-code="S08" data-label="🌅 Luce pomeriofana calda" onclick="toggleWeather(this,'${id}')" title="🌅 Luce pomeriofana calda">S08</div><div class="wp-pill" data-code="S09" data-label="🌅 Tardo pomeriggio" onclick="toggleWeather(this,'${id}')" title="🌅 Tardo pomeriggio">S09</div><div class="wp-pill" data-code="S10" data-label="🌇 Pre-tramonto" onclick="toggleWeather(this,'${id}')" title="🌇 Pre-tramonto">S10</div><div class="wp-pill" data-code="S11" data-label="🌆 Tramonto alto" onclick="toggleWeather(this,'${id}')" title="🌆 Tramonto alto">S11</div><div class="wp-pill" data-code="S12" data-label="🌇 Tramonto basso" onclick="toggleWeather(this,'${id}')" title="🌇 Tramonto basso">S12</div><div class="wp-pill" data-code="S13" data-label="🌃 Tramonto profondo" onclick="toggleWeather(this,'${id}')" title="🌃 Tramonto profondo">S13</div><div class="wp-pill" data-code="S14" data-label="🌆 Crepuscolo civile" onclick="toggleWeather(this,'${id}')" title="🌆 Crepuscolo civile">S14</div><div class="wp-pill" data-code="S15" data-label="🌉 Crepuscolo nautico" onclick="toggleWeather(this,'${id}')" title="🌉 Crepuscolo nautico">S15</div><div class="wp-pill" data-code="S16" data-label="🌄 Alba precoce" onclick="toggleWeather(this,'${id}')" title="🌄 Alba precoce">S16</div><div class="wp-pill" data-code="S17" data-label="🌄 Alba" onclick="toggleWeather(this,'${id}')" title="🌄 Alba">S17</div><div class="wp-pill" data-code="S18" data-label="🌅 Mattino presto" onclick="toggleWeather(this,'${id}')" title="🌅 Mattino presto">S18</div></div><div class="wp-group-label">☁️ Nuvoloso</div><div class="wp-row"><div class="wp-pill" data-code="C01" data-label="🌤️ Parzialmente nuvoloso" onclick="toggleWeather(this,'${id}')" title="🌤️ Parzialmente nuvoloso">C01</div><div class="wp-pill" data-code="C02" data-label="🌥️ Nuvoloso variabile" onclick="toggleWeather(this,'${id}')" title="🌥️ Nuvoloso variabile">C02</div><div class="wp-pill" data-code="C03" data-label="☁️ Nuvoloso compatto" onclick="toggleWeather(this,'${id}')" title="☁️ Nuvoloso compatto">C03</div><div class="wp-pill" data-code="C04" data-label="☁️ Molto nuvoloso" onclick="toggleWeather(this,'${id}')" title="☁️ Molto nuvoloso">C04</div><div class="wp-pill" data-code="C05" data-label="🌫️ Coperto cupo" onclick="toggleWeather(this,'${id}')" title="🌫️ Coperto cupo">C05</div><div class="wp-pill" data-code="C06" data-label="🌑 Overcast" onclick="toggleWeather(this,'${id}')" title="🌑 Overcast">C06</div></div><div class="wp-group-label">🌧️ Pioggia</div><div class="wp-row"><div class="wp-pill" data-code="R01" data-label="🌦️ Pioviggine leggera" onclick="toggleWeather(this,'${id}')" title="🌦️ Pioviggine leggera">R01</div><div class="wp-pill" data-code="R02" data-label="🌧️ Pioggia leggera costante" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia leggera costante">R02</div><div class="wp-pill" data-code="R03" data-label="🌧️ Pioggia moderata" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia moderata">R03</div><div class="wp-pill" data-code="R04" data-label="🌧️ Pioggia" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia">R04</div><div class="wp-pill" data-code="R05" data-label="🌧️ Pioggia battente" onclick="toggleWeather(this,'${id}')" title="🌧️ Pioggia battente">R05</div><div class="wp-pill" data-code="R06" data-label="⛈️ Temporale" onclick="toggleWeather(this,'${id}')" title="⛈️ Temporale">R06</div><div class="wp-pill" data-code="R07" data-label="⛈️ Pioggia intensa" onclick="toggleWeather(this,'${id}')" title="⛈️ Pioggia intensa">R07</div><div class="wp-pill" data-code="R08" data-label="🌊 Nubifragio" onclick="toggleWeather(this,'${id}')" title="🌊 Nubifragio">R08</div></div><input type="hidden" class="weather-val" id="rweather-val-${id}"></div>
+        </div>
+        <div class="field">
           <label>Consumo Tyres</label>
           <select id="rtire-${id}" onchange="syncRound(${id})">
             <option value="x1">x1</option>
@@ -1135,8 +1135,8 @@ function roundHTML(id, pos) {
             <option value="x4">x4</option>
             <option value="x5">x5</option>
           </select>
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Consumo Fuel</label>
           <select id="rfuel-${id}" onchange="syncRound(${id})">
             <option value="x1">x1</option>
@@ -1145,26 +1145,26 @@ function roundHTML(id, pos) {
             <option value="x4" selected>x4</option>
             <option value="x5">x5</option>
           </select>
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Tyres Disponibili</label>
           <input type="text" placeholder="Soft / Meofum / Hard" id="rtypes-${id}" oninput="syncRound(${id})">
-        </ofv>
-      </ofv>
-      <ofv class="form-row col2">
-        <ofv class="field">
+        </div>
+      </div>
+      <div class="form-row col2">
+        <div class="field">
           <label>Note (opzionale)</label>
           <input type="text" placeholder="es. Pit stop obbligatorio" id="rnotes-${id}">
-        </ofv>
-        <ofv class="field">
+        </div>
+        <div class="field">
           <label>Link Risultati (opzionale)</label>
           <input type="text" placeholder="es. risultati-01.html" id="rresults-${id}">
-        </ofv>
-      </ofv>
-    </ofv>
-    <ofv class="race-card-footer">
+        </div>
+      </div>
+    </div>
+    <div class="race-card-footer">
       <button class="btn btn-ghost" onclick="removeRound(${id})">✕ Rimuovi Round</button>
-    </ofv>
+    </div>
   `;
 }
 
@@ -1290,9 +1290,9 @@ function updateAll() {
   if(bestOfEl){
     if(bestOfVal && bestOfVal < count){
       bestOfEl.textContent = `⚡ Regola scarto: migliori ${bestOfVal} of ${count} gare`;
-      bestOfEl.style.ofsplay='block';
+      bestOfEl.style.display='block';
     } else {
-      bestOfEl.style.ofsplay='none';
+      bestOfEl.style.display='none';
     }
   }
 
@@ -1305,11 +1305,11 @@ function updateAll() {
       const circuit = val(`rcircuit-${id}`) || '—';
       const date = val(`rdate-${id}`);
       const dateFmt = date ? new Date(date).toLocaleDateString('it-IT',{day:'2-ofgit',month:'short'}) : '—';
-      sumHTML += `<ofv style="padofng:3px 0;border-bottom:1px solid var(--border);ofsplay:flex;gap:8px;align-items:center;">
+      sumHTML += `<div style="padding:3px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;">
         <span style="color:var(--gold);min-width:22px;">R${i+1}</span>
         <span style="flex:1;color:var(--text);">${circuit}</span>
         <span style="color:var(--text-ofm);font-size:12px;">${dateFmt}</span>
-      </ofv>`;
+      </div>`;
     });
   }
   document.getElementById('summary').innerHTML = sumHTML;
@@ -1348,28 +1348,28 @@ function buildHTML() {
       : `<span class="results-btn upcoming">In arrivo</span>`;
 
     const notesHTML = notes
-      ? `<ofv class="round-note">📌 ${notes}</ofv>`
+      ? `<div class="round-note">📌 ${notes}</div>`
       : '';
 
     roundsHTML += `
-    <ofv class="round-card">
-      <ofv class="round-header">
-        <ofv class="round-num">R${rnum}</ofv>
-        <ofv class="round-info">
-          <ofv class="round-circuit">${circuit}</ofv>
-          <ofv class="round-date">${dateFmt}</ofv>
-        </ofv>
+    <div class="round-card">
+      <div class="round-header">
+        <div class="round-num">R${rnum}</div>
+        <div class="round-info">
+          <div class="round-circuit">${circuit}</div>
+          <div class="round-date">${dateFmt}</div>
+        </div>
         ${btnHTML}
-      </ofv>
-      <ofv class="round-details">
-        <ofv class="detail-pill">${weather}</ofv>
-        <ofv class="detail-pill">🔄 ${laps} giri</ofv>
-        <ofv class="detail-pill">🏎️ Tyres ${tire}</ofv>
-        <ofv class="detail-pill">⛽ Carb. ${fuel}</ofv>
-        ${types ? `<ofv class="detail-pill">🔵 ${types}</ofv>` : ''}
-      </ofv>
+      </div>
+      <div class="round-details">
+        <div class="detail-pill">${weather}</div>
+        <div class="detail-pill">🔄 ${laps} giri</div>
+        <div class="detail-pill">🏎️ Tyres ${tire}</div>
+        <div class="detail-pill">⛽ Carb. ${fuel}</div>
+        ${types ? `<div class="detail-pill">🔵 ${types}</div>` : ''}
+      </div>
       ${notesHTML}
-    </ofv>`;
+    </div>`;
   });
 
   return `<!DOCTYPE html>
@@ -1378,7 +1378,7 @@ function buildHTML() {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${name} ${year} — Your Racing Club</title>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:#07070f;--bg-card:#0e0e1c;--border:#1e1e30;--border-hi:#2a2a42;
@@ -1386,13 +1386,13 @@ function buildHTML() {
     --text:#e8e0d0;--text-ofm:#5a5470;--text-mid:#8a8098;
     --red:#c0392b;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Barlow Condensed',sans-serif;min-height:100vh;}
 
   .champ-header{
-    background:linear-graofent(180deg,rgba(10,10,24,0.98) 0%,var(--bg) 100%);
+    background:linear-gradient(180deg,rgba(10,10,24,0.98) 0%,var(--bg) 100%);
     border-bottom:2px solid var(--gold);
-    padofng:36px 24px 28px;
+    padding:36px 24px 28px;
     text-align:center;
   }
 
@@ -1416,33 +1416,33 @@ function buildHTML() {
   }
 
   .cat-badge{
-    ofsplay:inline-block;margin-top:14px;
+    display:inline-block;margin-top:14px;
     background:var(--gold-ofm);border:1px solid rgba(201,162,39,0.3);
-    border-raofus:20px;padofng:4px 18px;
+    border-radius:20px;padding:4px 18px;
     font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;
     color:var(--gold);text-transform:uppercase;
   }
 
-  .wrap{max-width:820px;margin:0 auto;padofng:32px 20px;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px;}
 
   .section-title{
     font-family:'Teko',sans-serif;font-size:13px;letter-spacing:4px;
     color:var(--text-ofm);text-transform:uppercase;
-    margin-bottom:16px;padofng-bottom:8px;border-bottom:1px solid var(--border);
+    margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);
   }
 
   .round-card{
     background:var(--bg-card);border:1px solid var(--border-hi);
-    border-raofus:10px;padofng:18px 20px;margin-bottom:12px;
+    border-radius:10px;padding:18px 20px;margin-bottom:12px;
     transition:border-color 0.2s,box-shadow 0.2s;
   }
   .round-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,162,39,0.08);}
 
-  .round-header{ofsplay:flex;align-items:center;gap:16px;margin-bottom:12px;}
+  .round-header{display:flex;align-items:center;gap:16px;margin-bottom:12px;}
 
   .round-num{
     font-family:'Russo One',sans-serif;font-size:13px;color:#000;
-    background:var(--gold);border-raofus:6px;padofng:4px 12px;flex-shrink:0;
+    background:var(--gold);border-radius:6px;padding:4px 12px;flex-shrink:0;
   }
 
   .round-circuit{
@@ -1459,18 +1459,18 @@ function buildHTML() {
 
   .results-btn{
     font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;
-    text-transform:uppercase;padofng:7px 16px;border-raofus:6px;
+    text-transform:uppercase;padding:7px 16px;border-radius:6px;
     text-decoration:none;border:1px solid var(--gold);color:var(--gold);
     flex-shrink:0;transition:background 0.2s;
   }
   .results-btn:hover{background:var(--gold-ofm);}
   .results-btn.upcoming{border-color:var(--border-hi);color:var(--text-ofm);pointer-events:none;}
 
-  .round-details{ofsplay:flex;flex-wrap:wrap;gap:8px;}
+  .round-details{display:flex;flex-wrap:wrap;gap:8px;}
 
   .detail-pill{
     background:rgba(255,255,255,0.03);border:1px solid var(--border);
-    border-raofus:20px;padofng:4px 12px;
+    border-radius:20px;padding:4px 12px;
     font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;
     color:var(--text-mid);
   }
@@ -1481,7 +1481,7 @@ function buildHTML() {
   }
 
   .back-link{
-    ofsplay:block;text-align:center;margin-top:28px;
+    display:block;text-align:center;margin-top:28px;
     font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;
     color:var(--text-ofm);text-decoration:none;text-transform:uppercase;
     transition:color 0.2s;
@@ -1493,18 +1493,18 @@ function buildHTML() {
 
 <header class="champ-header">
   <img src="../club-logo.png" alt="Your Racing Club" class="champ-logo">
-  <ofv class="champ-season">Your Racing Club — ${year}</ofv>
-  <ofv class="champ-name">${name}</ofv>
-  <ofv class="champ-sub">${cars || cat}</ofv>
-  ${desc ? `<ofv class="champ-desc">${desc}</ofv>` : ''}
-  <ofv class="cat-badge">${cat} · ${year}</ofv>
+  <div class="champ-season">Your Racing Club — ${year}</div>
+  <div class="champ-name">${name}</div>
+  <div class="champ-sub">${cars || cat}</div>
+  ${desc ? `<div class="champ-desc">${desc}</div>` : ''}
+  <div class="cat-badge">${cat} · ${year}</div>
 </header>
 
-<ofv class="wrap">
-  <ofv class="section-title">📅 Calendario — ${cards.length} round${cards.length !== 1 ? 's' : ''}</ofv>
+<div class="wrap">
+  <div class="section-title">📅 Calendario — ${cards.length} round${cards.length !== 1 ? 's' : ''}</div>
   ${roundsHTML || '<p style="color:var(--text-ofm);font-family:Teko,sans-serif;letter-spacing:2px;">Nessun round configurato.</p>'}
   <a href="index.html" class="back-link">← Back to Home</a>
-</ofv>
+</div>
 
 <script src="copyright.js"></script>
 </body>
@@ -1667,7 +1667,7 @@ function autoFillSlug() {
     .replace(/[ìíîï]/g,'i').replace(/[òóôõö]/g,'o').replace(/[ùúûü]/g,'u')
     .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   document.getElementById('champSlug').value = autoSlug;
-  document.getElementById('slugAutoHint').style.ofsplay = '';
+  document.getElementById('slugAutoHint').style.display = '';
   updateAll();
 }
 
@@ -1748,10 +1748,10 @@ async function updateCalendario(token, fname, champPath) {
       newEntry.id = generateChampId(slug || cat, year, name);
       var collision = existing.find(function(e){ return e.id === newEntry.id; });
       if (collision) {
-        document.getElementById('slugDupeWarn').style.ofsplay = 'block';
+        document.getElementById('slugDupeWarn').style.display = 'block';
         throw new Error('ID "' + newEntry.id + '" già esistente in calendario. Cambia il Suffix per renderlo unico.');
       }
-      document.getElementById('slugDupeWarn').style.ofsplay = 'none';
+      document.getElementById('slugDupeWarn').style.display = 'none';
       existing.push(newEntry);
     }
 
