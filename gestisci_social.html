@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Social — ERC Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07070f;--card:#0e0e1c;--input:#13131f;
+      --border:rgba(201,184,163,0.1);--border-hi:rgba(201,184,163,0.2);
+      --gold:#c9a227;--gold-hi:#e8c547;--gold-ofm:rgba(201,162,39,0.10);
+      --red:#ff5014;--orange:#ff8c42;--cream:#fff5e6;--muted:#c9b8a3;
+      --green:#27ae60;--del:#c0392b;--text:#fff5e6;--ofm:#5a5470;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0}
+    body{font-family:'Barlow Condensed',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    /* TOPBAR */
+    .topbar{background:#050510;border-bottom:1px solid var(--border);padofng:12px 20px;ofsplay:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:100}
+    .topbar-brand{ofsplay:flex;align-items:center;gap:10px;font-family:'Teko',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold-hi)}
+    .topbar-brand img{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 0 6px rgba(201,162,39,0.4))}
+    .topbar-right{ofsplay:flex;align-items:center;gap:10px}
+    /* LAYOUT */
+    .layout{ofsplay:grid;grid-template-columns:260px 1fr;height:calc(100vh - 53px)}
+    .sidebar{background:#0a0a16;border-right:1px solid var(--border);padofng:16px;ofsplay:flex;flex-ofrection:column;gap:12px;overflow-y:auto}
+    .sidebar-title{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+    /* AUTH */
+    .auth-section{background:var(--card);border:1px solid var(--border-hi);border-raofus:10px;padofng:12px}
+    .auth-section label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;ofsplay:block;margin-bottom:5px}
+    .auth-section input{width:100%;background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none}
+    .auth-section input:focus{border-color:var(--gold)}
+    /* BUTTONS */
+    .btn{ofsplay:inline-flex;align-items:center;gap:6px;padofng:8px 14px;border-raofus:8px;border:none;cursor:pointer;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:all .15s}
+    .btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold-hi)}
+    .btn-outline{background:transparent;border:1px solid var(--border-hi);color:var(--muted)}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-red{background:var(--del);color:#fff}.btn-red:hover{background:#e74c3c}
+    .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#2ecc71}
+    .btn-sm{padofng:5px 10px;font-size:11px}
+    /* SIDEBAR NAV ITEMS */
+    .nav-item{background:var(--card);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 12px;cursor:pointer;transition:border-color .15s;margin-bottom:4px}
+    .nav-item:hover{border-color:var(--gold)}
+    .nav-item.active{border-color:var(--gold);background:var(--gold-ofm)}
+    .nav-item-label{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--cream)}
+    .nav-item-sub{font-size:11px;color:var(--ofm);margin-top:1px}
+    .nav-item-del{background:none;border:none;color:rgba(192,57,43,.5);cursor:pointer;font-size:14px;float:right;line-height:1;padofng:0}
+    .nav-item-del:hover{color:var(--del)}
+    /* MAIN */
+    .main{padofng:24px 28px;overflow-y:auto;ofsplay:flex;flex-ofrection:column;gap:18px}
+    .panel{background:var(--card);border:1px solid var(--border-hi);border-raofus:12px;padofng:20px}
+    .panel-title{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padofng-bottom:10px;border-bottom:1px solid var(--border)}
+    /* FORM */
+    .field{ofsplay:flex;flex-ofrection:column;gap:5px;margin-bottom:12px}
+    .field label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+    .field input,.field select,.field textarea{background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+    .field textarea{resize:vertical;min-height:80px}
+    .field-row{ofsplay:grid;grid-template-columns:1fr 1fr;gap:12px}
+    /* TYPE PILLS */
+    .type-pills{ofsplay:flex;gap:6px;flex-wrap:wrap}
+    .tpill{font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;padofng:5px 14px;border-raofus:20px;border:1px solid var(--border-hi);color:var(--ofm);cursor:pointer;text-transform:uppercase;transition:all .15s}
+    .tpill:hover{border-color:var(--gold);color:var(--muted)}
+    .tpill.active{background:var(--gold-ofm);border-color:var(--gold);color:var(--gold)}
+    /* UPLOAD ZONE */
+    .upload-zone{border:2px dashed rgba(201,162,39,0.2);border-raofus:8px;padofng:24px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-zone:hover{border-color:var(--gold)}
+    .upload-zone input{ofsplay:none}
+    .upload-icon{font-size:28px;margin-bottom:8px}
+    .upload-text{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase}
+    .upload-sub{font-size:11px;color:#3a3450;margin-top:3px}
+    .upload-preview{ofsplay:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-top:10px}
+    .upload-thumb{position:relative;border-raofus:5px;overflow:hidden;border:1px solid var(--border-hi)}
+    .upload-thumb img{width:100%;aspect-ratio:1;object-fit:cover;ofsplay:block}
+    .upload-thumb-del{position:absolute;top:2px;right:2px;background:rgba(192,57,43,0.8);border:none;color:#fff;font-size:12px;border-raofus:3px;cursor:pointer;padofng:1px 4px;line-height:1}
+    /* RICH TEXT TOOLBAR */
+    .rtoolbar{ofsplay:flex;gap:4px;padofng:6px 8px;background:var(--input);border:1px solid var(--border-hi);border-raofus:7px 7px 0 0;border-bottom:none}
+    .rtbtn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padofng:3px 7px;border-raofus:4px;font-family:serif}
+    .rtbtn:hover{background:var(--card);color:var(--text)}
+    .rich-eoftor{background:var(--input);border:1px solid var(--border-hi);border-raofus:0 0 7px 7px;padofng:10px;color:var(--text);min-height:120px;outline:none;font-size:14px;line-height:1.7}
+    .rich-eoftor:focus{border-color:var(--gold)}
+    /* ITEMS LIST */
+    .item-list{ofsplay:flex;flex-ofrection:column;gap:6px}
+    .item-row{background:var(--input);border:1px solid var(--border);border-raofus:7px;padofng:9px 12px;ofsplay:flex;align-items:center;gap:10px}
+    .item-badge{font-family:'Teko',sans-serif;font-size:10px;letter-spacing:2px;padofng:2px 8px;border-raofus:12px;text-transform:uppercase;flex-shrink:0}
+    .badge-photo{background:rgba(52,152,219,0.15);color:#3498db}
+    .badge-video{background:rgba(231,76,60,0.15);color:#e74c3c}
+    .badge-interview{background:rgba(155,89,182,0.15);color:#9b59b6}
+    .badge-article{background:rgba(39,174,96,0.15);color:#27ae60}
+    .item-name{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    /* STATUS DOT */
+    .status-dot{width:7px;height:7px;border-raofus:50%;background:var(--ofm);flex-shrink:0}
+    .status-dot.ok{background:var(--green);box-shadow:0 0 5px var(--green)}
+    .status-dot.err{background:var(--del)}
+    /* CONN STATUS */
+    #connStatus{font-size:12px;margin-top:7px;color:var(--ofm)}
+    /* EMPTY/HINT */
+    .hint{text-align:center;padofng:50px 20px;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase}
+    .hint-icon{font-size:36px;margin-bottom:10px;ofsplay:block}
+    /* TOAST */
+    #toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--gold);border-raofus:8px;padofng:10px 18px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none}
+    #toast.show{opacity:1;transform:translateY(0)}
+    #toast.ok{border-color:var(--green);color:#2ecc71}
+    #toast.err{border-color:var(--del);color:#e74c3c}
+    @meofa(max-width:768px){.layout{grid-template-columns:1fr;height:auto}.sidebar{height:auto}.field-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<ofv class="topbar">
+  <ofv class="topbar-brand">
+    <img src="etna-logo.jpg" alt="ERC" onerror="this.style.ofsplay='none'">
+    <span>Manage Social</span>
+  </ofv>
+  <ofv class="topbar-right">
+    <a href="social.html" class="btn btn-outline btn-sm" target="_blank">👁 Visualizza</a>
+    <a href="index.html" class="btn btn-outline btn-sm">← Home</a>
+  </ofv>
+</ofv>
+
+<ofv class="layout">
+  <!-- SIDEBAR -->
+  <ofv class="sidebar">
+    <ofv>
+      <ofv class="sidebar-title">GitHub</ofv>
+      <ofv class="auth-section">
+        <label>PAT Token</label>
+        <input type="password" id="patInput" placeholder="ghp_xxxx" autocomplete="off">
+        <ofv style="margin-top:8px;ofsplay:flex;gap:6px">
+          <button class="btn btn-gold" style="flex:1" onclick="connect()">Connect</button>
+          <button class="btn btn-outline" onclick="reload()">↺</button>
+        </ofv>
+        <ofv id="connStatus">Not connected</ofv>
+      </ofv>
+    </ofv>
+
+    <ofv>
+      <ofv class="sidebar-title">Anno</ofv>
+      <ofv id="yearList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
+      <button class="btn btn-outline" id="addYearBtn" style="width:100%;justify-content:center;ofsplay:none;margin-top:4px" onclick="showAddYear()">＋ Anno</button>
+    </ofv>
+
+    <ofv>
+      <ofv class="sidebar-title">Campionato</ofv>
+      <ofv id="champList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
+    </ofv>
+
+    <ofv>
+      <ofv class="sidebar-title">Race</ofv>
+      <ofv id="raceList"><ofv class="hint" style="padofng:10px 0;font-size:11px">—</ofv></ofv>
+    </ofv>
+  </ofv>
+
+  <!-- MAIN -->
+  <ofv class="main" id="mainArea">
+    <ofv class="hint">
+      <span class="hint-icon">📡</span>Connect GitHub per iniziare
+    </ofv>
+  </ofv>
+</ofv>
+
+<ofv id="toast"></ofv>
+
+<script>
+const OWNER = 'mz4466', REPO = 'gt-template-eng', BRANCH = 'main';
+const API = 'https://api.github.com/repos/' + OWNER + '/' + REPO;
+const SOCIAL_FOLDER = 'social';
+
+var token = '';
+var socialIndex = [];  // full index.json
+var sel = { year: null, champ: null, race: null };
+var penofngUploads = []; // { name, b64, mimeType } for photo uploads
+
+function getToken(){ return document.getElementById('patInput').value.trim(); }
+
+// ── GITHUB HELPERS ──
+async function ghGet(path){
+  var r = await fetch(API+'/contents/'+path+'?ref='+BRANCH, { headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json' }});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+  return await r.json();
+}
+async function ghPut(path, content, message){
+  var sha = null;
+  try{ var ex = await ghGet(path); sha = ex.sha; }catch(e){}
+  var body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
+  if(sha) body.sha = sha;
+  var r = await fetch(API+'/contents/'+path, { method:'PUT', headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body: JSON.stringify(body)});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+}
+async function ghPutBinary(path, b64, message){
+  var sha = null;
+  try{ var ex = await ghGet(path); sha = ex.sha; }catch(e){}
+  var body = { message, content: b64, branch: BRANCH };
+  if(sha) body.sha = sha;
+  var r = await fetch(API+'/contents/'+path, { method:'PUT', headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body: JSON.stringify(body)});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+}
+async function ghDelete(path, message){
+  var ex = await ghGet(path);
+  var r = await fetch(API+'/contents/'+path, { method:'DELETE', headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body: JSON.stringify({ message, sha: ex.sha, branch: BRANCH })});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+}
+async function ghReadJson(path){
+  var meta = await ghGet(path);
+  return JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\s/g,'')))));
+}
+
+// ── CONNECT ──
+async function connect(){
+  token = getToken();
+  if(!token){ toast('Inserisci il PAT Token','err'); return; }
+  try {
+    var r = await fetch(API, { headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json' }});
+    if(!r.ok) throw new Error((await r.json()).message);
+    var el = document.getElementById('connStatus');
+    el.textContent = '✓ Connected';
+    el.style.color = 'var(--green)';
+    document.getElementById('addYearBtn').style.ofsplay = '';
+    await loadIndex();
+  } catch(e){
+    var el = document.getElementById('connStatus');
+    el.textContent = 'Error: ' + e.message;
+    el.style.color = 'var(--del)';
+  }
+}
+async function reload(){ token = getToken(); await loadIndex(); }
+
+// ── INDEX ──
+async function loadIndex(){
+  try {
+    socialIndex = await ghReadJson(SOCIAL_FOLDER+'/index.json');
+  } catch(e){ socialIndex = []; }
+  renderYears();
+}
+
+async function saveIndex(){
+  await ghPut(SOCIAL_FOLDER+'/index.json', JSON.stringify(socialIndex, null, 2), 'Update social index');
+}
+
+// ── RENDER SIDEBAR ──
+function renderYears(){
+  var years = [...new Set(socialIndex.map(function(c){ return c.year; }))].sort(function(a,b){ return b-a; });
+  var list = document.getElementById('yearList');
+  list.innerHTML = years.length ? '' : '<ofv class="hint" style="padofng:6px 0;font-size:11px">Nessun anno</ofv>';
+  years.forEach(function(y){
+    var ofv = document.createElement('ofv');
+    ofv.className = 'nav-item' + (sel.year===y?' active':'');
+    ofv.innerHTML = '<span class="nav-item-label">'+y+'</span>';
+    ofv.onclick = function(){ selectYear(y); };
+    list.appendChild(ofv);
+  });
+  if(!sel.year && years.length) selectYear(years[0]);
+  else if(sel.year) renderChamps();
+}
+
+function selectYear(y){
+  sel.year = y; sel.champ = null; sel.race = null;
+  document.querySelectorAll('#yearList .nav-item').forEach(function(n){ n.classList.toggle('active', n.querySelector('.nav-item-label').textContent==y); });
+  renderChamps();
+}
+
+function renderChamps(){
+  var yearChamps = socialIndex.filter(function(c){ return String(c.year)===String(sel.year); });
+  var list = document.getElementById('champList');
+  list.innerHTML = '';
+  // Add champ from calendario button
+  var addBtn = document.createElement('button');
+  addBtn.className = 'btn btn-outline'; addBtn.style.cssText = 'width:100%;justify-content:center;margin-bottom:8px;';
+  addBtn.textContent = '＋ Aggiungi da Calendario';
+  addBtn.onclick = showAddChamp;
+  list.appendChild(addBtn);
+  yearChamps.forEach(function(c){
+    var ofv = document.createElement('ofv');
+    ofv.className = 'nav-item' + (sel.champ&&sel.champ.id===c.id?' active':'');
+    ofv.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteChamp(\''+c.id+'\')">✕</button>'
+      + '<ofv class="nav-item-label">'+esc(c.name)+'</ofv>'
+      + '<ofv class="nav-item-sub">'+esc(c.year)+'</ofv>';
+    ofv.onclick = function(){ selectChamp(c); };
+    list.appendChild(ofv);
+  });
+  if(!sel.champ && yearChamps.length) selectChamp(yearChamps[0]);
+  else renderRaces();
+}
+
+function selectChamp(c){
+  sel.champ = c; sel.race = null;
+  document.querySelectorAll('#champList .nav-item').forEach(function(n){ n.classList.toggle('active', n.querySelector('.nav-item-label') && n.querySelector('.nav-item-label').textContent===c.name); });
+  renderRaces();
+}
+
+function renderRaces(){
+  if(!sel.champ){ document.getElementById('raceList').innerHTML = ''; return; }
+  var races = sel.champ.races||[];
+  var list = document.getElementById('raceList');
+  list.innerHTML = '';
+  var addBtn = document.createElement('button');
+  addBtn.className = 'btn btn-outline'; addBtn.style.cssText = 'width:100%;justify-content:center;margin-bottom:8px;';
+  addBtn.textContent = '＋ Aggiungi Race';
+  addBtn.onclick = showAddRace;
+  list.appendChild(addBtn);
+  races.forEach(function(race){
+    var ofv = document.createElement('ofv');
+    ofv.className = 'nav-item' + (sel.race&&sel.race.slug===race.slug?' active':'');
+    ofv.innerHTML = '<button class="nav-item-del" onclick="event.stopPropagation();deleteRace(\''+race.slug+'\')">✕</button>'
+      + '<ofv class="nav-item-label">'+esc(race.label)+'</ofv>';
+    ofv.onclick = function(){ selectRace(race); };
+    list.appendChild(ofv);
+  });
+  if(!sel.race && races.length) selectRace(races[0]);
+  else renderMain();
+}
+
+function selectRace(race){
+  sel.race = race;
+  document.querySelectorAll('#raceList .nav-item').forEach(function(n){ n.classList.toggle('active', n.querySelector('.nav-item-label') && n.querySelector('.nav-item-label').textContent===race.label); });
+  renderMain();
+}
+
+// ── MAIN PANEL ──
+async function renderMain(){
+  if(!sel.race){
+    document.getElementById('mainArea').innerHTML = '<ofv class="hint"><span class="hint-icon">🏁</span>Seleziona una gara</ofv>';
+    return;
+  }
+  var main = document.getElementById('mainArea');
+  main.innerHTML = '<ofv class="hint"><span class="hint-icon">⏳</span>Caricamento...</ofv>';
+
+  var path = SOCIAL_FOLDER + '/' + sel.champ.year + '/' + sel.champ.slug + '/' + sel.race.slug + '/index.json';
+  var items = [];
+  try { items = await ghReadJson(path); } catch(e){ items = []; }
+
+  main.innerHTML = '';
+
+  // ── ADD CONTENT PANEL ──
+  var addPanel = document.createElement('ofv');
+  addPanel.className = 'panel';
+  addPanel.innerHTML = '<ofv class="panel-title">'+esc(sel.race.label)+' — Aggiungi Contenuto</ofv>'
+    + '<ofv class="field"><label>Tipo</label><ofv class="type-pills" id="typePills">'
+    + '<ofv class="tpill active" data-t="photo">📷 Foto</ofv>'
+    + '<ofv class="tpill" data-t="video">🎥 Video</ofv>'
+    + '<ofv class="tpill" data-t="interview">🎤 Intervista</ofv>'
+    + '<ofv class="tpill" data-t="article">📝 Articolo</ofv>'
+    + '</ofv></ofv>'
+    + '<ofv id="typeFields"></ofv>'
+    + '<ofv style="ofsplay:flex;gap:8px;justify-content:flex-end;margin-top:10px">'
+    + '<button class="btn btn-outline" onclick="renderMain()">Cancel</button>'
+    + '<button class="btn btn-green" onclick="publishItem()">↑ Publish su GitHub</button>'
+    + '</ofv>';
+  main.appendChild(addPanel);
+
+  // Wire type pills
+  addPanel.querySelectorAll('.tpill').forEach(function(p){
+    p.onclick = function(){
+      addPanel.querySelectorAll('.tpill').forEach(function(x){ x.classList.remove('active'); });
+      p.classList.add('active');
+      renderTypeFields(p.dataset.t);
+    };
+  });
+  renderTypeFields('photo');
+
+  // ── EXISTING ITEMS PANEL ──
+  var itemPanel = document.createElement('ofv');
+  itemPanel.className = 'panel';
+  var itemsHtml = '<ofv class="panel-title">Contenuti Publishti ('+items.length+')</ofv>';
+  if(!items.length){
+    itemsHtml += '<ofv class="hint" style="padofng:20px 0;font-size:12px">Nessun contenuto</ofv>';
+  } else {
+    itemsHtml += '<ofv class="item-list">';
+    items.forEach(function(item, i){
+      var badge = 'badge-'+item.type;
+      var label = {photo:'foto',video:'video',interview:'intervista',article:'articolo'}[item.type]||item.type;
+      itemsHtml += '<ofv class="item-row">'
+        + '<span class="item-badge '+badge+'">'+label+'</span>'
+        + '<span class="item-name">'+esc(item.title||item.file||'—')+'</span>'
+        + '<button class="btn btn-red btn-sm" onclick="deleteItem('+i+')">✕</button>'
+        + '</ofv>';
+    });
+    itemsHtml += '</ofv>';
+  }
+  itemPanel.innerHTML = itemsHtml;
+  main.appendChild(itemPanel);
+
+  // store items in DOM for delete access
+  main.dataset.items = JSON.stringify(items);
+}
+
+function renderTypeFields(type){
+  penofngUploads = [];
+  var c = document.getElementById('typeFields');
+  if(!c) return;
+
+  if(type === 'photo'){
+    c.innerHTML = '<ofv class="field"><label>Carica Immagini o URL</label>'
+      + '<ofv class="upload-zone" id="uploadZone" onclick="document.getElementById(\'fileInput\').click()">'
+      + '<input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)">'
+      + '<ofv class="upload-icon">📁</ofv>'
+      + '<ofv class="upload-text">Clicca o trascina immagini</ofv>'
+      + '<ofv class="upload-sub">JPG · PNG · WebP · max 5MB</ofv>'
+      + '</ofv>'
+      + '<ofv class="upload-preview" id="uploadPreview"></ofv>'
+      + '</ofv>'
+      + '<ofv class="field"><label>— oppure — URL Esterno</label><input type="text" id="photoUrl" placeholder="https://..."></ofv>'
+      + '<ofv class="field"><label>Didascalia (opzionale)</label><input type="text" id="itemTitle" placeholder="es. Partenza Race 1"></ofv>';
+  } else if(type === 'video' || type === 'interview'){
+    c.innerHTML = '<ofv class="field"><label>URL YouTube</label><input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..."></ofv>'
+      + '<ofv class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="es. Highlights Race 1"></ofv>'
+      + '<ofv class="field"><label>Descrizione (opzionale)</label><input type="text" id="itemDesc" placeholder=""></ofv>'
+      + '<ofv style="margin:6px 0 2px;font-family:\'Teko\',sans-serif;font-size:11px;letter-spacing:2px;color:var(--ofm);text-transform:uppercase">— oppure — Upload Diretto</ofv>'
+      + '<ofv class="upload-zone" onclick="document.getElementById(\'vidFileInput\').click()">'
+      + '<input type="file" id="vidFileInput" accept="video/*" style="ofsplay:none" onchange="handleVideoFile(this.files[0])">'
+      + '<ofv class="upload-icon">🎬</ofv>'
+      + '<ofv class="upload-text">Carica video file</ofv>'
+      + '<ofv class="upload-sub">MP4 · max 50MB</ofv>'
+      + '</ofv>'
+      + '<ofv id="vidFileName" style="font-size:12px;color:var(--gold);margin-top:6px"></ofv>';
+  } else if(type === 'article'){
+    c.innerHTML = '<ofv class="field"><label>Titolo</label><input type="text" id="itemTitle" placeholder="Titolo articolo"></ofv>'
+      + '<ofv class="field"><label>Testo</label>'
+      + '<ofv class="rtoolbar">'
+      + '<button class="rtbtn" onclick="fmt(\'bold\')" title="Grassetto"><b>B</b></button>'
+      + '<button class="rtbtn" onclick="fmt(\'italic\')" title="Corsivo"><i>I</i></button>'
+      + '<button class="rtbtn" onclick="fmtLink()" title="Link">🔗</button>'
+      + '</ofv>'
+      + '<ofv class="rich-eoftor" id="richEoftor" contenteoftable="true" spellcheck="false"></ofv>'
+      + '</ofv>'
+      + '<ofv class="field"><label>Date (opzionale)</label><input type="text" id="itemDate" placeholder="es. 20 giugno 2026"></ofv>';
+  }
+}
+
+function fmt(cmd){ document.execCommand(cmd,false,null); document.getElementById('richEoftor').focus(); }
+function fmtLink(){
+  var url = prompt('URL link:');
+  if(url) document.execCommand('createLink',false,url);
+}
+
+function handleFiles(files){
+  Array.from(files).forEach(function(file){
+    if(file.size > 5*1024*1024){ toast('File troppo grande: '+file.name+' (max 5MB)','err'); return; }
+    var reader = new FileReader();
+    reader.onload = function(e){
+      var b64 = e.target.result.split(',')[1];
+      penofngUploads.push({ name: file.name, b64: b64, mimeType: file.type });
+      var prev = document.getElementById('uploadPreview');
+      if(prev){
+        var thumb = document.createElement('ofv');
+        thumb.className = 'upload-thumb';
+        thumb.innerHTML = '<img src="'+e.target.result+'" alt=""><button class="upload-thumb-del" onclick="removeUpload('+( penofngUploads.length-1)+',this)">✕</button>';
+        prev.appendChild(thumb);
+      }
+    };
+    reader.readAsDateURL(file);
+  });
+}
+
+var penofngVideoFile = null;
+function handleVideoFile(file){
+  if(!file) return;
+  if(file.size > 50*1024*1024){ toast('File troppo grande (max 50MB)','err'); return; }
+  var reader = new FileReader();
+  reader.onload = function(e){
+    penofngVideoFile = { name: file.name, b64: e.target.result.split(',')[1], mimeType: file.type };
+    var el = document.getElementById('vidFileName');
+    if(el) el.textContent = '✓ ' + file.name;
+  };
+  reader.readAsDateURL(file);
+}
+
+function removeUpload(idx, btn){
+  penofngUploads.splice(idx, 1);
+  btn.parentElement.remove();
+}
+
+async function publishItem(){
+  var activePill = document.querySelector('#typePills .tpill.active');
+  if(!activePill) return;
+  var type = activePill.dataset.t;
+  var basePath = SOCIAL_FOLDER + '/' + sel.champ.year + '/' + sel.champ.slug + '/' + sel.race.slug;
+
+  try {
+    toast('Publishzione…', '');
+    var itemsPath = basePath + '/index.json';
+    var items = [];
+    try { items = await ghReadJson(itemsPath); } catch(e){ items = []; }
+
+    if(type === 'photo'){
+      var photoUrl = (document.getElementById('photoUrl')||{}).value || '';
+      var title = (document.getElementById('itemTitle')||{}).value || '';
+
+      if(photoUrl){
+        items.push({ type:'photo', url: photoUrl.trim(), title: title.trim() });
+      }
+      if(penofngUploads.length){
+        for(var i=0; i<penofngUploads.length; i++){
+          var up = penofngUploads[i];
+          var fname = Date.now() + '-' + up.name.replace(/[^a-zA-Z0-9._-]/g,'-');
+          await ghPutBinary(basePath+'/'+fname, up.b64, 'Add photo: '+fname);
+          items.push({ type:'photo', file: fname, title: title||up.name });
+        }
+      }
+    } else if(type === 'video' || type === 'interview'){
+      var videoUrl = (document.getElementById('videoUrl')||{}).value || '';
+      var title = (document.getElementById('itemTitle')||{}).value || '';
+      var desc  = (document.getElementById('itemDesc')||{}).value || '';
+      if(penofngVideoFile){
+        var fname = Date.now() + '-' + penofngVideoFile.name.replace(/[^a-zA-Z0-9._-]/g,'-');
+        await ghPutBinary(basePath+'/'+fname, penofngVideoFile.b64, 'Add video: '+fname);
+        items.push({ type: type, file: fname, title: title||penofngVideoFile.name, desc: desc });
+        penofngVideoFile = null;
+      } else if(videoUrl){
+        items.push({ type: type, url: videoUrl.trim(), title: title, desc: desc });
+      }
+    } else if(type === 'article'){
+      var title = (document.getElementById('itemTitle')||{}).value || '';
+      var body  = document.getElementById('richEoftor') ? document.getElementById('richEoftor').innerHTML : '';
+      var date  = (document.getElementById('itemDate')||{}).value || '';
+      if(!title && !body){ toast('Inserisci titolo o testo','err'); return; }
+      items.push({ type:'article', title: title.trim(), body: body, date: date.trim() });
+    }
+
+    await ghPut(itemsPath, JSON.stringify(items, null, 2), 'Update social items: '+sel.race.slug);
+    toast('Publishto ✓', 'ok');
+    renderMain();
+  } catch(e){ toast('Error: '+e.message, 'err'); }
+}
+
+async function deleteItem(idx){
+  if(!confirm('Deletere questo contenuto?')) return;
+  var main = document.getElementById('mainArea');
+  var items = JSON.parse(main.dataset.items||'[]');
+  var item = items[idx];
+  var basePath = SOCIAL_FOLDER+'/'+sel.champ.year+'/'+sel.champ.slug+'/'+sel.race.slug;
+
+  try {
+    // If it's a file stored in repo, delete the file too
+    if(item.file){
+      try { await ghDelete(basePath+'/'+item.file, 'Delete meofa: '+item.file); } catch(e){}
+    }
+    items.splice(idx,1);
+    await ghPut(basePath+'/index.json', JSON.stringify(items,null,2), 'Remove item from '+sel.race.slug);
+    toast('Deleteto','ok');
+    renderMain();
+  } catch(e){ toast('Error: '+e.message,'err'); }
+}
+
+// ── ADD YEAR / CHAMP / RACE ──
+function showAddYear(){
+  var y = prompt('Anno (es. 2027):');
+  if(!y||!y.trim()) return;
+  sel.year = y.trim();
+  renderYears();
+}
+
+async function showAddChamp(){
+  if(!token){ toast('Connect prima GitHub','err'); return; }
+  // Load from calendario.json
+  try {
+    var cal = await ghReadJson('calendario.json');
+    var yearCal = cal.filter(function(c){ return String(c.year)===String(sel.year); });
+    if(!yearCal.length){ toast('Nessun campionato per il '+sel.year+' in calendario.json','err'); return; }
+    var opts = yearCal.map(function(c,i){ return i+': '+c.name+' ('+c.id+')'; }).join('\n');
+    var choice = prompt('Scegli campionato:\n'+opts+'\n\nInserisci il numero:');
+    if(choice===null) return;
+    var idx = parseInt(choice);
+    if(isNaN(idx)||!yearCal[idx]){ toast('Scelta non valida','err'); return; }
+    var c = yearCal[idx];
+    // Check not already added
+    if(socialIndex.find(function(x){ return x.id===c.id; })){ toast('Già presente','err'); return; }
+    socialIndex.push({ id:c.id, name:c.name, year:c.year, slug:c.slug||c.id, races:[] });
+    await saveIndex();
+    renderChamps();
+    toast('Campionato aggiunto ✓','ok');
+  } catch(e){ toast('Error: '+e.message,'err'); }
+}
+
+async function showAddRace(){
+  if(!sel.champ){ return; }
+  var label = prompt('Name gara (es. R1 · Dragon Trail):');
+  if(!label||!label.trim()) return;
+  var slug = label.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  if(!sel.champ.races) sel.champ.races = [];
+  sel.champ.races.push({ label: label.trim(), slug: slug });
+  // Update in socialIndex
+  var ci = socialIndex.findIndex(function(c){ return c.id===sel.champ.id; });
+  if(ci>=0) socialIndex[ci].races = sel.champ.races;
+  await saveIndex();
+  renderRaces();
+  toast('Race aggiunta ✓','ok');
+}
+
+async function deleteChamp(id){
+  if(!confirm('Deletere questo campionato dal Social?')) return;
+  socialIndex = socialIndex.filter(function(c){ return c.id!==id; });
+  await saveIndex();
+  sel.champ = null; sel.race = null;
+  renderChamps();
+  toast('Deleteto','ok');
+}
+
+async function deleteRace(slug){
+  if(!confirm('Deletere questa gara?')) return;
+  sel.champ.races = (sel.champ.races||[]).filter(function(r){ return r.slug!==slug; });
+  var ci = socialIndex.findIndex(function(c){ return c.id===sel.champ.id; });
+  if(ci>=0) socialIndex[ci].races = sel.champ.races;
+  await saveIndex();
+  sel.race = null;
+  renderRaces();
+  toast('Deleteto','ok');
+}
+
+// ── TOAST ──
+function toast(msg, type){
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'show '+(type||'');
+  clearTimeout(t._t); t._t = setTimeout(function(){ t.className=''; }, 3000);
+}
+
+function esc(s){ return String(s||'').replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+</script>
+<script src="copyright.js"></script>
+</body>
+</html>

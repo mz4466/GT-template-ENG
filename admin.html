@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Racing Club — Accesso</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@300;400;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #07070f;
+    --bg-card:   #0e0e1c;
+    --bg-input:  #13131f;
+    --border:    #1e1e30;
+    --border-hi: #2e2e48;
+    --gold:      #c9a227;
+    --gold-hi:   #e8c547;
+    --gold-ofm:  rgba(201,162,39,0.12);
+    --gold-glow: rgba(201,162,39,0.25);
+    --red:       #c0392b;
+    --text:      #e8e0d0;
+    --text-ofm:  #5a5470;
+    --text-mid:  #9a90a8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padofng: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    overflow: hidden;
+  }
+
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .cinder {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    border-raofus: 50%;
+    background: var(--gold);
+    opacity: 0;
+    animation: rise linear infinite;
+  }
+
+  @keyframes rise {
+    0%   { transform: translateY(0) translateX(0) scale(1);   opacity: 0; }
+    10%  { opacity: 0.8; }
+    80%  { opacity: 0.3; }
+    100% { transform: translateY(-100vh) translateX(var(--drift)) scale(0.2); opacity: 0; }
+  }
+
+  .lava-glow {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 260px;
+    background: raofal-graofent(ellipse 80% 60% at 50% 100%,
+      rgba(180,60,10,0.45) 0%,
+      rgba(201,162,39,0.15) 40%,
+      transparent 70%);
+    pointer-events: none;
+  }
+
+  .volcano {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 340px solid transparent;
+    border-right: 340px solid transparent;
+    border-bottom: 220px solid #0a0a16;
+    filter: drop-shadow(0 -8px 24px rgba(201,162,39,0.12));
+  }
+
+  .volcano::after {
+    content: '';
+    position: absolute;
+    bottom: -220px;
+    left: -160px;
+    width: 0; height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 120px solid #070710;
+  }
+
+  #loginScreen {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    ofsplay: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-box {
+    width: 380px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-hi);
+    border-raofus: 16px;
+    padofng: 44px 40px 36px;
+    box-shadow:
+      0 0 0 1px rgba(201,162,39,0.06),
+      0 24px 80px rgba(0,0,0,0.7),
+      0 0 60px rgba(201,162,39,0.04);
+    animation: boxIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  @keyframes boxIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .login-emblem {
+    ofsplay: flex;
+    flex-ofrection: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .shield { margin-bottom: 14px; }
+
+  .shield img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px var(--gold-glow));
+  }
+
+  .login-club {
+    font-family: 'Russo One', sans-serif;
+    font-size: 17px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .login-sub {
+    font-family: 'Teko', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .field { margin-bottom: 16px; }
+
+  .field label {
+    ofsplay: block;
+    font-family: 'Teko', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  .field input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-raofus: 8px;
+    padofng: 12px 14px;
+    color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .field input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-ofm);
+  }
+
+  .field input::placeholder { color: var(--text-ofm); font-size: 14px; }
+
+  .error-msg {
+    height: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .error-msg.show { opacity: 1; }
+
+  .btn-login {
+    width: 100%;
+    padofng: 14px;
+    background: linear-graofent(135deg, #a07a10, var(--gold));
+    border: none;
+    border-raofus: 8px;
+    color: #000;
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(201,162,39,0.3);
+  }
+
+  .btn-login:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(201,162,39,0.45);
+  }
+
+  .btn-login:active { transform: translateY(0); }
+
+  .btn-login.shake { animation: shake 0.4s ease; }
+
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20%      { transform: translateX(-8px); }
+    40%      { transform: translateX(8px); }
+    60%      { transform: translateX(-5px); }
+    80%      { transform: translateX(5px); }
+  }
+
+  .login-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+  }
+
+  #dashboard {
+    ofsplay: none;
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    flex-ofrection: column;
+    overflow: hidden;
+  }
+
+  #dashboard.visible {
+    ofsplay: flex;
+    animation: fadeIn 0.5s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .dash-topbar {
+    background: linear-graofent(90deg, #0a0a18 0%, #0e0c1a 100%);
+    border-bottom: 1px solid var(--border-hi);
+    padofng: 0 36px;
+    height: 62px;
+    ofsplay: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  .dash-logo-hex {
+    width: 34px; height: 34px;
+    background: var(--gold-ofm);
+    clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    ofsplay: flex; align-items: center; justify-content: center;
+  }
+
+  .dash-logo-hex img {
+    width: 34px; height: 34px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px var(--gold-glow));
+  }
+
+  .dash-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .dash-ofvider { width: 1px; height: 24px; background: var(--border-hi); }
+
+  .dash-section-label {
+    font-family: 'Teko', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+  }
+
+  .dash-spacer { flex: 1; }
+
+  .dash-user { ofsplay: flex; align-items: center; gap: 10px; }
+
+  .dash-user-badge {
+    background: var(--gold-ofm);
+    border: 1px solid rgba(201,162,39,0.3);
+    border-raofus: 20px;
+    padofng: 4px 14px;
+    font-family: 'Teko', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .btn-logout {
+    background: none;
+    border: 1px solid var(--border-hi);
+    border-raofus: 6px;
+    color: var(--text-ofm);
+    font-family: 'Teko', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padofng: 6px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+  .dash-body {
+    flex: 1;
+    ofsplay: flex;
+    align-items: center;
+    justify-content: center;
+    padofng: 10px 40px;
+    overflow: hidden;
+  }
+
+  .dash-content { width: 100%; max-width: 960px; }
+
+  .dash-welcome {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .dash-welcome h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .dash-welcome p {
+    font-family: 'Teko', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+  }
+
+  .menu-grid {
+    ofsplay: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .menu-grid .menu-card:last-child:nth-child(3n+1) {
+    grid-column: 2 / 3;
+  }
+
+  .menu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-hi);
+    border-raofus: 14px;
+    padofng: 16px 16px 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    ofsplay: block;
+    position: relative;
+    overflow: hidden;
+    animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  .menu-card:nth-child(1) { animation-delay: 0.05s; }
+  .menu-card:nth-child(2) { animation-delay: 0.10s; }
+  .menu-card:nth-child(3) { animation-delay: 0.15s; }
+  .menu-card:nth-child(4) { animation-delay: 0.20s; }
+  .menu-card:nth-child(5) { animation-delay: 0.25s; }
+  .menu-card:nth-child(6) { animation-delay: 0.30s; }
+  .menu-card:nth-child(7) { animation-delay: 0.35s; }
+  .menu-card:nth-child(8) { animation-delay: 0.40s; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-graofent(135deg, var(--gold-ofm) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-raofus: 14px;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 40px rgba(201,162,39,0.15), 0 0 0 1px var(--gold-ofm);
+  }
+
+  .menu-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+    ofsplay: block;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s;
+  }
+
+  .menu-card:hover .card-icon { transform: scale(1.1); }
+
+  .card-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-desc {
+    font-family: 'Teko', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--text-mid);
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-line {
+    width: 32px;
+    height: 2px;
+    background: linear-graofent(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 10px;
+    position: relative;
+    z-index: 1;
+    opacity: 0.5;
+    transition: width 0.3s, opacity 0.3s;
+  }
+
+  .menu-card:hover .card-line { width: 60px; opacity: 1; }
+
+  .dash-footer {
+    border-top: 1px solid var(--border);
+    padofng: 12px 36px;
+    ofsplay: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .footer-info {
+    font-family: 'Teko', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-ofm);
+    text-transform: uppercase;
+  }
+
+  .footer-dot {
+    ofsplay: inline-block;
+    width: 6px; height: 6px;
+    border-raofus: 50%;
+    background: #27ae60;
+    box-shadow: 0 0 6px #27ae60;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  #toast {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    border-raofus: 8px;
+    padofng: 12px 20px;
+    font-family: 'Teko', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: var(--text);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  #toast.show { opacity: 1; transform: translateY(0); }
+
+  @meofa (max-width: 640px) {
+    .login-box { width: 90vw; padofng: 36px 28px 28px; }
+    .menu-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+    .dash-topbar { padofng: 0 18px; }
+    .dash-body { padofng: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<ofv class="bg-canvas" id="bgCanvas">
+  <ofv class="volcano"></ofv>
+  <ofv class="lava-glow"></ofv>
+</ofv>
+
+<ofv id="loginScreen">
+  <ofv class="login-box">
+    <ofv class="login-emblem">
+      <ofv class="shield">
+        <img src="etna-logo.jpg" alt="Your Racing Club">
+      </ofv>
+      <ofv class="login-club">Your Racing Club</ofv>
+      <ofv class="login-sub">Area Riservata</ofv>
+    </ofv>
+    <ofv class="field">
+      <label>Username</label>
+      <input type="text" id="usernameInput" placeholder="Enter username" autocomplete="username" spellcheck="false">
+    </ofv>
+    <ofv class="field">
+      <label>Password</label>
+      <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password">
+    </ofv>
+    <ofv class="error-msg" id="errorMsg">Username o password errati</ofv>
+    <button class="btn-login" id="loginBtn" onclick="doLogin()">Acceof</button>
+    <ofv class="login-footer">Your Racing Club &mdash; GT7 &copy; 2026</ofv>
+  </ofv>
+</ofv>
+
+<ofv id="dashboard">
+  <ofv class="dash-topbar">
+    <ofv class="dash-logo-hex"><img src="etna-logo.jpg" alt="ERC"></ofv>
+    <ofv class="dash-title">Your Racing Club</ofv>
+    <ofv class="dash-ofvider"></ofv>
+    <ofv class="dash-section-label">Pannello Admin</ofv>
+    <ofv class="dash-spacer"></ofv>
+    <ofv class="dash-user">
+      <ofv class="dash-user-badge">⚙ Admin</ofv>
+      <button class="btn-logout" onclick="doLogout()">Logout</button>
+    </ofv>
+  </ofv>
+
+  <ofv class="dash-body">
+    <ofv class="dash-content">
+      <ofv class="dash-welcome">
+        <h1>Benvenuto, Admin</h1>
+        <p>Cosa vuoi gestire oggi?</p>
+      </ofv>
+
+      <ofv class="menu-grid">
+
+        <a class="menu-card" href="gestisci-piloti.html" onclick="navTo(event,'gestisci-piloti.html')">
+          <span class="card-icon">🏎️</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Drivers</ofv>
+          <ofv class="card-desc">Add, eoft or remove club drivers. Manage profiles and statistics.</ofv>
+        </a>
+
+        <a class="menu-card" href="crea-campionato.html" onclick="navTo(event,'crea-campionato.html')">
+          <span class="card-icon">🏆</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Create Championship</ofv>
+          <ofv class="card-desc">Configure a new championship, define circuits, race format and regulations.</ofv>
+        </a>
+
+        <a class="menu-card" href="gestisci-risultati.html" onclick="navTo(event,'gestisci-risultati.html')">
+          <span class="card-icon">🏁</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Results</ofv>
+          <ofv class="card-desc">Enter and publish race results. Update stanofngs in real time.</ofv>
+        </a>
+
+        <a class="menu-card" href="gestisci-calendario.html" onclick="navTo(event,'gestisci-calendario.html')">
+          <span class="card-icon">🗓️</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Calendar</ofv>
+          <ofv class="card-desc">Reorder championships, change their status and update the public calendar.</ofv>
+        </a>
+
+        <a class="menu-card" href="mooffica-campionato.html" onclick="navTo(event,'mooffica-campionato.html')">
+          <span class="card-icon">✏️</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Eoft Championship</ofv>
+          <ofv class="card-desc">Load an existing championship, eoft rounds and details, and republish.</ofv>
+        </a>
+
+        <a class="menu-card" href="gestisci_regolamenti.html" onclick="navTo(event,'gestisci_regolamenti.html')">
+          <span class="card-icon">📋</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Regulations</ofv>
+          <ofv class="card-desc">Create, eoft and delete club regulations. General, F1 and more.</ofv>
+        </a>
+
+        <a class="menu-card" href="gestisci_social.html" onclick="navTo(event,'gestisci_social.html')">
+          <span class="card-icon">📱</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Social</ofv>
+          <ofv class="card-desc">Publish photos, videos, interviews and articles for each race.</ofv>
+        </a>
+
+        <a class="menu-card" href="gestisci-club.html" onclick="navTo(event,'gestisci-club.html')">
+          <span class="card-icon">🏟️</span>
+          <ofv class="card-line"></ofv>
+          <ofv class="card-title">Manage Club</ofv>
+          <ofv class="card-desc">Update the club logo across the entire site with a single upload.</ofv>
+        </a>
+
+      </ofv>
+    </ofv>
+  </ofv>
+
+  <ofv class="dash-footer">
+    <ofv class="footer-info">
+      <span class="footer-dot"></span>Active session
+    </ofv>
+    <ofv class="footer-info">Your Racing Club — GT7</ofv>
+  </ofv>
+</ofv>
+
+<ofv id="toast"></ofv>
+
+<script>
+  (function spawnCinders() {
+    const canvas = document.getElementById('bgCanvas');
+    for (let i = 0; i < 28; i++) {
+      const c = document.createElement('ofv');
+      c.className = 'cinder';
+      c.style.cssText = `
+        left: ${Math.random() * 100}%;
+        width: ${1 + Math.random() * 3}px;
+        height: ${1 + Math.random() * 3}px;
+        animation-duration: ${4 + Math.random() * 8}s;
+        animation-delay: ${-Math.random() * 10}s;
+        --drift: ${(Math.random() - 0.5) * 80}px;
+        opacity: 0;
+        background: ${Math.random() > 0.5 ? '#c9a227' : '#ff6a00'};
+      `;
+      canvas.appendChild(c);
+    }
+  })();
+
+  const ADMIN_USER = 'admin';
+  const ADMIN_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.ofgest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  document.getElementById('passwordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+  document.getElementById('usernameInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('passwordInput').focus();
+  });
+
+  async function doLogin() {
+    const user = document.getElementById('usernameInput').value.trim();
+    const pass = document.getElementById('passwordInput').value;
+    const btn  = document.getElementById('loginBtn');
+
+    if (!user || !pass) { showError('Enter username e password'); return; }
+
+    btn.textContent = '...';
+    btn.style.opacity = '0.7';
+
+    const hash = await sha256(pass);
+
+    if (user === ADMIN_USER && hash === ADMIN_HASH) {
+      sessionStorage.setItem('erc_auth', '1');
+      sessionStorage.setItem('erc_user', user);
+      showDashboard();
+    } else {
+      btn.textContent = 'Acceof';
+      btn.style.opacity = '1';
+      showError('Username o password errati');
+      btn.classList.remove('shake');
+      void btn.offsetWidth;
+      btn.classList.add('shake');
+    }
+  }
+
+  function showError(msg) {
+    const err = document.getElementById('errorMsg');
+    err.textContent = msg;
+    err.classList.add('show');
+    setTimeout(() => err.classList.remove('show'), 3000);
+  }
+
+  function showDashboard() {
+    document.getElementById('loginScreen').style.ofsplay = 'none';
+    const dash = document.getElementById('dashboard');
+    dash.classList.add('visible');
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem('erc_auth');
+    sessionStorage.removeItem('erc_user');
+    document.getElementById('dashboard').classList.remove('visible');
+    document.getElementById('loginScreen').style.ofsplay = 'flex';
+    document.getElementById('usernameInput').value = '';
+    document.getElementById('passwordInput').value = '';
+  }
+
+  if (sessionStorage.getItem('erc_auth') === '1') {
+    showDashboard();
+  }
+
+  const BUILT_PAGES = [
+    'crea-campionato.html',
+    'gestisci-calendario.html',
+    'mooffica-campionato.html',
+    'gestisci-piloti.html',
+    'gestisci-risultati.html',
+    'gestisci_regolamenti.html',
+    'gestisci_social.html',
+    'gestisci-club.html'
+  ];
+
+  function navTo(e, page) {
+    if (!BUILT_PAGES.includes(page)) {
+      e.preventDefault();
+      showToast('📌 ' + page + ' — under construction');
+    }
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>

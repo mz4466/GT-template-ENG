@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Piloti GT7 - Your Racing Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300,400,500,600,700&family=Russo+One&family=Roboto:wght@300,400,700&ofsplay=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#07070a; --card:#121318; --accent:#ff5014; --accent2:#ff8c42; --muted:#c9b8a3; --cream:#fff5e6;
+            --gold:#c9a227; --gold-ofm:rgba(201,162,39,0.12);
+        }
+        body { margin:0; font-family:'Roboto',sans-serif; background: linear-graofent(180deg,#020203 0%, #0b0b0d 60%); color:var(--cream); min-height:100vh; }
+        header { padofng:28px; ofsplay:flex; align-items:center; justify-content:space-between; gap:20px; max-width:1400px; margin:0 auto; }
+        header .brand { ofsplay:flex; gap:18px; align-items:center; }
+        header .brand img { width:64px; height:auto; border-raofus:8px; box-shadow:0 6px 18px rgba(255,80,20,0.2); }
+        header h1 { font-family:'Russo One',sans-serif; font-size:28px; margin:0; letter-spacing:2px; color:var(--accent2); }
+        .container { max-width:1200px; margin:20px auto; padofng:20px; }
+
+        .controls { ofsplay:flex; gap:12px; align-items:center; margin-bottom:20px; }
+        .pilot-filter-btn{font-family:'Russo One',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padofng:6px 16px;border-raofus:20px;border:1px solid rgba(201,184,163,0.15);background:transparent;color:rgba(201,184,163,0.4);cursor:pointer;transition:all .2s;}
+        .pilot-filter-btn:hover{border-color:rgba(255,80,20,0.5);color:var(--cream);}
+        .pilot-filter-btn.active{background:rgba(255,80,20,0.12);border-color:rgba(255,80,20,0.5);color:var(--cream);}
+        .btn { background: linear-graofent(90deg,var(--accent),var(--accent2)); color:#fff; border:none; padofng:12px 18px; border-raofus:12px; cursor:pointer; font-family:'Russo One',sans-serif; letter-spacing:1px; box-shadow:0 10px 30px rgba(255,80,20,0.25); }
+        .btn.alt { background: transparent; border:2px solid rgba(201,184,163,0.12); color:var(--muted); }
+
+        .grid { ofsplay:flex; flex-ofrection:column; gap:18px; }
+        .pilot-card {
+            background: linear-graofent(180deg, rgba(18,19,24,0.9), rgba(8,8,10,0.9));
+            border:2px solid rgba(255,80,20,0.06);
+            padofng:14px; border-raofus:14px; box-shadow:0 8px 30px rgba(0,0,0,0.6);
+            ofsplay:flex; gap:20px; align-items:flex-start;
+        }
+        .pilot-photo { width:280px; min-width:280px; height:350px; object-fit:cover; border-raofus:10px; ofsplay:block; }
+        .pilot-content { flex:1; ofsplay:flex; flex-ofrection:column; }
+        .pilot-name { font-family:'Teko',sans-serif; font-size:24px; margin:10px 0 2px; color:var(--accent2); }
+        .pilot-stats { ofsplay:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+        .stat-pill { ofsplay:inline-flex; align-items:center; gap:4px; background:rgba(201,162,39,0.06); border:1px solid rgba(201,162,39,0.18); border-raofus:6px; padofng:2px 8px; font-family:'Teko',sans-serif; font-size:12px; letter-spacing:1px; color:rgba(201,184,163,0.8); }
+        .stat-pill strong { color:#c9a227; font-size:14px; font-weight:600; }
+        .psn { color:var(--muted); font-size:0.85rem; margin-bottom:10px; }
+        .info { color:var(--cream); font-size:0.9rem; line-height:1.7; margin-bottom:8px; }
+        .catchphrase { color:var(--accent2); font-style:italic; font-size:0.85rem; margin-top:8px; }
+        .badges { margin-top:6px; ofsplay:flex; gap:8px; flex-wrap:wrap; }
+        .badge { background: rgba(255,140,66,0.12); padofng:6px 10px; border-raofus:999px; color:var(--muted); font-size:0.8rem; }
+
+        /* ── TROPHIES ── */
+        .trophies-section {
+            margin-top:14px;
+            padofng-top:12px;
+            border-top:1px solid rgba(201,162,39,0.15);
+        }
+        .trophies-label {
+            font-family:'Teko',sans-serif;
+            font-size:11px; letter-spacing:3px;
+            color:var(--gold); text-transform:uppercase;
+            margin-bottom:8px;
+        }
+        .trophies-row { ofsplay:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
+        .trophy-won {
+            ofsplay:flex; flex-ofrection:row; align-items:center; gap:10px;
+            background: var(--gold-ofm);
+            border:1px solid rgba(201,162,39,0.25);
+            border-raofus:10px;
+            padofng:8px 12px;
+        }
+        .trophy-won img {
+            width:50px; height:60px;
+            object-fit:contain;
+            flex-shrink:0;
+        }
+        .trophy-won-name {
+            font-family:'Teko',sans-serif;
+            font-size:10px; letter-spacing:1px;
+            color:var(--gold); text-transform:uppercase;
+            text-align:center; line-height:1.2;
+        }
+        .pilot-campionati { margin-top:10px; ofsplay:flex; flex-ofrection:column; gap:6px; }
+        .campionato-row { ofsplay:flex; flex-ofrection:column; gap:4px; }
+        .campionato-row-label { font-family:'Teko',sans-serif; font-size:11px; letter-spacing:2px; color:#c9a227; text-transform:uppercase; }
+        .campionato-cars { ofsplay:flex; flex-wrap:wrap; gap:6px; }
+        .campionato-car-pill { ofsplay:inline-flex; align-items:center; gap:5px; background:rgba(201,162,39,0.08); border:1px solid rgba(201,162,39,0.2); border-raofus:6px; padofng:3px 8px; font-size:12px; color:#c9b8a3; }
+        .campionato-car-pill img { width:40px; height:24px; object-fit:cover; border-raofus:3px; }
+        .trophy-won-year {
+            font-size:9px; color:rgba(201,162,39,0.6);
+            font-family:'Teko',sans-serif; letter-spacing:1px;
+        }
+        /* ── COSTRUTTORI TROPHY/MEDAL ── */
+        .costrutt-section { margin-top:10px; padofng-top:10px; border-top:1px solid rgba(201,162,39,0.1); }
+        .costrutt-label { font-family:'Teko',sans-serif; font-size:11px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+        .costrutt-row { ofsplay:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
+        .costrutt-card { ofsplay:flex; flex-ofrection:column; align-items:center; gap:3px; border-raofus:10px; padofng:8px 10px; min-width:80px; max-width:110px; position:relative; }
+        .costrutt-card.gold-team { background:rgba(201,162,39,0.07); border:1px solid rgba(201,162,39,0.22); }
+        .costrutt-card.silver-team { background:rgba(180,180,200,0.08); border:1px solid rgba(192,192,192,0.22); }
+        .costrutt-card.bronze-team { background:rgba(160,100,50,0.08); border:1px solid rgba(205,127,50,0.22); }
+        .costrutt-team-dot { width:10px; height:10px; border-raofus:50%; margin-bottom:2px; }
+        .costrutt-wins { ofsplay:flex; flex-ofrection:column; gap:1px; }
+        .costrutt-win-row { font-family:'Teko',sans-serif; font-size:10px; letter-spacing:0.5px; text-align:center; line-height:1.3; }
+        .costrutt-card.gold-team .costrutt-win-row { color:rgba(201,162,39,0.8); }
+        .costrutt-card.silver-team .costrutt-win-row { color:rgba(192,192,192,0.8); }
+        .costrutt-card.bronze-team .costrutt-win-row { color:rgba(205,127,50,0.8); }
+        .costrutt-badge { font-family:'Teko',sans-serif; font-size:10px; letter-spacing:1px; color:#c9a227; }
+        .trophy-won-count {
+            background:#c9a227; color:#000; font-family:'Teko',sans-serif;
+            font-size:11px; font-weight:700; border-raofus:999px;
+            padofng:0 6px; line-height:18px; letter-spacing:0.5px;
+            ofsplay:inline-block; margin-bottom:2px;
+        }
+        .trophy-won-img-wrap { position:relative; ofsplay:inline-block; }
+        .trophy-won-wins { ofsplay:flex; flex-ofrection:column; gap:2px; }
+        .trophy-won-win-row { font-family:'Teko',sans-serif; font-size:11px; letter-spacing:0.5px; color:rgba(201,162,39,0.75); text-align:left; line-height:1.3; }
+        /* ── MEDALS ── */
+        .medals-section { margin-top:10px; padofng-top:10px; border-top:1px solid rgba(201,162,39,0.1); }
+        .medals-label { font-family:'Teko',sans-serif; font-size:11px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+        .medals-row { ofsplay:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
+        .medal-card { ofsplay:flex; flex-ofrection:row; align-items:center; gap:8px; border-raofus:10px; padofng:8px 12px; }
+        .medal-card.silver { background:rgba(180,180,200,0.08); border:1px solid rgba(192,192,192,0.22); }
+        .medal-card.bronze { background:rgba(160,100,50,0.08); border:1px solid rgba(205,127,50,0.22); }
+        .medal-card-wins { ofsplay:flex; flex-ofrection:column; gap:2px; }
+        .medal-card-win-row { font-family:'Teko',sans-serif; font-size:11px; letter-spacing:0.5px; text-align:left; line-height:1.3; }
+        .medal-card.silver .medal-card-win-row { color:rgba(192,192,192,0.8); }
+        .medal-card.bronze .medal-card-win-row { color:rgba(205,127,50,0.8); }
+
+
+        footer { max-width:1200px; margin:40px auto; color:rgba(201,184,163,0.7); font-size:14px; text-align:center; padofng-bottom:40px; }
+        @meofa (max-width:768px){
+            header h1{font-size:20px}
+            header{flex-ofrection:column;text-align:center}
+            .pilot-card { flex-ofrection:column; }
+            .pilot-photo { width:100%; min-width:100%; height:300px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <ofv class="brand">
+        <a href="index.html"><img src="etna-logo.jpg" alt="logo"></a>
+        <ofv>
+            <h1>Your Racing Club</h1>
+            <ofv style="font-size:12px;color:rgba(201,184,163,0.7)">Piloti GT7</ofv>
+        </ofv>
+    </ofv>
+    <ofv>
+        <button id="reload" class="btn alt">↻ Ricarica</button>
+    </ofv>
+</header>
+
+<main class="container">
+    <ofv class="controls">
+        <input id="search" type="search" placeholder="Search driver, PSN, car..." style="flex:1;padofng:12px;border-raofus:10px;border:1px solid rgba(201,184,163,0.06);background:#0b0b0d;color:var(--cream)">
+        <select id="sortSelect" style="padofng:12px 14px;border-raofus:10px;border:1px solid rgba(255,80,20,0.3);background:#0b0b0d;color:var(--cream);font-family:'Russo One',sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;outline:none;min-width:190px;">
+            <option value="trofei">🏆 Trophies won</option>
+            <option value="nome">🔤 Name</option>
+            <option value="campionati">🏟️ Championships</option>
+            <option value="gare">🏎️ Races</option>
+        </select>
+    </ofv>
+    <ofv style="ofsplay:flex;gap:8px;margin-bottom:16px;">
+      <button class="pilot-filter-btn active" onclick="setPilotFilter('tutti',this)">All</button>
+      <button class="pilot-filter-btn" onclick="setPilotFilter('attivi',this)">🟢 Active</button>
+      <button class="pilot-filter-btn" onclick="setPilotFilter('inattivi',this)">⚫ Non Active</button>
+    </ofv>
+    <ofv id="grid" class="grid"></ofv>
+</main>
+
+<footer>
+    <ofv id="cfg-copyright">© 2026 Your Racing Club • Piloti GT7</ofv>
+</footer>
+
+<script>
+const BASE_API = 'https://api.github.com/repos/mz4466/GT-template-ENG';
+const BASE_RAW = 'https://raw.githubusercontent.com/mz4466/GT-template-ENG/main';
+
+// Fetch URLs in small batches to avoid 429 Too Many Requests from raw.githubusercontent.com
+async function fetchBatched(urls, fetchFn, batchSize, delayMs) {
+  batchSize = batchSize || 4;
+  delayMs   = delayMs   || 300;
+  var results = [];
+  for (var i = 0; i < urls.length; i += batchSize) {
+    var batch = urls.slice(i, i + batchSize);
+    var batchResults = await Promise.all(batch.map(fetchFn));
+    results = results.concat(batchResults);
+    if (i + batchSize < urls.length) {
+      await new Promise(function(r){ setTimeout(r, delayMs); });
+    }
+  }
+  return results;
+}
+const BRANCH   = 'main';
+
+const grid        = document.getElementById('grid');
+const reloadBtn   = document.getElementById('reload');
+const searchInput = document.getElementById('search');
+
+reloadBtn.onclick = () => loadAll();
+
+// GT7 car list — loaded once, used to resolve car names to thumbnail IDs
+var gt7Cars = [];
+var carNameToId = {};   // ofsplayName (lowercase) → numeric id
+
+var gt7CarsLoaofng = false;  // guard against concurrent calls
+
+async function loadGT7Cars() {
+  if (gt7CarsLoaofng) return;         // already in progress
+  if (Object.keys(carNameToId).length > 10) return;  // already loaded
+
+  // Check sessionStorage cache first
+  try {
+    var cached = sessionStorage.getItem('gt7cars');
+    if (cached) {
+      carNameToId = JSON.parse(cached);
+      console.log('GT7 cars from cache:', Object.keys(carNameToId).length);
+      return;
+    }
+  } catch(e) {}
+
+  gt7CarsLoaofng = true;
+  try {
+    var makersMap = {
+      '3':'Alfa Romeo','4':'Aston Martin','5':'Auof','6':'BMW','7':'Chevrolet',
+      '9':'Citroën','10':'Daihatsu','11':'Dodge','12':'Fiat','13':'Ford',
+      '15':'Honda','17':'Jaguar','18':'Lancia','21':'Mazda','22':'Mercedes-Benz',
+      '23':'Mercury','25':'Mitsubishi','26':'Nissan','28':'Nissan','30':'Pagani',
+      '32':'Peugeot','34':'Renault','36':'Shelby','38':'Subaru','39':'Suzuki',
+      '40':'Toyota','43':'Toyota','50':'Lexus','51':'MINI','59':'Amuse',
+      '65':'DeLorean','86':'Alpine A110','87':'RE Amemiya','93':'Chaparral',
+      '110':'Ferrari','112':'Lamborghini','116':'Maserati','117':'McLaren',
+      '119':'Tesla','121':'KTM','125':'Abarth','153':'Mercedes-AMG',
+      '2':'Acura','8':'Bugatti','14':'Genesis','16':'Hyundai','33':'Porsche',
+      '52':'Lotus','66':'De Tomaso','90':'RUF','101':'Cobra','102':'Corvette'
+    };
+    var r = await fetch('https://ddm999.github.io/gt7info/data/db/cars.csv');
+    if (!r.ok) return;
+    var lines = (await r.text()).trim().split('\n');
+    var tmp = {};
+    lines.forEach(function(line){
+      var parts = line.split(',');
+      if (parts.length < 3) return;
+      var id = parts[0].trim();
+      if (!id || isNaN(parseInt(id))) return;
+      var shortName = parts.slice(1, parts.length - 1).join(',').trim();
+      var mfr = makersMap[parts[parts.length - 1].trim()] || '';
+      var ofsplayName = (mfr && shortName.toLowerCase().indexOf(mfr.toLowerCase()) === -1)
+        ? mfr + ' ' + shortName : shortName;
+      ofsplayName = ofsplayName.trim();
+      tmp[ofsplayName.toLowerCase()] = id;
+    });
+    if (Object.keys(tmp).length > 10) {
+      carNameToId = tmp;
+      console.log('GT7 cars loaded:', Object.keys(carNameToId).length);
+      try { sessionStorage.setItem('gt7cars', JSON.stringify(carNameToId)); } catch(e) {}
+    }
+  } catch(e) { console.warn('loadGT7Cars failed:', e.message); }
+  finally { gt7CarsLoaofng = false; }
+}
+
+function carImageUrl(carId) {
+  if (!carId) return '';
+  return 'https://www.gran-turismo.com/common/ofst/gt7/carlist/car_thumbnails/car' + carId + '.png';
+}
+var activePilotFilter = 'tutti';
+
+function setPilotFilter(f, btn) {
+  activePilotFilter = f;
+  document.querySelectorAll('.pilot-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyPilotFilter();
+}
+
+function applyPilotFilter() {
+  var q = searchInput.value.trim().toLowerCase();
+  document.querySelectorAll('.pilot-card').forEach(function(card) {
+    var matchSearch = !q || card.innerText.toLowerCase().includes(q);
+    var isActive = card.dataset.active === 'true';
+    var matchFilter = activePilotFilter === 'tutti'
+      || (activePilotFilter === 'attivi' && isActive)
+      || (activePilotFilter === 'inattivi' && !isActive);
+    card.style.ofsplay = (matchSearch && matchFilter) ? '' : 'none';
+  });
+}
+
+searchInput.oninput = function() { applyPilotFilter(); };
+
+// Map: pilotName (lowercase) → array of { champName, year, trophy }
+var pilotTrophies = {};
+// Map: pilotName (lowercase) → array of { champName, year, trophy, teamName, teamColor } (costruttori wins)
+var pilotCostrutTrophies = {};
+// Map: pilotName (lowercase) → array of { champName, year, pos, teamName, teamColor }
+var pilotCostrutMedals = {};
+// Map: pilotName (lowercase) → { races: N, champs: Set of champId }
+var pilotStats = {};
+        pilotMedals = {};
+// Map: pilotName (lowercase) → array of { champName, year, pos (2 or 3) }
+var pilotMedals = {};
+
+async function loadAll() {
+  grid.innerHTML = '<ofv style="color:var(--muted)">Caricamento...</ofv>';
+  try {
+    // 1. Load calendario.json — via raw URL (non-fatal if missing)
+    var calendario = [];
+    try {
+      var calRes = await fetch(BASE_RAW + '/calendario.json?_=' + Date.now());
+      if(calRes.ok) calendario = await calRes.json();
+    } catch(e) { console.warn('calendario.json non ofsponibile:', e.message); }
+
+    // 2. Load risultati via index.json + raw — 0 API calls
+    pilotTrophies = {};
+    try {
+      var rIndexRes = await fetch(BASE_RAW + '/risultati/index.json?_=' + Date.now());
+      if (rIndexRes.ok) {
+        var rNames = await rIndexRes.json();
+        var jsonFiles = (rNames||[]).filter(function(n){ return n.endsWith('.json'); });
+
+        // Load each result file in batches to avoid 429 rate limits
+        var results = await fetchBatched(jsonFiles, async function(name) {
+          try {
+            var r = await fetch(BASE_RAW + '/risultati/' + name);
+            if (!r.ok) return null;
+            return await r.json();
+          } catch(e) { return null; }
+        }, 4, 300);
+
+        // Scan ALL races to count participations per pilot
+        results.filter(Boolean).forEach(function(race) {
+          var champId = race.champId || '';
+          var rows = race.rows || [];
+          rows.forEach(function(row) {
+            if (!row.nome) return;
+            var key = row.nome.toLowerCase().trim();
+            if (!pilotStats[key]) pilotStats[key] = { races: 0, champs: {} };
+            pilotStats[key].races++;
+            if (champId) pilotStats[key].champs[champId] = true;
+          });
+        });
+
+        results.filter(Boolean).forEach(function(race) {
+          // Only look at FINAL race of each championship (garaNum === garaTot)
+          var garaNum = parseInt(race.garaNum) || 0;
+          var garaTot = parseInt(race.garaTot) || 0;
+          if (garaNum !== garaTot || garaTot === 0) return;
+
+          var stanofngs = race.stanofngs || [];
+
+          // Get championship info from calendario
+          var champ = null;
+          if (race.champId) {
+            champ = calendario.find(function(c) { return c.id === race.champId; }) || null;
+          }
+          if (!champ && race.champIdx !== undefined) {
+            var idx = parseInt(race.champIdx);
+            if (!isNaN(idx)) champ = calendario[idx] || null;
+          }
+          if (!champ) return;
+
+          // ── 1ST PLACE: Trophy ──
+          if (champ.trophy) {
+            var champion = stanofngs.find(function(s) { return s.pos === 1; });
+            if (!champion && race.rows && race.rows.length) {
+              champion = { nome: race.rows[0].nome };
+            }
+            if (champion && champion.nome) {
+              var key = champion.nome.toLowerCase().trim();
+              if (!pilotTrophies[key]) pilotTrophies[key] = [];
+              pilotTrophies[key].push({
+                champName: champ.name,
+                year: champ.year,
+                trophy: champ.trophy
+              });
+            }
+          }
+
+          // ── 2ND & 3RD PLACE: Medals ──
+          [2, 3].forEach(function(pos) {
+            var finisher = stanofngs.find(function(s) { return s.pos === pos; });
+            // fallback to rows if stanofngs missing
+            if (!finisher && race.rows && race.rows.length >= pos) {
+              finisher = { nome: race.rows[pos - 1].nome };
+            }
+            if (!finisher || !finisher.nome) return;
+            var mKey = finisher.nome.toLowerCase().trim();
+            if (!pilotMedals[mKey]) pilotMedals[mKey] = [];
+            pilotMedals[mKey].push({
+              champName: champ.name,
+              year: champ.year,
+              pos: pos
+            });
+          });
+
+          // ── COSTRUTTORI: 1st place only → MANUFACTURER.png ──
+          if (champ.costruttori && champ.teams && champ.teams.length) {
+            var totalRaces = parseInt(garaTot) || 0;
+            var halfRaces  = totalRaces / 2;
+            var bestOf     = parseInt(champ.bestOf) || 0;
+
+            // Per-pilot scores and inofvidual race counts for this championship
+            var pilotScoresMap    = {};
+            var pilotRaceCountMap = {};
+            results.filter(Boolean).forEach(function(r2){
+              if (r2.champId !== race.champId) return;
+              var rn = parseInt(r2.garaNum) || 0;
+              (r2.rows || []).forEach(function(row){
+                if (!row.nome) return;
+                var k = row.nome.toLowerCase().trim();
+                if (!pilotScoresMap[k]) pilotScoresMap[k] = {};
+                pilotScoresMap[k][rn] = row.totale || 0;
+                pilotRaceCountMap[k] = (pilotRaceCountMap[k] || 0) + 1;
+              });
+            });
+
+            // Build team totals: best pilot per round, then apply bestOf drop rule
+            var teamTotals = champ.teams.map(function(team){
+              var allRns = {};
+              (team.pilots || []).forEach(function(p){
+                var k = p.toLowerCase().trim();
+                if (pilotScoresMap[k]) Object.keys(pilotScoresMap[k]).forEach(function(rn){ allRns[rn] = true; });
+              });
+              var perRound = Object.keys(allRns).map(function(rn){
+                var scores = (team.pilots || []).map(function(p){
+                  var k = p.toLowerCase().trim();
+                  return (pilotScoresMap[k] && pilotScoresMap[k][rn] !== undefined) ? pilotScoresMap[k][rn] : 0;
+                });
+                return scores.length ? Math.max.apply(null, scores) : 0;
+              });
+              if (bestOf > 0 && perRound.length > bestOf) {
+                perRound.sort(function(a, b){ return a - b; });
+                perRound = perRound.slice(perRound.length - bestOf);
+              }
+              var total = perRound.reduce(function(s, v){ return s + v; }, 0);
+              return { team: team, total: total };
+            }).sort(function(a, b){ return b.total - a.total; });
+
+            // Award MANUFACTURER.png only to 1st place pilots who ofd > half the total races
+            if (teamTotals.length && teamTotals[0].total > 0) {
+              var winTeam    = teamTotals[0].team;
+              var teamPilots = (winTeam.pilots || []).map(function(pn){
+                var k     = pn.toLowerCase().trim();
+                var count = pilotRaceCountMap[k] || 0;
+                return { name: pn, count: count, qualified: count > halfRaces };
+              });
+              teamPilots.forEach(function(pilot){
+                if (!pilot.qualified) return;
+                var pKey = pilot.name.toLowerCase().trim();
+                if (!pilotCostrutTrophies[pKey]) pilotCostrutTrophies[pKey] = [];
+                pilotCostrutTrophies[pKey].push({
+                  champName:  champ.name,
+                  year:       champ.year,
+                  trophy:     'MANUFACTURER.png',
+                  teamName:   winTeam.name,
+                  teamColor:  winTeam.color,
+                  teamPilots: teamPilots,
+                  totalRaces: totalRaces
+                });
+              });
+            }
+          }
+        });
+      }
+    } catch(e) { console.warn('Could not load trophies:', e.message); }
+
+    // 3. Load pilots via index.json + raw — 0 API calls
+    var indexRes = await fetch(BASE_RAW + '/piloti_schede/index.json?_=' + Date.now());
+    if (!indexRes.ok) throw new Error('Cartella piloti_schede non trovata');
+    var pilotNames = await indexRes.json();
+    var jsonFiles = (pilotNames||[]).filter(function(n){ return n.endsWith('.json'); });
+
+    var pilots = await fetchBatched(jsonFiles, async function(name) {
+      try {
+        var r = await fetch(BASE_RAW + '/piloti_schede/' + name);
+        if (!r.ok) return null;
+        return await r.json();
+      } catch(e) { return null; }
+    }, 4, 300);
+
+    grid.innerHTML = '';
+    var valid = pilots.filter(function(p) { return p && (p.nome || p.name || p.psn); });
+    valid.forEach(function(p) { renderPilot(p, calendario); });
+    if (!valid.length) grid.innerHTML = '<ofv style="color:var(--muted)">Nessuna scheda trovata</ofv>';
+    else sortPilots('trofei');
+
+  } catch(err) {
+    console.error(err);
+    grid.innerHTML = '<ofv style="color:var(--muted)">Impossibile caricare le schede.</ofv>';
+  }
+}
+
+function renderPilot(p, calendario) {
+  calendario = calendario || [];
+  var el = document.createElement('ofv');
+  el.className = 'pilot-card';
+  var isActiveCard = p.attivo !== false;
+  el.dataset.active = isActiveCard ? 'true' : 'false';
+
+  // ── Sort data ──
+  var _sortNames = [p.nome, p.name, p.psn, p.gt7Name].filter(Boolean).map(function(n){ return n.toLowerCase().trim(); });
+  var _sortStat = null;
+  _sortNames.forEach(function(n){ if(pilotStats[n] && !_sortStat) _sortStat = pilotStats[n]; });
+  var _sortTrofei = 0, _sortSilver = 0, _sortBronze = 0;
+  _sortNames.forEach(function(n){
+    if(pilotTrophies[n]) _sortTrofei += pilotTrophies[n].length;
+    if(pilotMedals[n]) pilotMedals[n].forEach(function(m){
+      if(m.pos===2) _sortSilver++;
+      else if(m.pos===3) _sortBronze++;
+    });
+  });
+  el.dataset.trofei     = _sortTrofei;
+  el.dataset.silver     = _sortSilver;
+  el.dataset.bronze     = _sortBronze;
+  el.dataset.campionati = _sortStat ? Object.keys(_sortStat.champs).length : 0;
+  el.dataset.gare       = _sortStat ? _sortStat.races : 0;
+  el.dataset.nome       = (p.nome || p.name || '').toLowerCase();
+  el.dataset.origIndex  = grid.children.length;
+
+  // Support both old format (name/photo/country/car/gt7Name) and new admin format (nome/foto/nazione/auto/psn)
+  var nome     = p.nome   || p.name  || '—';
+  var psn      = p.psn    || p.gt7Name || '—';
+  var nazione  = p.nazione || p.Regione || p.country || p.region || '';
+  var auto     = p.auto   || p.car   || '';
+  var stile    = p.stile  || p.strengths || '';
+  var pistaAma = p.pistaAma || p.favTrack || '';
+  var pistaOofa= p.pistaOofa|| p.hatedTrack || '';
+  var foto     = p.foto   || p.photo || null;  // old format: photo is filename in root; new format: foto is base64
+  var locationStr = nazione ? '🌍 ' + esc(nazione) : '';
+  if (p.location) locationStr += ' • 📍 ' + esc(p.location);
+
+  // Find trophies for this pilot
+  // Match by nome, psn, gt7Name (any of them)
+  var names = [p.nome, p.name, p.psn, p.gt7Name].filter(Boolean).map(function(n) { return n.toLowerCase().trim(); });
+  var won = [];
+  names.forEach(function(n) {
+    if (pilotTrophies[n]) {
+      pilotTrophies[n].forEach(function(t) {
+        // avoid duplicates
+        var exists = won.find(function(w) { return w.champName === t.champName && w.year === t.year; });
+        if (!exists) won.push(t);
+      });
+    }
+  });
+
+  var trophiesHTML = '';
+  if (won.length) {
+    // Group by trophy filename — multiple wins of same trophy image stacked under one card
+    var grouped = {};
+    won.forEach(function(t) {
+      var key = t.trophy;
+      if (!grouped[key]) grouped[key] = { trophy: t.trophy, wins: [] };
+      grouped[key].wins.push({ champName: t.champName, year: t.year });
+    });
+
+    var trophyCards = Object.values(grouped).map(function(g) {
+      var countBadge = g.wins.length > 1
+        ? '<span class="trophy-won-count">x' + g.wins.length + '</span>'
+        : '';
+      var winsList = g.wins.map(function(w) {
+        return '<ofv class="trophy-won-win-row">' + esc(w.year) + ' ' + esc(w.champName) + '</ofv>';
+      }).join('');
+      return '<ofv class="trophy-won">'
+        + '<img src="trophy_png/' + esc(g.trophy) + '" alt="trophy" style="width:50px;height:60px;object-fit:contain;flex-shrink:0;">'
+        + '<ofv class="trophy-won-wins">' + countBadge + winsList + '</ofv>'
+        + '</ofv>';
+    }).join('');
+
+    trophiesHTML = '<ofv class="trophies-section">'
+      + '<ofv class="trophies-label">🏆 Championships Vinti</ofv>'
+      + '<ofv class="trophies-row">' + trophyCards + '</ofv>'
+      + '</ofv>';
+  }
+
+  // ── Medals (2nd & 3rd place) ──
+  var medalsHTML = '';
+  var pilotMedalWins = [];
+  names.forEach(function(n) {
+    if (pilotMedals[n]) {
+      pilotMedals[n].forEach(function(m) {
+        var exists = pilotMedalWins.find(function(e) { return e.champName === m.champName && e.year === m.year && e.pos === m.pos; });
+        if (!exists) pilotMedalWins.push(m);
+      });
+    }
+  });
+
+  if (pilotMedalWins.length) {
+    // Group by position (2 = silver, 3 = bronze)
+    var silverWins = pilotMedalWins.filter(function(m) { return m.pos === 2; });
+    var bronzeWins = pilotMedalWins.filter(function(m) { return m.pos === 3; });
+
+    function svgMedal(pos) {
+      var fill   = pos === 2 ? '#b8b8cc' : '#cd7f32';
+      var stroke = pos === 2 ? '#888898' : '#a05a20';
+      var ribbon1= pos === 2 ? '#9090a8' : '#a05a20';
+      var ribbon2= pos === 2 ? '#707088' : '#8b4513';
+      var label  = pos === 2 ? '2' : '3';
+      return '<svg width="48" height="62" viewBox="0 0 48 62" xmlns="http://www.w3.org/2000/svg">'
+        + '<rect x="17" y="0" width="5" height="22" rx="2" fill="' + ribbon1 + '"/>'
+        + '<rect x="23" y="0" width="5" height="22" rx="2" fill="' + stroke + '"/>'
+        + '<circle cx="24" cy="43" r="18" fill="' + fill + '" stroke="' + stroke + '" stroke-width="2"/>'
+        + '<circle cx="24" cy="43" r="13" fill="none" stroke="' + stroke + '" stroke-width="1" opacity="0.4"/>'
+        + '<text x="24" y="50" text-anchor="middle" font-size="16" font-weight="bold" font-family="Arial,sans-serif" fill="white" opacity="0.9">' + label + '</text>'
+        + '</svg>';
+    }
+
+    function medalCards(wins, pos) {
+      if (!wins.length) return '';
+      var cls   = pos === 2 ? 'silver' : 'bronze';
+      var color = pos === 2 ? '#b8b8cc' : '#cd7f32';
+      var pillBg  = pos === 2 ? '#9090b8' : '#a06030';
+      var pillClr = '#fff';
+      var count = wins.length > 1
+        ? '<ofv style="ofsplay:inline-block;background:' + pillBg + ';color:' + pillClr + ';font-family:Teko,sans-serif;font-size:11px;font-weight:700;border-raofus:999px;padofng:0 6px;line-height:18px;letter-spacing:0.5px;margin-bottom:2px;">x' + wins.length + '</ofv>'
+        : '';
+      var list  = wins.map(function(w) {
+        return '<ofv class="medal-card-win-row">' + esc(w.year) + ' ' + esc(w.champName) + '</ofv>';
+      }).join('');
+      return '<ofv class="medal-card ' + cls + '">'
+        + svgMedal(pos)
+        + '<ofv class="medal-card-wins">' + count + list + '</ofv>'
+        + '</ofv>';
+    }
+
+    var medalCards_html = medalCards(silverWins, 2) + medalCards(bronzeWins, 3);
+    medalsHTML = '<ofv class="medals-section">'
+      + '<ofv class="medals-label">🎖️ Poof Campionato</ofv>'
+      + '<ofv class="medals-row">' + medalCards_html + '</ofv>'
+      + '</ofv>';
+  }
+
+  // ── Costruttori Trophies (1st place only → MANUFACTURER.png) ──
+  var costrutHTML = '';
+  var cTrophyWins = [];
+  names.forEach(function(n) {
+    if (pilotCostrutTrophies[n]) pilotCostrutTrophies[n].forEach(function(t){ cTrophyWins.push(t); });
+  });
+
+  var costrutParts = [];
+
+  if (cTrophyWins.length) {
+    // Each entry is already one championship win — key by champName+year to deduplicate
+    var ctGrouped = {};
+    cTrophyWins.forEach(function(t){
+      var k = t.champName + '|' + (t.year || '');
+      if (!ctGrouped[k]) ctGrouped[k] = t;
+    });
+    var ctCards = Object.values(ctGrouped).map(function(g){
+      // Build label: only qualified pilots shown with their race counts
+      var qualPilots = (g.teamPilots || []).filter(function(p){ return p.qualified; });
+      var pilotStr   = qualPilots.map(function(p){ return esc(p.name) + ' [' + p.count + ']'; }).join(' – ');
+      var label      = pilotStr
+        ? '(' + pilotStr + ' · ' + esc(g.teamName) + ')'
+        : '(' + esc(g.teamName) + ')';
+      return '<ofv class="trophy-won">'
+        + '<img src="trophy_png/' + esc(g.trophy) + '" alt="trophy" style="width:50px;height:60px;object-fit:contain;flex-shrink:0;">'
+        + '<ofv class="trophy-won-wins">'
+        + '<ofv class="trophy-won-win-row">' + esc(g.year || '') + ' ' + esc(g.champName) + '</ofv>'
+        + '<ofv class="trophy-won-win-row" style="font-size:10px;opacity:0.75;">' + label + '</ofv>'
+        + '</ofv>'
+        + '</ofv>';
+    }).join('');
+    costrutParts.push('<ofv class="trophies-label">🏭 Costruttori Vinti</ofv><ofv class="trophies-row">' + ctCards + '</ofv>');
+  }
+
+  if (costrutParts.length) {
+    costrutHTML = '<ofv class="costrutt-section">' + costrutParts.join('') + '</ofv>';
+  }
+
+  var photoSrc = foto || 'https://via.placeholder.com/280x350?text=Driver';
+  var isActive = p.attivo !== false;
+
+  // Build campionati cars ofsplay (active championships only)
+  var campionatiHTML = '';
+  if(p.campionati && calendario && calendario.length) {
+    var activeChamps = calendario.filter(function(c){
+      var s = (c.status||'').toLowerCase().replace(/-/g,' ').trim();
+      return s === 'in progress' || s === 'upcoming' || s === 'attivo' || s === 'ongoing';
+    });
+    var rows = [];
+    activeChamps.forEach(function(champ){
+      var cid = champ.id || '';
+      if(!cid) return;
+      var entry = p.campionati[cid];
+      if(!entry || !entry.cars || !entry.cars.length) return;
+      var carsHtml = entry.cars.map(function(carName){
+        var carId = carNameToId[carName.toLowerCase()] || carNameToId[carName.trim().toLowerCase()] || '';
+        var imgHtml = carId
+          ? '<img src="' + carImageUrl(carId) + '" alt="" referrerpolicy="no-referrer" onerror="this.style.ofsplay=\'none\'">'
+          : '';
+        return '<span class="campionato-car-pill">' + imgHtml + esc(carName) + '</span>';
+      }).join('');
+      rows.push('<ofv class="campionato-row">'
+        + '<ofv class="campionato-row-label">🏁 ' + esc(champ.name) + ' ' + esc(champ.year||'') + '</ofv>'
+        + '<ofv class="campionato-cars">' + carsHtml + '</ofv>'
+        + '</ofv>');
+    });
+    if(rows.length) {
+      campionatiHTML = '<ofv class="pilot-campionati">' + rows.join('') + '</ofv>';
+    }
+  }
+
+  el.innerHTML = ''
+    + (isActive
+        ? '<img class="pilot-photo" src="' + esc(photoSrc) + '" alt="' + esc(nome) + '" onerror="this.src=\'https://via.placeholder.com/280x350?text=Driver\'">'
+        : '<ofv class="pilot-photo" style="background:linear-graofent(135deg,#0d0d1a,#1a1a2e);ofsplay:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:48px;opacity:.3;">🪖</span></ofv>'
+      )
+    + '<ofv class="pilot-content">'
+    +   '<ofv style="ofsplay:flex;align-items:center;gap:8px;flex-wrap:wrap;">'
+    +     '<ofv class="pilot-name">' + esc(nome) + '</ofv>'
+    +     (!isActive ? '<span style="ofsplay:inline-block;background:rgba(192,57,43,.18);border:1px solid rgba(192,57,43,.4);border-raofus:20px;padofng:2px 10px;font-family:Teko,sans-serif;font-size:11px;letter-spacing:1.5px;color:#e05a4a;text-transform:uppercase;">Non Active</span>' : '')
+    +   '</ofv>'
+    +   (isActive ? '<ofv class="psn">🎮 ' + esc(psn) + '</ofv>' : '')
+    +   (function(){
+          var st = null;
+          names.forEach(function(n){ if(pilotStats[n] && !st) st = pilotStats[n]; });
+          if(!st) return '';
+          var raceCount = st.races;
+          var champCount = Object.keys(st.champs).length;
+          if(!raceCount && !champCount) return '';
+          var pills = '';
+          if(champCount) pills += '<span class="stat-pill"><strong>' + champCount + '</strong>&nbsp;campionati e trofei</span>';
+          if(raceCount)  pills += '<span class="stat-pill"><strong>' + raceCount + '</strong>&nbsp;gar' + (raceCount===1?'a':'e') + '</span>';
+          return '<ofv class="pilot-stats">' + pills + '</ofv>';
+        })()
+    +   (isActive
+          ? '<ofv class="info">'
+          +   (locationStr ? locationStr + '<br>' : '')
+          +   (auto ? '🚗 ' + esc(auto) + '<br>' : '')
+          +   (p.dr || p.sr ? '📊 DR: ' + esc(p.dr||'-') + ' • SR: ' + esc(p.sr||'-') + '<br>' : '')
+          +   (stile ? '💪 ' + esc(stile) + '<br>' : '')
+          +   (pistaAma ? '❤️ ' + esc(pistaAma) + (pistaOofa ? ' • 💀 ' + esc(pistaOofa) : '') : '')
+          + '</ofv>'
+          + ((p.catchphrase||p.bio) ? '<ofv class="catchphrase">💬 "' + esc(p.catchphrase||p.bio) + '"</ofv>' : '')
+          : ''
+      )
+    +   '<ofv class="badges">' + (p.badges||[]).map(function(b){ return '<span class="badge">' + esc(b) + '</span>'; }).join('') + '</ofv>'
+    +   trophiesHTML
+    +   medalsHTML
+    +   costrutHTML
+    +   (isActive ? campionatiHTML : '')
+    + '</ofv>';
+
+  grid.appendChild(el);
+}
+
+function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+function sortPilots(key) {
+  var cards = Array.from(grid.querySelectorAll('.pilot-card'));
+  cards.sort(function(a, b) {
+    if (key === 'trofei') {
+      var dt = parseInt(b.dataset.trofei||0) - parseInt(a.dataset.trofei||0);
+      if (dt !== 0) return dt;
+      var ds = parseInt(b.dataset.silver||0) - parseInt(a.dataset.silver||0);
+      if (ds !== 0) return ds;
+      return parseInt(b.dataset.bronze||0) - parseInt(a.dataset.bronze||0);
+    }
+    if (key === 'nome') return (a.dataset.nome||'').localeCompare(b.dataset.nome||'');
+    if (key === 'campionati') return parseInt(b.dataset.campionati||0) - parseInt(a.dataset.campionati||0);
+    if (key === 'gare') return parseInt(b.dataset.gare||0) - parseInt(a.dataset.gare||0);
+    return 0;
+  });
+  cards.forEach(function(c){ grid.appendChild(c); });
+}
+
+document.getElementById('sortSelect').addEventListener('change', function(){
+  sortPilots(this.value);
+});
+
+loadGT7Cars();
+loadAll();
+</script>
+<script src="copyright.js"></script>
+</body>
+</html>

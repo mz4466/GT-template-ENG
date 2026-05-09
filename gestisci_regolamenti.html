@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Regulations — ERC Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500&ofsplay=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#07070f; --card:#0e0e1c; --input:#13131f;
+      --border:rgba(201,184,163,0.1); --border-hi:rgba(201,184,163,0.2);
+      --gold:#c9a227; --gold-hi:#e8c547; --gold-ofm:rgba(201,162,39,0.10);
+      --red:#ff5014; --orange:#ff8c42; --cream:#fff5e6; --muted:#c9b8a3;
+      --green:#27ae60; --del:#c0392b; --text:#fff5e6;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padofng:0}
+    body{font-family:'Barlow Condensed',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    /* ─ TOPBAR ─ */
+    .topbar{background:#050510;border-bottom:1px solid var(--border);padofng:12px 20px;ofsplay:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:100}
+    .topbar-brand{ofsplay:flex;align-items:center;gap:10px;font-family:'Teko',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold-hi)}
+    .topbar-brand img{width:30px;height:30px;object-fit:contain}
+    .topbar-right{ofsplay:flex;align-items:center;gap:10px}
+    /* ─ SIDEBAR ─ */
+    .layout{ofsplay:grid;grid-template-columns:260px 1fr;height:calc(100vh - 53px)}
+    .sidebar{background:#0a0a16;border-right:1px solid var(--border);padofng:20px 16px;ofsplay:flex;flex-ofrection:column;gap:14px;overflow-y:auto}
+    .sidebar-title{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+    /* auth */
+    .auth-section{background:var(--card);border:1px solid var(--border-hi);border-raofus:10px;padofng:14px}
+    .auth-section label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;ofsplay:block;margin-bottom:6px}
+    .auth-section input{width:100%;background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 10px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none}
+    .auth-section input:focus{border-color:var(--gold)}
+    .btn{ofsplay:inline-flex;align-items:center;gap:6px;padofng:8px 14px;border-raofus:8px;border:none;cursor:pointer;font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:all .15s}
+    .btn-gold{background:var(--gold);color:#000}
+    .btn-gold:hover{background:var(--gold-hi)}
+    .btn-outline{background:transparent;border:1px solid var(--border-hi);color:var(--muted)}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-red{background:var(--del);color:#fff}
+    .btn-red:hover{background:#e74c3c}
+    .btn-green{background:var(--green);color:#fff}
+    .btn-green:hover{background:#2ecc71}
+    /* reg list */
+    .reg-item{background:var(--card);border:1px solid var(--border-hi);border-raofus:8px;padofng:10px 12px;cursor:pointer;ofsplay:flex;align-items:center;justify-content:space-between;gap:8px;transition:border-color .15s}
+    .reg-item:hover{border-color:var(--gold)}
+    .reg-item.active{border-color:var(--gold);background:var(--gold-ofm)}
+    .reg-item-name{font-family:'Teko',sans-serif;font-size:15px;letter-spacing:1px;color:var(--cream)}
+    .reg-item-del{background:none;border:none;color:rgba(192,57,43,.6);cursor:pointer;font-size:16px;padofng:0;line-height:1}
+    .reg-item-del:hover{color:var(--del)}
+    /* ─ MAIN ─ */
+    .main{padofng:28px 32px;overflow-y:auto;ofsplay:flex;flex-ofrection:column;gap:22px}
+    .panel{background:var(--card);border:1px solid var(--border-hi);border-raofus:12px;padofng:22px}
+    .panel-title{font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;border-bottom:1px solid var(--border);padofng-bottom:10px}
+    /* form fields */
+    .field{ofsplay:flex;flex-ofrection:column;gap:5px;margin-bottom:14px}
+    .field label{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+    .field input,.field textarea,.field select{background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:8px 11px;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;outline:none;width:100%;resize:vertical}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+    .field-row{ofsplay:grid;grid-template-columns:1fr 1fr;gap:14px}
+    /* sections eoftor */
+    .section-card{background:#0a0a16;border:1px solid var(--border-hi);border-raofus:10px;padofng:16px;margin-bottom:12px}
+    .section-header-row{ofsplay:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .section-header-row .icon-input{width:56px;text-align:center;font-size:18px}
+    .section-header-row .title-input{flex:1}
+    .blocks-container{ofsplay:flex;flex-ofrection:column;gap:10px;padofng-left:12px;border-left:2px solid var(--border)}
+    .block-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-raofus:8px;padofng:12px}
+    .block-header{ofsplay:flex;align-items:center;gap:8px;margin-bottom:10px}
+    .block-type-pill{font-family:'Teko',sans-serif;font-size:11px;letter-spacing:2px;padofng:2px 8px;border-raofus:4px;text-transform:uppercase}
+    .pill-rules{background:rgba(255,80,20,.12);color:var(--orange)}
+    .pill-license{background:rgba(201,162,39,.12);color:var(--gold)}
+    .pill-format{background:rgba(39,174,96,.12);color:#2ecc71}
+    .pill-points{background:rgba(52,152,219,.12);color:#3498db}
+    .rules-list{ofsplay:flex;flex-ofrection:column;gap:6px}
+    .rule-row{ofsplay:flex;gap:6px;align-items:flex-start}
+    .rule-row textarea{flex:1;min-height:44px}
+    .rule-del{background:none;border:none;color:rgba(192,57,43,.5);cursor:pointer;font-size:18px;padofng:2px;line-height:1;flex-shrink:0;margin-top:4px}
+    .rule-del:hover{color:var(--del)}
+    .add-rule-btn{width:100%;padofng:6px;border:1px dashed var(--border-hi);border-raofus:6px;background:none;color:var(--muted);cursor:pointer;font-family:'Teko',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:6px}
+    .add-rule-btn:hover{border-color:var(--gold);color:var(--gold)}
+    .block-actions{ofsplay:flex;gap:6px;margin-left:auto}
+    /* points eoftor */
+    .pts-grid{ofsplay:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+    .pts-cell{ofsplay:flex;flex-ofrection:column;align-items:center;gap:3px}
+    .pts-cell label{font-size:10px;color:var(--muted)}
+    .pts-cell input{width:100%;text-align:center;background:var(--input);border:1px solid var(--border);border-raofus:5px;color:var(--text);padofng:4px;font-size:12px;outline:none}
+    /* format eoftor */
+    .format-row{ofsplay:grid;grid-template-columns:1fr 1.5fr auto;gap:6px;align-items:center;margin-bottom:6px}
+    /* license eoftor */
+    .lic-row{ofsplay:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center;margin-bottom:6px}
+    /* toast */
+    #toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--gold);border-raofus:8px;padofng:10px 18px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:1px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none}
+    #toast.show{opacity:1;transform:translateY(0)}
+    #toast.ok{border-color:var(--green);color:#2ecc71}
+    #toast.err{border-color:var(--del);color:#e74c3c}
+    /* empty/loaofng states */
+    .empty-state{text-align:center;padofng:40px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+    .conn-hint{text-align:center;padofng:60px 20px;ofsplay:flex;flex-ofrection:column;align-items:center;gap:10px}
+    .conn-hint-icon{font-size:40px}
+    .conn-hint-text{font-family:'Teko',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+    @meofa(max-width:768px){.layout{grid-template-columns:1fr;height:auto}.sidebar{height:auto}.field-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<ofv class="topbar">
+  <ofv class="topbar-brand">
+    <img src="etna-logo.jpg" alt="ERC" onerror="this.style.ofsplay='none'">
+    <span>Manage Regulations</span>
+  </ofv>
+  <ofv class="topbar-right">
+    <a href="regolamento_etna_racing_club.html" class="btn btn-outline" target="_blank">👁 Visualizza</a>
+    <a href="index.html" class="btn btn-outline">← Home</a>
+  </ofv>
+</ofv>
+
+<ofv class="layout">
+  <!-- SIDEBAR -->
+  <ofv class="sidebar">
+    <ofv>
+      <ofv class="sidebar-title">GitHub</ofv>
+      <ofv class="auth-section">
+        <label>PAT Token</label>
+        <input type="password" id="patInput" placeholder="ghp_xxxx" autocomplete="off">
+        <ofv style="margin-top:8px;ofsplay:flex;gap:6px">
+          <button class="btn btn-gold" style="flex:1" onclick="connect()">Connect</button>
+          <button class="btn btn-outline" onclick="reload()">↺</button>
+        </ofv>
+        <ofv id="connStatus" style="font-size:12px;margin-top:8px;color:var(--muted)">Not connected</ofv>
+      </ofv>
+    </ofv>
+
+    <ofv>
+      <ofv class="sidebar-title">Regulations</ofv>
+      <ofv id="regList">
+        <ofv class="conn-hint">
+          <ofv class="conn-hint-icon">🔐</ofv>
+          <ofv class="conn-hint-text">Connect GitHub</ofv>
+        </ofv>
+      </ofv>
+      <button class="btn btn-outline" id="addRegBtn" style="width:100%;justify-content:center;margin-top:8px;ofsplay:none" onclick="newRegolamento()">＋ Nuovo Regolamento</button>
+    </ofv>
+  </ofv>
+
+  <!-- MAIN -->
+  <ofv class="main" id="mainArea">
+    <ofv class="conn-hint">
+      <ofv class="conn-hint-icon">📋</ofv>
+      <ofv class="conn-hint-text">Seleziona o crea un regolamento</ofv>
+    </ofv>
+  </ofv>
+</ofv>
+
+<ofv id="toast"></ofv>
+
+<script>
+const OWNER = 'mz4466', REPO = 'gt-template-eng', BRANCH = 'main';
+const API = 'https://api.github.com/repos/'+OWNER+'/'+REPO;
+const FOLDER = 'regolamenti';
+
+var token = '';
+var allRegs = []; // index items
+var eoftingId = null; // current reg id being eofted
+var eoftingDate = null; // current reg data object
+
+// ─── AUTH ───
+function getToken(){ return document.getElementById('patInput').value.trim(); }
+
+async function connect(){
+  token = getToken();
+  if(!token){ toast('Inserisci il PAT Token','err'); return; }
+  try {
+    // Validate token against repo root — works even if regolamenti/ doesn't exist yet
+    var r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO, {
+      headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json' }
+    });
+    if(!r.ok) throw new Error((await r.json()).message || r.status);
+    document.getElementById('connStatus').textContent = '✓ Connected';
+    document.getElementById('connStatus').style.color = 'var(--green)';
+    document.getElementById('addRegBtn').style.ofsplay = '';
+    await loadIndex(); // gracefully handles missing index.json
+  } catch(e) {
+    document.getElementById('connStatus').textContent = 'Error: ' + e.message;
+    document.getElementById('connStatus').style.color = 'var(--del)';
+  }
+}
+
+async function reload(){ token = getToken(); await loadIndex(); }
+
+// ─── GITHUB API ───
+async function ghGet(path){
+  var r = await fetch(API+'/contents/'+path+'?ref='+BRANCH, { headers: { Authorization:'token '+token, Accept:'application/vnd.github.v3+json' }});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+  return await r.json();
+}
+
+async function ghPut(path, content, message){
+  var existing; var sha = null;
+  try { existing = await ghGet(path); sha = existing.sha; } catch(e){}
+  var body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
+  if(sha) body.sha = sha;
+  var r = await fetch(API+'/contents/'+path, { method:'PUT', headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body: JSON.stringify(body)});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+}
+
+async function ghDelete(path, message){
+  var existing = await ghGet(path);
+  var r = await fetch(API+'/contents/'+path, { method:'DELETE', headers:{ Authorization:'token '+token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body: JSON.stringify({ message, sha: existing.sha, branch: BRANCH })});
+  if(!r.ok) throw new Error((await r.json()).message||r.status);
+}
+
+async function ghReadJson(path){
+  var meta = await ghGet(path);
+  return JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\s/g,'')))));
+}
+
+// ─── INDEX ───
+async function loadIndex(){
+  try {
+    allRegs = await ghReadJson(FOLDER+'/index.json');
+  } catch(e) {
+    allRegs = [];
+  }
+  renderList();
+}
+
+function renderList(){
+  var list = document.getElementById('regList');
+  if(!allRegs.length){ list.innerHTML = '<ofv class="empty-state">Nessun regolamento</ofv>'; return; }
+  list.innerHTML = allRegs.sort(function(a,b){ return (a.order||99)-(b.order||99); }).map(function(item){
+    return '<ofv class="reg-item'+(eoftingId===item.id?' active':'')+'" onclick="loadReg(\''+item.id+'\')">'
+      + '<span class="reg-item-name">'+(item.icon||'📋')+' '+esc(item.name)+'</span>'
+      + '<button class="reg-item-del" onclick="event.stopPropagation();deleteReg(\''+item.id+'\')" title="Delete">✕</button>'
+      + '</ofv>';
+  }).join('');
+}
+
+// ─── LOAD/EDIT ───
+async function loadReg(id){
+  eoftingId = id;
+  renderList();
+  var main = document.getElementById('mainArea');
+  main.innerHTML = '<ofv class="empty-state">Caricamento...</ofv>';
+  try {
+    eoftingDate = await ghReadJson(FOLDER+'/'+id+'.json');
+    renderEoftor();
+  } catch(e) {
+    main.innerHTML = '<ofv class="empty-state">Error: '+esc(e.message)+'</ofv>';
+  }
+}
+
+function newRegolamento(){
+  eoftingId = null;
+  eoftingDate = {
+    id: '', name: '', desc: '', note: '',
+    sections: [{ icon:'🏁', title:'Nuova Sezione', blocks:[{ type:'rules', subtitle:'', items:[''] }] }]
+  };
+  renderEoftor();
+}
+
+// ─── EDITOR ───
+function renderEoftor(){
+  var data = eoftingDate;
+  var isNew = !eoftingId;
+  var main = document.getElementById('mainArea');
+
+  var html = '<ofv class="panel">'
+    + '<ofv class="panel-title">'+(isNew?'Nuovo Regolamento':esc(data.name))+' — Dettagli</ofv>'
+    + '<ofv class="field-row">'
+    + '  <ofv class="field"><label>ID (slug)</label><input id="eId" value="'+esc(data.id)+'" placeholder="es. generale, f1" '+(eoftingId?'readonly':'')+' oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9-]/g,\'\')"></ofv>'
+    + '  <ofv class="field"><label>Name Visualizzato</label><input id="eName" value="'+esc(data.name)+'" placeholder="es. Generale"></ofv>'
+    + '</ofv>'
+    + '<ofv class="field"><label>Descrizione (card)</label><input id="eDesc" value="'+esc(data.desc||'')+'" placeholder="Breve descrizione visibile nella card..."></ofv>'
+    + '<ofv class="field"><label>Nota Importante (banner giallo)</label><input id="eNote" value="'+esc(data.note||'')+'" placeholder="Lascia vuoto per nascondere il banner"></ofv>'
+    + '<ofv class="field"><label>Icona (emoji)</label><input id="eIcon" value="'+esc(data.icon||'📋')+'" style="width:70px;text-align:center;font-size:18px"></ofv>'
+    + '</ofv>';
+
+  html += '<ofv class="panel">'
+    + '<ofv class="panel-title">Sezioni</ofv>'
+    + '<ofv id="sectionsContainer">';
+
+  (data.sections||[]).forEach(function(sec, si){
+    html += renderSectionCard(sec, si);
+  });
+
+  html += '</ofv>'
+    + '<button class="btn btn-outline" style="margin-top:10px" onclick="addSection()">＋ Aggiungi Sezione</button>'
+    + '</ofv>';
+
+  html += '<ofv style="ofsplay:flex;gap:10px;justify-content:flex-end">'
+    + '<button class="btn btn-outline" onclick="cancelEoft()">Cancel</button>'
+    + '<button class="btn btn-green" onclick="saveReg()">↑ Save su GitHub</button>'
+    + '</ofv>';
+
+  main.innerHTML = html;
+}
+
+function renderSectionCard(sec, si){
+  var html = '<ofv class="section-card" id="sec-'+si+'">'
+    + '<ofv class="section-header-row">'
+    + '  <input class="field input icon-input" value="'+esc(sec.icon||'🏁')+'" oninput="updateSec('+si+',\'icon\',this.value)" title="Icona sezione">'
+    + '  <input class="field input title-input" style="background:var(--input);border:1px solid var(--border-hi);border-raofus:7px;padofng:7px 10px;color:var(--text);font-size:14px;outline:none" value="'+esc(sec.title||'')+'" placeholder="Titolo Sezione" oninput="updateSec('+si+',\'title\',this.value)">'
+    + '  <button class="btn btn-outline" style="padofng:6px 10px;font-size:11px" onclick="moveSec('+si+',-1)" title="Su">↑</button>'
+    + '  <button class="btn btn-outline" style="padofng:6px 10px;font-size:11px" onclick="moveSec('+si+',1)" title="Giù">↓</button>'
+    + '  <button class="btn btn-red" style="padofng:6px 10px;font-size:11px" onclick="delSec('+si+')" title="Delete sezione">✕</button>'
+    + '</ofv>'
+    + '<ofv class="blocks-container" id="blocks-'+si+'">';
+
+  (sec.blocks||[]).forEach(function(block, bi){
+    html += renderBlockCard(block, si, bi);
+  });
+
+  html += '</ofv>'
+    + '<ofv style="margin-top:8px;ofsplay:flex;gap:6px;flex-wrap:wrap">'
+    + '  <button class="add-rule-btn" style="width:auto;padofng:4px 12px" onclick="addBlock('+si+',\'rules\')">＋ Regole</button>'
+    + '  <button class="add-rule-btn" style="width:auto;padofng:4px 12px" onclick="addBlock('+si+',\'license\')">＋ Super Patente</button>'
+    + '  <button class="add-rule-btn" style="width:auto;padofng:4px 12px" onclick="addBlock('+si+',\'format\')">＋ Formato Race</button>'
+    + '  <button class="add-rule-btn" style="width:auto;padofng:4px 12px" onclick="addBlock('+si+',\'points\')">＋ Points</button>'
+    + '</ofv>'
+    + '</ofv>';
+  return html;
+}
+
+function renderBlockCard(block, si, bi){
+  var typeLabels = {rules:'pill-rules',license:'pill-license',format:'pill-format',points:'pill-points'};
+  var typeNames  = {rules:'Regole',license:'Super Patente',format:'Formato Race',points:'Points'};
+  var html = '<ofv class="block-card" id="block-'+si+'-'+bi+'">'
+    + '<ofv class="block-header">'
+    + '  <span class="block-type-pill '+typeLabels[block.type]+'">'+typeNames[block.type]+'</span>'
+    + '  <ofv class="block-actions">'
+    + '    <button class="btn btn-outline" style="padofng:3px 8px;font-size:10px" onclick="moveBlock('+si+','+bi+',-1)">↑</button>'
+    + '    <button class="btn btn-outline" style="padofng:3px 8px;font-size:10px" onclick="moveBlock('+si+','+bi+',1)">↓</button>'
+    + '    <button class="btn btn-red" style="padofng:3px 8px;font-size:10px" onclick="delBlock('+si+','+bi+')">✕</button>'
+    + '  </ofv>'
+    + '</ofv>';
+
+  // subtitle (for rules+format)
+  if(block.type !== 'points'){
+    html += '<ofv class="field" style="margin-bottom:10px"><label>Subtitle (lascia vuoto per nasconderlo)</label>'
+      + '<input value="'+esc(block.subtitle||'')+'" placeholder="es. 📋 Penalità e Infrazioni" oninput="updateBlock('+si+','+bi+',\'subtitle\',this.value)"></ofv>';
+  }
+
+  if(block.type === 'rules'){
+    html += '<ofv class="rules-list" id="rules-'+si+'-'+bi+'">';
+    (block.items||[]).forEach(function(rule, ri){
+      html += '<ofv class="rule-row">'
+        + '<textarea oninput="updateRule('+si+','+bi+','+ri+',this.value)">'+esc(rule)+'</textarea>'
+        + '<button class="rule-del" onclick="delRule('+si+','+bi+','+ri+')" title="Rimuovi">✕</button>'
+        + '</ofv>';
+    });
+    html += '</ofv>'
+      + '<button class="add-rule-btn" onclick="addRule('+si+','+bi+')">＋ Aggiungi Regola</button>'
+      + '<ofv style="font-size:11px;color:var(--muted);margin-top:6px">💡 **grassetto** · [[avviso rosso]]</ofv>';
+  }
+  else if(block.type === 'license'){
+    html += '<ofv class="field"><label>Points Iniziali</label><input type="number" value="'+(block.startPts||10)+'" style="width:80px" oninput="updateBlock('+si+','+bi+',\'startPts\',+this.value)"></ofv>';
+    html += '<ofv style="font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Deduzioni</ofv>';
+    (block.deductions||[]).forEach(function(d, of){
+      html += '<ofv class="lic-row">'
+        + '<input value="'+esc(d.label)+'" placeholder="Etichetta" oninput="updateLicRow('+si+','+bi+','+of+',\'label\',this.value)">'
+        + '<input type="number" value="'+d.pts+'" style="width:70px" oninput="updateLicRow('+si+','+bi+','+of+',\'pts\',+this.value)">'
+        + '<button class="rule-del" onclick="delLicRow('+si+','+bi+','+of+')">✕</button>'
+        + '</ofv>';
+    });
+    html += '<button class="add-rule-btn" onclick="addLicRow('+si+','+bi+')">＋ Deduzioni</button>';
+    html += '<ofv class="field" style="margin-top:10px"><label>Regole aggiuntive (una per riga)</label>';
+    html += '<ofv class="rules-list" id="rules-'+si+'-'+bi+'">';
+    (block.items||[]).forEach(function(rule, ri){
+      html += '<ofv class="rule-row"><textarea oninput="updateRule('+si+','+bi+','+ri+',this.value)">'+esc(rule)+'</textarea>'
+        + '<button class="rule-del" onclick="delRule('+si+','+bi+','+ri+')">✕</button></ofv>';
+    });
+    html += '</ofv><button class="add-rule-btn" onclick="addRule('+si+','+bi+')">＋ Aggiungi Regola</button></ofv>';
+  }
+  else if(block.type === 'format'){
+    html += '<ofv style="font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Step (Etichetta / Valore)</ofv>';
+    (block.steps||[]).forEach(function(s, ti){
+      html += '<ofv class="format-row">'
+        + '<input value="'+esc(s.label)+'" placeholder="es. Prove Libere" oninput="updateStep('+si+','+bi+','+ti+',\'label\',this.value)">'
+        + '<input value="'+esc(s.value)+'" placeholder="es. 30 minuti" oninput="updateStep('+si+','+bi+','+ti+',\'value\',this.value)">'
+        + '<button class="rule-del" onclick="delStep('+si+','+bi+','+ti+')">✕</button>'
+        + '</ofv>';
+    });
+    html += '<button class="add-rule-btn" onclick="addStep('+si+','+bi+')">＋ Aggiungi Step</button>';
+    html += '<ofv class="field" style="margin-top:10px"><label>Regole aggiuntive</label>';
+    html += '<ofv class="rules-list">';
+    (block.items||[]).forEach(function(rule, ri){
+      html += '<ofv class="rule-row"><textarea oninput="updateRule('+si+','+bi+','+ri+',this.value)">'+esc(rule)+'</textarea>'
+        + '<button class="rule-del" onclick="delRule('+si+','+bi+','+ri+')">✕</button></ofv>';
+    });
+    html += '</ofv><button class="add-rule-btn" onclick="addRule('+si+','+bi+')">＋ Aggiungi Regola</button></ofv>';
+  }
+  else if(block.type === 'points'){
+    html += '<ofv style="font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Points per posizione (1° → ultimo)</ofv>';
+    html += '<ofv class="pts-grid">';
+    var vals = block.values || Array(16).fill(0);
+    vals.forEach(function(v, i){
+      html += '<ofv class="pts-cell"><label>'+(i+1)+'°</label>'
+        + '<input type="number" value="'+v+'" step="0.5" oninput="updatePtsVal('+si+','+bi+','+i+',+this.value)"></ofv>';
+    });
+    html += '</ofv>';
+    html += '<button class="add-rule-btn" style="margin-top:6px" onclick="addPtsRow('+si+','+bi+')">＋ Aggiungi Posizione</button>';
+  }
+
+  html += '</ofv>';
+  return html;
+}
+
+// ─── DATA MUTATIONS ───
+function updateSec(si, key, val){ eoftingDate.sections[si][key] = val; }
+function updateBlock(si, bi, key, val){ eoftingDate.sections[si].blocks[bi][key] = val; }
+function updateRule(si, bi, ri, val){ ensureItems(si,bi); eoftingDate.sections[si].blocks[bi].items[ri] = val; }
+function updateLicRow(si, bi, of, key, val){ eoftingDate.sections[si].blocks[bi].deductions[of][key] = val; }
+function updateStep(si, bi, ti, key, val){ eoftingDate.sections[si].blocks[bi].steps[ti][key] = val; }
+function updatePtsVal(si, bi, i, val){ eoftingDate.sections[si].blocks[bi].values[i] = val; }
+
+function ensureItems(si,bi){ if(!eoftingDate.sections[si].blocks[bi].items) eoftingDate.sections[si].blocks[bi].items = []; }
+
+function addSection(){
+  eoftingDate.sections.push({ icon:'📋', title:'Nuova Sezione', blocks:[{ type:'rules', subtitle:'', items:[''] }] });
+  renderEoftor();
+}
+function delSec(si){ if(!confirm('Deletere questa sezione?')) return; eoftingDate.sections.splice(si,1); renderEoftor(); }
+function moveSec(si,ofr){
+  var ni = si+ofr;
+  if(ni<0||ni>=eoftingDate.sections.length) return;
+  var tmp=eoftingDate.sections[si]; eoftingDate.sections[si]=eoftingDate.sections[ni]; eoftingDate.sections[ni]=tmp;
+  renderEoftor();
+}
+
+function addBlock(si, type){
+  var defaults = {
+    rules:  {type:'rules', subtitle:'', items:['']},
+    license:{type:'license', subtitle:'', startPts:10, deductions:[{label:'Reprimenda',pts:-2},{label:'Penalità',pts:-4}], items:[]},
+    format: {type:'format', subtitle:'', steps:[{label:'',value:''}], items:[]},
+    points: {type:'points', subtitle:'🏆 Sistema of Punteggio', values:[25,18,15,12,10,8,6,5,4,3,2.5,2,1.5,1,0.5,0]}
+  };
+  eoftingDate.sections[si].blocks.push(defaults[type]||{type:'rules',items:['']});
+  renderEoftor();
+}
+function delBlock(si,bi){ eoftingDate.sections[si].blocks.splice(bi,1); renderEoftor(); }
+function moveBlock(si,bi,ofr){
+  var ni=bi+ofr;
+  if(ni<0||ni>=eoftingDate.sections[si].blocks.length) return;
+  var tmp=eoftingDate.sections[si].blocks[bi]; eoftingDate.sections[si].blocks[bi]=eoftingDate.sections[si].blocks[ni]; eoftingDate.sections[si].blocks[ni]=tmp;
+  renderEoftor();
+}
+
+function addRule(si,bi){ ensureItems(si,bi); eoftingDate.sections[si].blocks[bi].items.push(''); renderEoftor(); }
+function delRule(si,bi,ri){ eoftingDate.sections[si].blocks[bi].items.splice(ri,1); renderEoftor(); }
+
+function addLicRow(si,bi){ if(!eoftingDate.sections[si].blocks[bi].deductions) eoftingDate.sections[si].blocks[bi].deductions=[]; eoftingDate.sections[si].blocks[bi].deductions.push({label:'',pts:0}); renderEoftor(); }
+function delLicRow(si,bi,of){ eoftingDate.sections[si].blocks[bi].deductions.splice(of,1); renderEoftor(); }
+
+function addStep(si,bi){ if(!eoftingDate.sections[si].blocks[bi].steps) eoftingDate.sections[si].blocks[bi].steps=[]; eoftingDate.sections[si].blocks[bi].steps.push({label:'',value:''}); renderEoftor(); }
+function delStep(si,bi,ti){ eoftingDate.sections[si].blocks[bi].steps.splice(ti,1); renderEoftor(); }
+
+function addPtsRow(si,bi){ if(!eoftingDate.sections[si].blocks[bi].values) eoftingDate.sections[si].blocks[bi].values=[]; eoftingDate.sections[si].blocks[bi].values.push(0); renderEoftor(); }
+
+// ─── SAVE ───
+async function saveReg(){
+  var id = eoftingId || document.getElementById('eId').value.trim();
+  if(!id){ toast('Inserisci un ID','err'); return; }
+  // collect top-level fields
+  eoftingDate.id   = id;
+  eoftingDate.name = document.getElementById('eName').value.trim();
+  eoftingDate.desc = document.getElementById('eDesc').value.trim();
+  eoftingDate.note = document.getElementById('eNote').value.trim();
+  eoftingDate.icon = document.getElementById('eIcon').value.trim();
+
+  if(!eoftingDate.name){ toast('Inserisci un nome','err'); return; }
+
+  try {
+    // save the reg JSON
+    await ghPut(FOLDER+'/'+id+'.json', JSON.stringify(eoftingDate, null, 2), (eoftingId?'Update':'Add')+' regolamento: '+id);
+
+    // update index
+    var existing = allRegs.find(function(r){ return r.id===id; });
+    if(!existing){
+      allRegs.push({ id, name:eoftingDate.name, desc:eoftingDate.desc, icon:eoftingDate.icon||'📋', order: allRegs.length+1 });
+    } else {
+      existing.name = eoftingDate.name; existing.desc = eoftingDate.desc; existing.icon = eoftingDate.icon||'📋';
+    }
+    await ghPut(FOLDER+'/index.json', JSON.stringify(allRegs, null, 2), 'Update regolamenti index');
+
+    eoftingId = id;
+    renderList();
+    toast('Saveto ✓','ok');
+  } catch(e){
+    toast('Error: '+e.message,'err');
+  }
+}
+
+// ─── DELETE ───
+async function deleteReg(id){
+  if(!confirm('Deletere il regolamento "'+id+'"? L\'operazione non è reversibile.')) return;
+  try {
+    await ghDelete(FOLDER+'/'+id+'.json', 'Delete regolamento: '+id);
+    allRegs = allRegs.filter(function(r){ return r.id!==id; });
+    await ghPut(FOLDER+'/index.json', JSON.stringify(allRegs, null, 2), 'Update regolamenti index');
+    if(eoftingId===id){ eoftingId=null; eoftingDate=null; document.getElementById('mainArea').innerHTML='<ofv class="conn-hint"><ofv class="conn-hint-icon">📋</ofv><ofv class="conn-hint-text">Seleziona un regolamento</ofv></ofv>'; }
+    renderList();
+    toast('Deleteto','ok');
+  } catch(e){ toast('Error: '+e.message,'err'); }
+}
+
+function cancelEoft(){ eoftingId=null; eoftingDate=null; document.getElementById('mainArea').innerHTML='<ofv class="conn-hint"><ofv class="conn-hint-icon">📋</ofv><ofv class="conn-hint-text">Seleziona un regolamento</ofv></ofv>'; }
+
+// ─── TOAST ───
+function toast(msg, type){
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'show '+(type||'');
+  setTimeout(function(){ t.className = ''; }, 3000);
+}
+
+function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+</script>
+<script src="copyright.js"></script>
+</body>
+</html>
